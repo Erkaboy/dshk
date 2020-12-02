@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'proj.apps.ProjConfig',
     'django_crontab',
     'leaflet',
+    'adminsortable2',
 ]
 
 

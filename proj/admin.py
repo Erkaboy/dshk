@@ -41,7 +41,7 @@ admin.site.register(Crontab_data,Crontab_dataAdmin)
 
 #new admin models
 class ViloyatAdmin(admin.ModelAdmin):
-	list_display = ['vil_id','disUz'] 
+	list_display = ['vil_id','disUz']
 
 
 
@@ -271,7 +271,14 @@ admin.site.register(Documents, DocumentsAdmin)
 
 from proj.genplan_models import adminsGenplan,Sub_genplan,Sub_sub_genplan
 
-admin.site.register(Sub_genplan)
+from adminsortable2.admin import SortableAdminMixin
+class Sub_genplanAdmin(SortableAdminMixin,admin.GeoModelAdmin):
+    model = Sub_genplan
+    list_display = ("nomi", "zindex")
+    search_fields = ("nomi",)
+
+
+admin.site.register(Sub_genplan,Sub_genplanAdmin)
 admin.site.register(Sub_sub_genplan)
 admin.site.register(adminsGenplan)
 
