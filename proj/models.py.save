@@ -1,0 +1,216 @@
+from django.contrib.gis.db import models 
+from datetime import datetime,date
+
+class Users(models.Model):
+	full_name = models.CharField('Full name',max_length=70)
+	login = models.CharField(max_length=40)
+	password = models.CharField(max_length=40)
+	status = models.CharField(max_length=30)
+
+
+	def __str__(self):
+		return self.full_name
+	class Meta:
+		verbose_name_plural = "Users"
+
+
+class Praekterovchiki(models.Model):
+	id= models.AutoField(primary_key=True)
+	nomi= models.CharField(max_length=255,blank=True)
+	txtash=models.CharField(max_length=255,blank=True)
+	inn=models.CharField(max_length=100,blank=True)
+	adress=models.CharField(max_length=255,blank=True)
+	location = models.PointField(srid=4326,blank=True,null=True)
+	raxbar=models.CharField(max_length=255,blank=True)
+	contact=models.CharField(max_length=255,blank=True)
+	ifut=models.CharField(max_length=70,blank=True)
+	ifut_kodi=models.CharField(max_length=30,blank=True)
+	litsenziya=models.CharField(max_length=255,blank=True)
+	litsenziya_sana=models.DateField(auto_now=False,auto_now_add=False,blank=True,null=True)
+	litsenziya_muddat=models.IntegerField(blank=True,null=True)
+	litsenziya_ft=models.CharField(max_length=200,blank=True)
+	litsenziya_kshr=models.CharField(max_length=200,blank=True)
+	litsenziya_kshr_sana=models.DateField(auto_now=False,auto_now_add=False,blank=True,null=True)
+	litsenziyalangan_ishlar=models.CharField(max_length=255,blank=True)
+	litsenziya_qro=models.CharField(max_length=255,blank=True)
+	mulk_shakli=models.CharField(max_length=200,blank=True)
+	viloyat=models.CharField(max_length=200,blank=True)
+	tuman=models.CharField(max_length=200,blank=True)
+	ap=models.CharField(max_length=200,blank=True)
+	def __str__(self):
+		return self.nomi
+	class Meta:
+		verbose_name_plural = "Praekterovchiki"
+
+
+class Zastroychiki(models.Model):
+	id= models.AutoField(primary_key=True)
+	nomi= models.CharField(max_length=255,blank=True)
+	txtash=models.CharField(max_length=255,blank=True)
+	inn=models.CharField(max_length=100,blank=True)
+	adress=models.CharField(max_length=255,blank=True)
+	location = models.PointField(srid=4326,blank=True,null=True)
+	raxbar=models.CharField(max_length=255,blank=True)
+	contact=models.CharField(max_length=255,blank=True)
+	ifut=models.CharField(max_length=70,blank=True)
+	ifut_kodi=models.CharField(max_length=30,blank=True)
+	litsenziya=models.CharField(max_length=255,blank=True)
+	litsenziya_sana=models.DateField(auto_now=False,auto_now_add=False,blank=True,null=True)
+	litsenziya_muddat=models.IntegerField(blank=True,null=True)
+	litsenziya_ft=models.CharField(max_length=200,blank=True)
+	litsenziya_kshr=models.CharField(max_length=200,blank=True)
+	litsenziya_kshr_sana=models.DateField(auto_now=False,auto_now_add=False,blank=True,null=True)
+	litsenziyalangan_ishlar=models.CharField(max_length=255,blank=True)
+	litsenziya_qro=models.CharField(max_length=255,blank=True)
+	mulk_shakli=models.CharField(max_length=200,blank=True)
+	viloyat=models.CharField(max_length=200,blank=True)
+	tuman=models.CharField(max_length=200,blank=True)
+	ap=models.CharField(max_length=200,blank=True)
+	def __str__(self):
+		return self.nomi
+	class Meta:
+		verbose_name_plural = "Zastroychiki"
+
+
+class Viloyat(models.Model):
+	nomi=models.CharField('Nomi',max_length=70)
+	disUz=models.CharField('Nomi Uzb',max_length=70,blank=True)
+	disRu=models.CharField('Nomi Rus',max_length=70,blank=True)
+	def __str__(self):
+		return self.nomi
+	class Meta:
+		verbose_name_plural = "Viloyat"
+
+class Tuman(models.Model):
+	nomi=models.CharField('Nomi',max_length=70)
+	viloyat=models.ForeignKey(Viloyat,on_delete=models.CASCADE,default=-1)
+	disUz=models.CharField('Nomi Uzb',max_length=70,blank=True)
+	disRu=models.CharField('Nomi Rus',max_length=70,blank=True)
+
+	def __str__(self):
+		return self.nomi
+	class Meta:
+		verbose_name_plural = "Tuman"
+
+class Objects(models.Model):
+	id= models.AutoField(primary_key=True)
+	nomi = models.CharField('Nomi',max_length=255,blank=True)
+	soata_kodi = models.CharField(max_length=70,blank=True)
+	identifikator = models.CharField(max_length=70,blank=True)
+	adress = models.TextField(blank=True)
+	hokimiyat_qarori = models.CharField(max_length=200,blank=True)
+	hokimiyat_qarori_file=models.FileField(upload_to='dshk',default='null',null=True,blank=True)
+	yer_maydoni = models.CharField(max_length=70,blank=True)
+	apz_sana = models.CharField(max_length=70,blank=True)
+	apz_ijrochisi = models.CharField(max_length=100,blank=True)
+
+
+	pratakol_davlat_qurulish = models.CharField(max_length=70,blank=True)
+	ekspert_xulosasi = models.CharField(max_length=70,blank=True)
+	psd_ishlab_chiqiligan_sana = models.CharField(max_length=70,blank=True)
+	psd_muofiqligi = models.CharField(max_length=70,blank=True)
+	qurulish_kurinishi = models.CharField(max_length=70,blank=True)
+
+	quvvati = models.CharField(max_length=70,blank=True)
+	uchastka_maydoni = models.CharField(max_length=20,blank=True)
+	zastroyki_maydoni = models.CharField(max_length=20,blank=True)
+	poleznay_maydoni = models.CharField(max_length=20,blank=True)
+	bino_qurulish_obyomi = models.CharField(max_length=70,blank=True)
+	umumiy_narx = models.CharField(max_length=70,blank=True)
+	m2_narxi = models.CharField(max_length=70,blank=True)
+	m3_narxi = models.CharField(max_length=70,blank=True)
+	qavatlar_soni = models.CharField(max_length=70,blank=True)
+	padval = models.CharField(max_length=70,blank=True)
+	tom = models.CharField(max_length=70,blank=True)
+	poydevor = models.CharField(max_length=70,blank=True)
+	devor = models.CharField(max_length=70,blank=True)
+	devor_sirti = models.CharField(max_length=70,blank=True)
+	administrator_guas = models.CharField(max_length=30,blank=True)
+	guas_registr_sana = models.DateField(auto_now=False,auto_now_add=False,blank=True,null=True)
+
+	okonx = models.CharField(max_length=70,blank=True)              #--------------
+	qurulish_turi = models.CharField(max_length=70,blank=True)
+	yer_huquqi = models.CharField(max_length=70,blank=True)
+	smp_narxi = models.CharField(max_length=70,blank=True)
+	smpning_yildagi_pragnozi = models.CharField(max_length=70,blank=True)
+	kfs_buyicha_maliya_manbasi = models.CharField(max_length=70,blank=True)
+	kontrak_narxi = models.CharField(max_length=70,blank=True)
+	investetsiya_loyihasi = models.CharField(max_length=70,blank=True)
+	perellel_proyekt = models.CharField(max_length=70,blank=True)
+	tender_komessiya = models.CharField(max_length=70,blank=True)
+
+	zakazchik_texnadzor_fio = models.CharField(max_length=70,blank=True)
+	zakazchik_texnadzor_tel = models.CharField(max_length=70,blank=True)
+	zakazchik_texnadzor_buyruq = models.CharField(max_length=70,blank=True)
+
+	avtorskiy_nadzor_fio = models.CharField(max_length=70,blank=True)
+	avtorskiy_nadzor_tel = models.CharField(max_length=70,blank=True)
+	avtorskiy_nadzor_buyruq = models.CharField(max_length=70,blank=True)
+
+	quruvchi_fio = models.CharField(max_length=70,blank=True)
+	quruvchi_tel = models.CharField(max_length=70,blank=True)
+	quruvchi_buyruq = models.CharField(max_length=70,blank=True)
+
+	inspektor_gasn_fio = models.CharField(max_length=70,blank=True)
+	inspektor_gasn_tel = models.CharField(max_length=70,blank=True)
+	inspektor_gasn_buyruq = models.CharField(max_length=70,blank=True)
+
+	zakazchik_nomi = models.CharField(max_length=255,blank=True)
+	zakazchik_adress = models.TextField(blank=True)
+	zakazchik_kontakt = models.CharField(max_length=100,blank=True)
+	zakazchik_okpo_kodi = models.CharField(max_length=70,blank=True)
+	zakazchik_kfs_kodi = models.CharField(max_length=70,blank=True)
+	zakazchik_inn=models.CharField(max_length=30,blank=True)
+
+	viloyat=models.IntegerField(default=-1,blank=True)
+	tuman=models.IntegerField(default=-1,blank=True)
+
+	apot= models.CharField(max_length=70,blank=True)
+
+	proekterovchik_inn=models.CharField(max_length=30,blank=True)
+	zastroychik_inn=models.CharField(max_length=30,blank=True)
+
+
+	administrator_gasn = models.CharField(max_length=30,blank=True)
+	gasn_registr_sana = models.DateField(auto_now=False,auto_now_add=False,blank=True,null=True)
+	geoPoint = models.MultiPointField(srid=4326,blank=True,null=True)
+	geoPolygon = models.MultiPolygonField(srid=4326,blank=True,null=True)
+
+
+	def __str__(self):
+		return self.nomi
+	class Meta:
+		verbose_name_plural = "Objects"
+
+class Tip_documents(models.Model):
+	id= models.AutoField(primary_key=True)
+	tip_dis=models.CharField("Hujjatlar guruhining nomi",max_length=200,blank=True)
+	def __str__(self):
+		return self.tip_dis
+	class Meta:
+		verbose_name_plural = "Hujjatlar guruhi"
+
+class Sub_tip_documents(models.Model):
+#
+	id= models.AutoField(primary_key=True)
+	tip_doc=models.ForeignKey(Tip_documents,on_delete=models.CASCADE,default=-1,verbose_name="Hujjatlar guruhi nomi")
+	sub_tip_dis=models.CharField("Hujjat turi",max_length=200,blank=True)
+	def __str__(self):
+		return self.sub_tip_dis
+	class Meta:
+		verbose_name_plural = "Hujjat turi"
+
+class Documents(models.Model):
+	id= models.AutoField(primary_key=True)
+	tip_doc=models.ForeignKey(Tip_documents,on_delete=models.CASCADE,default=-1,verbose_name="Hujjatlar guruhi nomi")
+	sub_tip_doc=models.ForeignKey(Sub_tip_documents,on_delete=models.CASCADE,default=1,verbose_name="Hujjat turi")
+	nomer_doc=models.CharField("Hujjat raqami",max_length=70,blank=True)
+	data=models.DateField(auto_now=False,auto_now_add=False,blank=True,default=datetime.today, verbose_name="Qabul qilingan sana")
+	file_doc=models.FileField("Hujjat fayli",upload_to='proj/docs_for_pod9',blank=True)
+	doc_nomi=models.CharField("Hujjat nomi",max_length=255,blank=True)
+	link_doc=models.CharField("Hujjat havolasi",max_length=255,blank=True)
+	def __str__(self):
+		return self.doc_nomi
+	class Meta:
+		verbose_name_plural = "Barcha hujjatlar"
+

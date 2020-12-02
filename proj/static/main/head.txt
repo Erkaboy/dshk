@@ -1,0 +1,5 @@
+<script type="text/javascript" src="/static/dist/leaflet-search.js"></script> 
+<script type="text/javascript" src="/static/dist/marker-cluster.js"></script> 
+<script type="text/javascript" src="/static/dist/gsch.min.js"></script> 
+
+

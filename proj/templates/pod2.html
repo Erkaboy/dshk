@@ -1,0 +1,786 @@
+ {% extends 'base.html' %}
+
+ {% block style %}
+<style type="text/css">
+
+</style>
+{% endblock style %}
+ 
+ {% block content %}
+ 
+      
+ <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="section-headline services-head text-center">
+            <h3 class='wow fadeInUp'>ГРАДОСТРОИТЕЛЬНАЯ ДОКУМЕНТАЦИЯ</h3>
+            <hr>
+          </div>
+</div>
+
+
+        <div class="modal-body">
+          <div class="modal-text">
+              <p class="modal_p wow fadeInLeft">
+                <b>Градостроительная документация</b> – утвержденная в установленном порядке документация о градостроительном планировании развития территорий, населенных пунктов и об их застройке. Учет и анализ динамики изменений градостроительной   документации. В градостроительную документацию входят, в соответствии со статьей 26 Градостроительного кодекса:
+              </p>
+          
+          </div>
+<hr>
+
+    
+<div class="row">      
+    <div class="col-md-4 col-sm-4 col-xs-12">
+             <div class="modal-img wow fadeInLeft" >
+              <a data-magnify="gallery" data-caption="Градостроительная документация" href="/static/img/img_pods/4.jpg"><img class="pod_img"  src="/static/img/img_pods/4.jpg"></a>         
+            </div>
+           </div>
+           <div class="col-md-8 col-sm-8 col-xs-12">
+ <ul class="modal_p_ul wow fadeInRight">
+              <p>
+              а) документация о планировании развития территории и частей территории Республики Узбекистан:
+            </p>
+              <li>генеральная схема расселения;</li>
+              <li>схемы планировки развития частей территории, включающих территории двух и более регионов;</li>
+              <li>схема планировки;</li>
+              <li>отраслевые схемы развития.</li>
+            <hr>
+             <p>
+              б) документация о планировании развития территорий регионов Республики Узбекистан:
+            </p>
+            <li>схемы планировки территории Республики Каракалпакстан и областей;</li>
+            <li>проект планировки района (групп районов).</li>
+           <hr>
+            <p>
+              в) документация о развитии территорий населенных пунктов:
+            </p>
+          
+              <li>генеральные планы населенных пунктов;</li>
+              <li>проекты городской и поселковой черты;</li>
+              <li>отраслевые схемы развития территорий населенных пунктов</li>
+           <hr>
+            <p>
+              г) документация о застройке территорий населенных пунктов:
+            </p>
+            
+              <li>генеральные планы населенных пунктов;</li>
+              <li>проект детальной планировки;</li>
+              <li>проект застройки.</li>
+            </ul>
+
+           </div>
+ 
+</div>
+
+         </div> 
+
+<hr>
+
+<div class="container">  
+ <h4 class="wow fadeInRight"><b>Bosh rejalar ishlab chiqilganlik holati ~ <span id="genplan_count"></span> ta</b></h4> 
+ <hr>
+ <div class="row"">
+
+<div class="col-md-7 col-xs-12 col-sm-12 col-lg-7 align-self-start">
+<canvas  id="chart_gen1" width="300px" height="350px"></canvas>
+</div>
+
+<div style="margin-top: 50px;" class="col-md-5 col-xs-12 col-sm-12 col-lg-5 align-self-center wow fadeInRight">
+<h4>Bosh rejalar statistikasi</h4>
+<table class="table">
+<tr> <td>Tasdiqlangan</td><td id="genplan_tas"></td></tr>
+<tr> <td>Tasdiqlanmagan</td><td id="genplan_not_tas"></td></tr>
+<tr> <td>Reja qilingan</td><td id="genplan_plan"></td></tr>
+<tr> <td><b>Umumiy</b></td><td><b id="genplan_all" ></b></td></tr>
+</table>
+</div>
+
+</div>
+</div> 
+
+<hr>
+
+ <div class="container" style="width: 100%;">
+ <h4 class="wow fadeInRight"><b>Bosh rejalar ishlab chiqilganligining viloyatlar kesimida taqsimoti</b></h4>  
+  <hr>
+ <div class="row">
+<div class="col-md-6 col-xs-12 col-sm-12 col-lg-6 align-self-center wow fadeInLeft">
+
+<table class="table mytable">
+  <thead>
+    <tr>
+      <th scope="col">№</th>
+      <th scope="col">Viloyat</th>
+      <th scope="col">Tasdiqlangan</th>
+      <th scope="col">Tasdiqlanmagan</th>
+      <th scope="col">Reja qilingan</th>
+      <th scope="col">Umumiy</th>
+    </tr>
+  </thead>
+  <tbody id="genplan_vil_tr"> 
+  </tbody>
+</table>
+
+
+</div>
+
+<div class="col-md-6 col-xs-12 col-sm-12 col-lg-6 align-self-start">
+<canvas id="chart_gen2" width="300px" height="480px"></canvas>
+</div>
+
+</div>
+</div> 
+
+
+
+<hr>
+<hr>
+
+<div class="container">  
+ <h4 class="wow fadeInRight"><b>Batafsil rejalashtirish loyihalari ishlab chiqilganlik holati ~ <span id="pdp_count"></span> ta</b></h4> 
+ <hr>
+ <div class="row"">
+
+<div class="col-md-7 col-xs-12 col-sm-12 col-lg-7 align-self-start">
+<canvas  id="chart_pdp1" width="300px" height="350px"></canvas>
+</div>
+
+<div style="margin-top: 50px;" class="col-md-5 col-xs-12 col-sm-12 col-lg-5 align-self-center wow fadeInRight">
+<h4>Batafsil rejalashtirish loyihalari statistikasi</h4>
+<table class="table">
+<tr> <td>Tasdiqlangan</td><td id="pdp_tas"></td></tr>
+<tr> <td>Tasdiqlanmagan</td><td id="pdp_not_tas"></td></tr>
+<tr> <td>Reja qilingan</td><td id="pdp_plan"></td></tr>
+<tr> <td><b>Umumiy</b></td><td><b id="pdp_all" ></b></td></tr>
+</table>
+</div>
+
+</div>
+</div> 
+
+<hr>
+
+ <div class="container" style="width: 100%;">
+ <h4 class="wow fadeInRight"><b>Batafsil rejalashtirish loyihalari ishlab chiqilganligining viloyatlar kesimida taqsimoti</b></h4>  
+  <hr>
+ <div class="row">
+<div class="col-md-6 col-xs-12 col-sm-12 col-lg-6 align-self-center wow fadeInLeft">
+
+<table class="table mytable">
+  <thead>
+    <tr>
+      <th scope="col">№</th>
+      <th scope="col">Viloyat</th>
+      <th scope="col">Tasdiqlangan</th>
+      <th scope="col">Tasdiqlanmagan</th>
+      <th scope="col">Reja qilingan</th>
+      <th scope="col">Umumiy</th>
+    </tr>
+  </thead>
+  <tbody id="pdp_vil_tr"> 
+  </tbody>
+</table>
+ 
+
+</div>
+
+<div class="col-md-6 col-xs-12 col-sm-12 col-lg-6 align-self-start">
+<canvas id="chart_pdp2" width="300px" height="480px"></canvas>
+</div>
+
+</div>
+</div> 
+
+<hr>
+<hr>
+
+<div class="container">  
+ <h4 class="wow fadeInRight"><b>Hududlarni arxitekturaviy rejalashtirishni tashkillashtirish loyihalari ~ <span id="apot_count"></span> ta</b></h4> 
+ <hr>
+ <div class="row"">
+
+<div class="col-md-7 col-xs-12 col-sm-12 col-lg-7 align-self-start">
+<canvas  id="chart_apot1" width="300px" height="350px"></canvas>
+</div>
+
+<div style="margin-top: 50px;" class="col-md-5 col-xs-12 col-sm-12 col-lg-5 align-self-center wow fadeInRight">
+<h4>Batafsil rejalashtirish loyihalari statistikasi</h4>
+<table class="table">
+<tr> <td>Tasdiqlangan</td><td id="apot_tas"></td></tr>
+<tr> <td>Tasdiqlanmagan</td><td id="apot_not_tas"></td></tr>
+<tr> <td>Reja qilingan</td><td id="apot_plan"></td></tr>
+<tr> <td><b>Umumiy</b></td><td><b id="apot_all" ></b></td></tr>
+</table>
+</div>
+
+</div>
+</div> 
+
+<hr>
+
+ <div class="container" style="width: 100%;">
+ <h4 class="wow fadeInRight"><b>Hududlarni arxitekturaviy rejalashtirishni tashkillashtirish loyihalari ishlab chiqilganligining viloyatlar kesimida taqsimoti</b></h4>  
+  <hr>
+ <div class="row">
+<div class="col-md-6 col-xs-12 col-sm-12 col-lg-6 align-self-center wow fadeInLeft">
+
+<table class="table mytable">
+  <thead>
+    <tr>
+      <th scope="col">№</th>
+      <th scope="col">Viloyat</th>
+      <th scope="col">Tasdiqlangan</th>
+      <th scope="col">Tasdiqlanmagan</th>
+      <th scope="col">Reja qilingan</th>
+      <th scope="col">Umumiy</th>
+    </tr>
+  </thead>
+  <tbody id="apot_vil_tr"> 
+  </tbody>
+</table>
+
+
+</div>
+
+<div class="col-md-6 col-xs-12 col-sm-12 col-lg-6 align-self-start">
+<canvas id="chart_apot2" width="300px" height="480px"></canvas>
+</div>
+
+</div>
+</div> 
+
+  
+ {% endblock content %}
+
+
+ {% block script %}
+
+ <script type="text/javascript">
+
+
+Chart.pluginService.register({
+    beforeDraw: function (chart) {
+      if (chart.config.options.elements.center) {
+        //Get ctx from string
+        var ctx = chart.chart.ctx;
+        
+        //Get options from the center object in options
+        var centerConfig = chart.config.options.elements.center;
+        var fontStyle = centerConfig.fontStyle || 'Arial';
+        var txt = centerConfig.text;
+        var color = centerConfig.color || '#000';
+        var sidePadding = centerConfig.sidePadding || 20;
+        var sidePaddingCalculated = (sidePadding/100) * (chart.innerRadius * 2)
+        //Start with a base font of 30px
+        ctx.font = "30px " + fontStyle;
+
+        var stringWidth = ctx.measureText(txt).width;
+        var elementWidth = (chart.innerRadius * 2) - sidePaddingCalculated;
+
+        // Find out how much the font can grow in width.
+        var widthRatio = elementWidth / stringWidth;
+        var newFontSize = Math.floor(30 * widthRatio);
+        var elementHeight = (chart.innerRadius * 2);
+
+        // Pick a new font size so it will not be larger than the height of label.
+        var fontSizeToUse = Math.min(newFontSize, elementHeight);
+
+        //Set font settings to draw it correctly.
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        var centerX = ((chart.chartArea.left + chart.chartArea.right) / 2);
+        var centerY = ((chart.chartArea.top + chart.chartArea.bottom) / 2);
+        ctx.font = fontSizeToUse+"px " + fontStyle;
+        ctx.fillStyle = color;
+        
+        ctx.fillText(txt, centerX, centerY);
+      }
+    }
+  });
+
+
+
+var doughnut_data_gen=  {
+
+    type: 'doughnut',
+    data: {
+      labels: ["Tasdiqlangan", "Tasdiqlanmagan", "Reja qilingan"],
+     
+      datasets: [
+        {
+          backgroundColor: ["#4285F4", "#EA4335","#FBBC05"],
+          data: []
+        }
+      ]
+    },
+
+     options: {
+
+        responsive:true,
+        maintainAspectRatio: false,
+        legend: {
+            labels: {
+                fontColor: '#000',
+                fontSize:16,
+            },
+
+        },
+      
+      hover: {
+      onHover: function(e) {
+         var point = this.getElementAtEvent(e);
+         if (point.length) e.target.style.cursor = 'pointer';
+         else e.target.style.cursor = 'default';
+      }},
+
+        title: {
+        display: true,
+        position: 'bottom',
+        fontColor:'#000',
+        text: 'Bosh rejalar ishlanganlik holati',
+        fontSize:16
+      },
+        elements: {
+        center: {
+          text: '1245',
+          color: '#FF6384', // Default is #000000
+          fontStyle: 'Arial', // Default is Arial
+          sidePadding: 40 // Defualt is 20 (as a percentage)
+        }
+      }
+    }
+}
+
+
+var doughnut_data_pdp=  {
+
+    type: 'doughnut',
+    data: {
+      labels: ["Tasdiqlangan", "Tasdiqlanmagan", "Reja qilingan"],
+     
+      datasets: [
+        {
+          backgroundColor: ["#4285F4", "#EA4335","#FBBC05"],
+          data: []
+        }
+      ]
+    },
+
+     options: {
+
+        responsive:true,
+        maintainAspectRatio: false,
+        legend: {
+            labels: {
+                fontColor: '#000',
+                fontSize:16,
+            },
+
+        },
+      
+      hover: {
+      onHover: function(e) {
+         var point = this.getElementAtEvent(e);
+         if (point.length) e.target.style.cursor = 'pointer';
+         else e.target.style.cursor = 'default';
+      }},
+
+        title: {
+        display: true,
+        position: 'bottom',
+        fontColor:'#000',
+        text: 'Batafsil rejalashtirish loyihalari ishlanganlik holati',
+        fontSize:16
+      },
+        elements: {
+        center: {
+          text: '1245',
+          color: '#FF6384', // Default is #000000
+          fontStyle: 'Arial', // Default is Arial
+          sidePadding: 40 // Defualt is 20 (as a percentage)
+        }
+      }
+    }
+}
+
+
+var doughnut_data_apot=  {
+
+    type: 'doughnut',
+    data: {
+      labels: ["Tasdiqlangan", "Tasdiqlanmagan", "Reja qilingan"],
+     
+      datasets: [
+        {
+          backgroundColor: ["#4285F4", "#EA4335","#FBBC05"],
+          data: []
+        }
+      ]
+    },
+
+     options: {
+
+        responsive:true,
+        maintainAspectRatio: false,
+        legend: {
+            labels: {
+                fontColor: '#000',
+                fontSize:16,
+            },
+
+        },
+      
+      hover: {
+      onHover: function(e) {
+         var point = this.getElementAtEvent(e);
+         if (point.length) e.target.style.cursor = 'pointer';
+         else e.target.style.cursor = 'default';
+      }},
+
+        title: {
+        display: true,
+        position: 'bottom',
+        fontColor:'#000',
+        text: 'Hududlarni arxitekturaviy rejalashtirishni tashkillashtirish loyihalari ishlanganlik holati',
+        fontSize:16
+      },
+        elements: {
+        center: {
+          text: '1245',
+          color: '#FF6384', // Default is #000000
+          fontStyle: 'Arial', // Default is Arial
+          sidePadding: 40 // Defualt is 20 (as a percentage)
+        }
+      }
+    }
+}
+
+
+
+
+var pie_data_gen=  {
+
+    type: 'pie',
+    data: {
+      // labels: ["Andijon", "Buxoro", "Fargona","Jizzax", "Namangan", "Navoiy","Qashqadaryo", "Qaraqalpogiston", "Samarqand","Sirdaryo", "Surxondaryo", "Toshkent","Xorazm"],
+     labels :[],
+      datasets: [
+        {
+          // backgroundColor: ["", "","orange","#F65314", "#00FFFF","#FFBB00","#7B0099", "#146EB4","#FFCC00","blue", "#A4C639","#7CBB00","#FF69B4"],
+          backgroundColor:[],
+          data: []
+        }
+      ]
+    },
+
+
+     options: {
+        responsive:true,
+        maintainAspectRatio: false,
+        legend: {
+          position:'right',
+          // align: "middle",
+            labels: {
+                fontColor: '#000',
+                fontSize:16,
+            },
+
+        },
+      
+      hover: {
+      onHover: function(e) {
+         var point = this.getElementAtEvent(e);
+         if (point.length) e.target.style.cursor = 'pointer';
+         else e.target.style.cursor = 'default';
+      }},
+
+        title: {
+        display: false,
+        position: 'top',
+        fontColor:'#000',
+        text: 'Bosh rejalar viloyatlar kesimida',
+        fontSize:16
+      },
+        elements: {
+        center: {
+          text: '1254',
+          color: '#FF6384', // Default is #000000
+          fontStyle: 'Arial', // Default is Arial
+          sidePadding: 40 // Defualt is 20 (as a percentage)
+        }
+      }
+    }
+}
+
+
+
+var pie_data_pdp=  {
+
+    type: 'pie',
+    data: {
+     labels :[],
+      datasets: [
+        {
+          backgroundColor:[],
+          data: []
+        }
+      ]
+    },
+
+     options: {
+        responsive:true,
+        maintainAspectRatio: false,
+        legend: {
+          position:'right',
+          // align: "middle",
+            labels: {
+                fontColor: '#000',
+                fontSize:16,
+            },
+
+        },
+      
+      hover: {
+      onHover: function(e) {
+         var point = this.getElementAtEvent(e);
+         if (point.length) e.target.style.cursor = 'pointer';
+         else e.target.style.cursor = 'default';
+      }},
+
+        title: {
+        display: false,
+        position: 'top',
+        fontColor:'#000',
+        text: 'Bosh rejalar viloyatlar kesimida',
+        fontSize:16
+      },
+        elements: {
+        center: {
+          text: '1254',
+          color: '#FF6384', // Default is #000000
+          fontStyle: 'Arial', // Default is Arial
+          sidePadding: 40 // Defualt is 20 (as a percentage)
+        }
+      }
+    }
+}
+
+
+
+
+var pie_data_apot=  {
+
+    type: 'pie',
+    data: {
+     labels :[],
+      datasets: [
+        {
+          backgroundColor:[],
+          data: []
+        }
+      ]
+    },
+
+     options: {
+        responsive:true,
+        maintainAspectRatio: false,
+        legend: {
+          position:'right',
+          // align: "middle",
+            labels: {
+                fontColor: '#000',
+                fontSize:16,
+            },
+
+        },
+      
+      hover: {
+      onHover: function(e) {
+         var point = this.getElementAtEvent(e);
+         if (point.length) e.target.style.cursor = 'pointer';
+         else e.target.style.cursor = 'default';
+      }},
+
+        title: {
+        display: false,
+        position: 'top',
+        fontColor:'#000',
+        text: 'Bosh rejalar viloyatlar kesimida',
+        fontSize:16
+      },
+        elements: {
+        center: {
+          text: '1254',
+          color: '#FF6384', // Default is #000000
+          fontStyle: 'Arial', // Default is Arial
+          sidePadding: 40 // Defualt is 20 (as a percentage)
+        }
+      }
+    }
+}
+
+</script>
+
+
+<script type="text/javascript">
+
+
+function check_null(a){
+  return a=='0'?'-':a;
+}
+
+  
+var data = new FormData();
+data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
+data.append('service','pod2');
+
+    $.ajax({
+        url: '/chart_data',
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        type: 'post',
+        success: function (result) {
+var data;
+data=result.genplan;
+var text_tr='';
+var t=1;
+var tas=0,not_tas=0,plan=0;
+for(var i in data){
+  text_tr+=`
+<tr>
+      <th scope="row">`+t+`</th>
+      <td>`+data[i]['disUz']+`</td>
+      <td>`+check_null(data[i]['tas'])+`</td>
+      <td>`+check_null(data[i]['not_tas'])+`</td>
+       <td>`+check_null(data[i]['plan'])+`</td>
+       <td><b>`+check_null(data[i]['tas']+data[i]['not_tas']+data[i]['plan'])+`</b></td>
+    </tr>
+    `;
+    t++;
+    tas+=data[i]['tas'];
+    not_tas+=data[i]['not_tas'];
+    plan+=data[i]['plan'];
+
+pie_data_gen['data']['labels'].push(data[i]['shortUz']);
+pie_data_gen['data']['datasets'][0]['backgroundColor'].push(data[i]['color']);
+pie_data_gen['data']['datasets'][0]['data'].push(data[i]['tas']+data[i]['not_tas']+data[i]['plan'])
+}
+
+$('#genplan_tas').text(tas);
+$('#genplan_not_tas').text(not_tas);
+$('#genplan_plan').text(plan);
+$('#genplan_all').text(tas+not_tas+plan);
+$('#genplan_count').text(tas+not_tas+plan);
+$('#genplan_vil_tr').html(text_tr);
+
+        doughnut_data_gen['data']['datasets'][0]['data']=[tas,not_tas,plan];
+        doughnut_data_gen['options']['elements']['center']['text']=(tas+not_tas+plan);
+ 
+
+
+var ctx_gen1 = document.getElementById('chart_gen1').getContext('2d');
+var ctx_gen2 = document.getElementById('chart_gen2').getContext('2d');
+
+
+     var chart_gen1 = new Chart(ctx_gen1, doughnut_data_gen);
+     var chart_gen2= new Chart(ctx_gen2, pie_data_gen);
+    
+
+data=result.pdp;
+
+text_tr='';
+t=1;
+tas=0,not_tas=0,plan=0;
+for(var i in data){
+  text_tr+=`
+<tr>
+      <th scope="row">`+t+`</th>
+      <td>`+data[i]['disUz']+`</td>
+      <td>`+check_null(data[i]['tas'])+`</td>
+      <td>`+check_null(data[i]['not_tas'])+`</td>
+       <td>`+check_null(data[i]['plan'])+`</td>
+       <td><b>`+check_null(data[i]['tas']+data[i]['not_tas']+data[i]['plan'])+`</b></td>
+    </tr>
+    `;
+    t++;
+    tas+=data[i]['tas'];
+    not_tas+=data[i]['not_tas'];
+    plan+=data[i]['plan'];
+
+pie_data_pdp['data']['labels'].push(data[i]['shortUz']);
+pie_data_pdp['data']['datasets'][0]['backgroundColor'].push(data[i]['color']);
+pie_data_pdp['data']['datasets'][0]['data'].push(data[i]['tas']+data[i]['not_tas']+data[i]['plan'])
+}
+
+$('#pdp_tas').text(tas);
+$('#pdp_not_tas').text(not_tas);
+$('#pdp_plan').text(plan);
+$('#pdp_all').text(tas+not_tas+plan);
+$('#pdp_count').text(tas+not_tas+plan);
+$('#pdp_vil_tr').html(text_tr);
+
+        doughnut_data_pdp['data']['datasets'][0]['data']=[tas,not_tas,plan];
+        doughnut_data_pdp['options']['elements']['center']['text']=(tas+not_tas+plan);
+ 
+ var ctx_pdp1 = document.getElementById('chart_pdp1').getContext('2d');
+ var ctx_pdp2 = document.getElementById('chart_pdp2').getContext('2d');
+      
+      var chart_pdp1 = new Chart(ctx_pdp1, doughnut_data_pdp);
+      var chart_pdp2= new Chart(ctx_pdp2, pie_data_pdp);
+    
+   
+data=result.apot;
+text_tr='';
+t=1;
+tas=0,not_tas=0,plan=0;
+for(var i in data){
+  text_tr+=`
+<tr>
+      <th scope="row">`+t+`</th>
+      <td>`+data[i]['disUz']+`</td>
+      <td>`+check_null(data[i]['tas'])+`</td>
+      <td>`+check_null(data[i]['not_tas'])+`</td>
+       <td>`+check_null(data[i]['plan'])+`</td>
+       <td><b>`+check_null(data[i]['tas']+data[i]['not_tas']+data[i]['plan'])+`</b></td>
+    </tr>
+    `;
+    t++;
+    tas+=data[i]['tas'];
+    not_tas+=data[i]['not_tas'];
+    plan+=data[i]['plan'];
+
+pie_data_apot['data']['labels'].push(data[i]['shortUz']);
+pie_data_apot['data']['datasets'][0]['backgroundColor'].push(data[i]['color']);
+pie_data_apot['data']['datasets'][0]['data'].push(data[i]['tas']+data[i]['not_tas']+data[i]['plan'])
+}
+
+$('#apot_tas').text(tas);
+$('#apot_not_tas').text(not_tas);
+$('#apot_plan').text(plan);
+$('#apot_all').text(tas+not_tas+plan);
+$('#apot_count').text(tas+not_tas+plan);
+$('#apot_vil_tr').html(text_tr);
+
+        doughnut_data_apot['data']['datasets'][0]['data']=[tas,not_tas,plan];
+        doughnut_data_apot['options']['elements']['center']['text']=(tas+not_tas+plan);
+  
+ var ctx_apot1 = document.getElementById('chart_apot1').getContext('2d');
+ var ctx_apot2 = document.getElementById('chart_apot2').getContext('2d');
+      
+      var chart_apot1 = new Chart(ctx_apot1, doughnut_data_apot);
+      var chart_apot2= new Chart(ctx_apot2, pie_data_apot);
+    
+      
+
+        },
+        error: function(){
+          console.log('Ajaxda xatolik');
+        }
+      });
+
+
+
+
+</script>
+
+{% endblock script %}

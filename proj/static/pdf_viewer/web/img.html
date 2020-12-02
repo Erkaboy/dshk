@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dhfkd</title>
+    <script src="../jquery/jquery1.12.js"></script>
+
+	<link href="../zoomer/jquery.fs.zoomer.css" rel="stylesheet" type="text/css" media="all">
+		<script src="../zoomer/jquery.fs.zoomer.js"></script>
+
+
+	<script src="../zoomer/jquery.fs.zoetrope.min.js"></script>
+
+<style>
+.demo .zoomer_wrapper { border: 1px solid #ddd; border-radius: 3px; height: 500px; margin: 10px 0; overflow: hidden; width: 98%; }
+
+		</style>
+
+</head>
+<body class="demo">
+
+<div class="zoomer_wrapper zoomer_basic">
+					<img id="img_zoomer" src="../zoomer/88.jpg">
+</div>
+
+
+<script type="text/javascript">
+  $(function() {
+  $(this).bind("contextmenu", function(e) {
+    e.preventDefault();
+  });
+});
+
+</script>
+<script>
+
+			$(document).ready(function() {
+
+
+function getVal(str) {
+    var v = window.location.search.match(new RegExp('(?:[\?\&]'+str+'=)([^&]+)'));
+if(v)
+    $('#img_zoomer').attr('src',v[1]);
+    // return v ? v[1] : null;
+else
+{
+	$('#img_zoomer').attr('src','../img/logo.png');
+}
+
+}
+getVal('file');
+
+				$(".demo .zoomer_basic").zoomer({
+					increment: 0.01,
+					interval: 1,
+					marginMax: 20
+				});
+
+				// $(".demo .zoomer_custom").zoomer({
+				// 	controls: {
+				// 		zoomIn: ".zoomer_custom_zoom_in",
+				// 		zoomOut: ".zoomer_custom_zoom_out"
+				// 	},
+				// 	customClass: "dark_zoomer",
+				// 	increment: 0.01,
+				// 	interval: 0.5,
+				// 	marginMax: 10
+				// });
+
+
+
+				$(window).on("resize", function(e) {
+					$(".zoomer_wrapper").zoomer("resize");
+				});
+
+				$(window).one("pronto.load", function() {
+					$(".demo .zoomer_basic").zoomer("destroy");
+				});
+			});
+
+// $('body').on('mousewheel DOMMouseScroll', function(e){
+//   if(typeof e.originalEvent.detail == 'number' && e.originalEvent.detail !== 0) {
+//     if(e.originalEvent.detail > 0) {
+//       console.log('Down');
+//     } else if(e.originalEvent.detail < 0){
+//         console.log('Up');
+//     }
+//   } else if (typeof e.originalEvent.wheelDelta == 'number') {
+//     if(e.originalEvent.wheelDelta < 0) {
+//         console.log('Down1');
+//         console.log($(".zoomer-zoom-out"));
+//         $(".zoomer-zoom-out")[0].click();
+//     } else if(e.originalEvent.wheelDelta > 0) {
+//         console.log('Up1');
+//     }
+//   }
+// });
+
+		</script>
+
+</body>
+</html>

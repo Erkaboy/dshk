@@ -1,0 +1,2114 @@
+<!DOCTYPE html> 
+<html>  
+<head> 
+{% load static %}
+	 <title>Геопортал ГГК</title>
+
+<meta https-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
+<link href="/static/img/logo.ico" rel="shortcut icon">
+<script type="text/javascript" src="/static/js/jquery/jquery1.12.js"></script> 
+<script type="text/javascript" src="/static/js/jquery/jquery.ui.js"></script> 
+<script src="/static/lib/bootstrap/js/bootstrap.min.js"></script> 
+<script src="/static/img_viewer/jquery.magnify.js"></script>
+
+<link rel="stylesheet" href="/static/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/dist/leaflet.css">
+
+<link rel="stylesheet" type="text/css" href="/static/js/jquery/jquery.ui.css">
+<link rel="stylesheet" type="text/css" href="/static/myleaflet/mydraw.css">
+<link rel="stylesheet" type="text/css" href="/static/fancybox/jquery.fancybox-buttons.css">
+<link rel="stylesheet" type="text/css" href="/static/fancybox/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" type="text/css" href="/static/fancybox/jquery.fancybox.css">
+<link href="/static/img_viewer/jquery.magnify.css" rel="stylesheet">
+<link href="/static/img_viewer/jquery.magnify_white.css" rel="stylesheet">
+<link href="/static/myleaflet/zoomBox.css" rel="stylesheet">
+<link href="/static/main/main.css" rel="stylesheet">
+<link href="/static/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<script type="text/javascript" src="/static/myleaflet/openlayers.js"></script>
+<script type="text/javascript" src="/static/geosearch/js/l.control.geosearch.js"></script>
+<script src="/static/geosearch/js/l.geosearch.provider.openstreetmap.js"></script>
+<link href="/static/geosearch/css/l.geosearch.css" rel="stylesheet">
+
+<script src="/static/pagination/jquery.twbsPagination.js" type="text/javascript"></script>
+ 
+
+<style type="text/css">
+
+
+  .ui-tabs-vertical { width: 100%;
+  border: none !important; }
+  .ui-tabs-vertical .ui-tabs-nav { font-size: 14px; margin:5px; padding: .2em .2em .2em .2em; float: left; width: 48%;
+   }
+  .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 95%; border-bottom-width: 1px !important; border-right-width: 1px !important; margin: 5px; 
+
+  }
+  .ui-tabs-vertical .ui-tabs-nav li a { display:block;
+    color: rgba(0,0,0,0.7) !important;
+   }
+  .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { 
+    padding-bottom: 0; padding-right: .1em; border-right-width: 1px; 
+  }
+  .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 50%;
+  border: none !important;
+}
+
+.bg-success{
+background-color: rgba(0,200,0,0.5) !important;
+}
+
+ .click_set_object,.fly_to_bounds,.fly_to_bounds_geo_ray{
+  cursor: pointer;
+  width: 20px;
+ }
+
+.fly_to_bounds_geo_ray{
+  cursor: pointer;
+  width: 22px;
+  opacity: 0.8;
+ }
+ .img_opa{
+  opacity: 0.8;
+  width: 22px;
+ }
+ 
+.dialog_table_main_tab{
+  margin-top: 3px !important;
+  margin-bottom: 8px !important;
+}
+.dialog_table_main_tab td{
+  padding: 2px !important;
+  border:none !important;
+}
+.head_admin_tab{
+  padding-top: 10px;
+  font-size: 16px;
+  color: #333;
+  opacity: 0.8;
+}
+.span_admin_tab{
+  font-weight: normal;
+  padding-left: 8px;
+}
+.label_admin_input{
+  font-weight: normal;
+  font-size: 16px;
+  color: #333;
+  margin-top: 10px;
+}
+#tabs-00{
+  height: 620px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#ftabs{
+  height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.ui-datepicker{
+  z-index: 3333 !important;
+}
+#div_funk_gen{
+  height: 600px;
+  padding: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;  
+}
+
+#ul_dialog_tab_create{
+    height: 620px;
+    padding-right: 8px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-right: 1px solid #ccc;
+}
+.tabs_main{
+    height: 623px;
+  overflow-y: auto;
+}
+.title_sub_main{
+  font-size: 20px;
+  margin-top: 0px;
+  font-weight: bold;
+  text-align: center;
+}
+.hr_admin_tab{
+  width: 90%;
+  margin-top: 0px;
+
+}
+
+
+#load_alert_div{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+   
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+#load_alert_div2{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+}
+
+#load_alert_div3{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+}
+
+.apot_edit_div{
+  padding-right: 8px;
+    height: 630px;
+    overflow-y: auto;
+}
+
+.p_alert_admin_tab_error{
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  background-color: #f8d7da;
+  width: 350px;
+  color: #721c24;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.p_alert_admin_tab_warning{
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  background-color: #fff3cd;
+  width: 350px;
+  color: #856404;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.p_alert_admin_tab_success{
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  background-color: #dff0d8;
+  width: 350px;
+  color: #3c763d;
+  border-radius: 8px;
+  cursor: pointer;
+
+}
+
+.alert_p{
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+}
+.mybtn{
+  margin-right: 10px !important; 
+  margin-bottom: 10px !important;
+  margin-top: 10px !important;
+}
+
+.p_dialog_alert{
+  font-weight: bold;
+  color: red;
+  font-style: italic;
+  margin:10px;
+}
+.list-group a{
+  font-size: 14px;
+}
+.tag_download_sec{
+  color: blue;
+  font-weight: bold;
+  cursor: pointer;
+}
+.sub_data_link{
+   color: blue;
+  font-weight: bold;
+  cursor: pointer; 
+}
+#geosearch_div{
+  position: absolute;
+  top: 200px;
+  left: 400px;
+  z-index: 2;
+  border:1px solid #000;
+  background: rgba(255,255,255,0.8);
+}
+
+.leaflet-popup-content-wrapper {
+  text-align: center !important;
+}
+#geosearch_results, #geosearch_results_from_our{
+  padding: 5px;
+
+}
+#geosearch_results ul, #geosearch_results_from_our ul{
+  padding: 0px;
+list-style: none; 
+}
+
+.geosearch_result_li, .search_geolocation_li{
+  margin: 0;
+  background: url('/static/img/img/location-x.png') no-repeat 0 0;
+  background-size: 20px;
+  background-position: left;
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+  padding-left: 30px; 
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.search_geolocation_polygon_li{
+  margin: 0;
+  background: url('/static/img/img/polygon.png') no-repeat 0 0;
+  background-size: 18px;
+  background-position: left;
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+  padding-left: 30px; 
+  font-size: 13px;
+  cursor: pointer;
+}
+
+
+#input_geosearch, #input_geosearch_from_our
+{
+    margin-left: 4px;
+    height:30px;
+    border: none;
+    border:1px solid #ccc;
+    outline: none;
+    padding:0 0 0 5px;
+    width: 95%;
+    color: rgba(0,0,0,0.8);
+}
+
+
+input[type=search]::-webkit-search-cancel-button
+{
+    -webkit-appearance: searchfield-cancel-button;
+    opacity: 0.5;
+}
+input[type=search]::-moz-search-cancel-button
+{
+    -moz-appearance: searchfield-cancel-button;
+}
+
+.bg_yellow{
+  background-color: yellow;
+}
+.bg_blue{
+  background-color: rgba(0,0,200,0.5);
+}
+.bg_green{
+  background-color: rgba(0,200,0,0.8);
+}
+
+.info_png_objects_inn,.info_png_objects_inn,.info_png_objects_inn{
+  width: 18px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+
+.loc_img{
+  width: 20px;
+  margin: 0 10px 5px 0px;
+  /*opacity: 0.85;*/
+  cursor: pointer;
+}
+
+.img_down{
+  width: 15px;
+  /*opacity: 0.75;*/
+}
+#dialog_apz_table{
+  position: relative;
+}
+
+.full_info_objects{
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+.full_info_objects:hover{
+color: blue;
+}
+.first_col{
+text-align: center;
+vertical-align: middle;
+}
+.my_table{
+  width: 100%;
+}
+.my_table td{
+  padding: 8px;
+}
+.my_hr{
+  width: 100%;
+  margin:0px;
+  margin-bottom: 10px;
+  margin-top: 6px;
+  background-color: #000;
+}
+#dialog_apz_full_info,#dialog_psd_full_info,#dialog_psd_ind_full_info,#dialog_perm_rec_full_info,#dialog_smr_full_info,#dialog_pexpl_full_info,#dialog_pexpl_ind_full_info{
+  padding-left: 20px;
+   padding-right: 20px;
+}
+.span_down{
+  cursor: pointer;
+  font-weight: bold;
+}
+.page_size_div{
+  float: left;
+  margin: 0px;
+  margin-top: 10px;
+  font-style: italic;
+}
+.page_size_div input{
+  width: 70px;
+  border: 1px solid #ccc;
+  line-height: 24px;
+}
+.pagination_div{
+  float: left;
+  margin-left: 12px;
+  margin-right: 12px;
+  padding: 0;
+}
+.pagination_div ul{
+   margin: 0px;
+   margin-top: 10px;
+}
+.pagination_info{
+  float: left;
+  margin-top: 15px;
+  font-style: italic;
+}
+.filter_obj_by_inn{
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.obj_history{
+  cursor: pointer;
+  color: blue;
+  font-weight: bold;
+}
+.amaliyot_p{
+  font-weight: bold;
+  font-style: italic;
+}
+.amaliyot_table>tbody>tr>td{
+  line-height: 14px !important;
+}
+
+.edit_type_1{
+  background-color: green;
+  color: white;
+  padding: 2px;
+}
+.edit_type_2{
+  background-color: orange;
+  color: white;
+  padding: 2px;
+}
+.edit_type_3{
+  background-color: red;
+  color: white;
+  padding: 2px;
+}
+
+.tas_type_0{
+  background-color: red;
+  color: white;
+  padding: 2px;
+}
+
+.tas_type_1{
+  background-color: green;
+  color: white;
+  padding: 2px;
+}
+
+
+</style>
+</head>
+<body>
+
+<div id="geosearch_div">
+    
+</div>
+
+  
+<button type="button" style="display: none;" id="my_alert_modal" class="btn btn-primary" data-toggle="modal" data-target="#myalert"></button>
+
+<div class="modal fade" id="myalert" tabindex="-1" role="dialog"  style="display: none;">
+<div class="modal-dialog" id="myalert_content">
+</div>
+</div>
+
+{% csrf_token %}
+ 
+{% if request.session.authenticate %}
+{% if request.session.status == '1' %}
+ <div id="add_new_object_button_div">
+{% if request.session.service == 'pdp' %}
+<span id="button_create_pdp_dialog">PDP qatlamiga element qo'shish</span>
+
+{% endif %}
+
+{% if request.session.service == 'genplan' %}
+<span id="button_create_genplan_dialog">Genplan qatlamiga element qo'shish</span>
+
+{% endif %}
+
+{% if request.session.service == 'apot' %}
+<span id="button_create_apot_dialog">APOT qatlamiga element qo'shish</span>
+
+{% endif %}
+
+{% if request.session.service == 'red_line' %}
+<span id="button_create_redline_dialog">Qizil chiziq qatlamiga element qo'shish</span>
+
+{% endif %}
+
+{% if request.session.service == 'funk_gen' %}
+<span id="button_create_funk_gen_dialog">Bosh reja bo'yicha funksional zona qatlamiga element qo'shish</span>
+
+{% endif %}
+
+{% if request.session.service == 'funk_apot' %}
+<span id="button_create_funk_apot_dialog">ARLT bo'yicha funksional zona qatlamiga element qo'shish</span>
+
+{% endif %}
+
+{% if request.session.service == 'geo_ray' %}
+<span id="button_create_geo_ray_dialog">Geologik rayonlashtirish qatlamiga element qo'shish</span>
+
+{% endif %}
+
+ 
+</div>
+{% endif %}
+{% endif %}
+<div id="dialog_object_events" style="display:none;" title=""></div>
+
+<div id="dialog_load_vector" style="display:none;" title="Vektorli ma'lumotni yuklash">
+  <label for="vec_file_type">Fayl turini tanlang</label>
+   <select id='vec_file_type' class="form-control">
+    <option value="shp">Shapefile</option>
+    <option value="gdb">GDB file</option>
+  </select>
+  <br>
+<label for="vec_file_proj">Fayl proeksiyasini tanlang</label>
+   <select id='vec_file_proj' class="form-control">
+    <option value = "4326" selected>WGS 84</option>
+    <option value = "28469">Pulkovo_1942_GK_Zone_9N</option>
+    <option value = "28470">Pulkovo_1942_GK_Zone_10N</option>
+    <option value = "28471">Pulkovo_1942_GK_Zone_11N</option>
+    <option value = "28472">Pulkovo_1942_GK_Zone_12N</option>
+    <option value = "28473">Pulkovo_1942_GK_Zone_13N</option>
+    <option value = "28474">Pulkovo_1942_GK_Zone_14N</option>
+    <option value = "32640">WGS_1984_UTM_Zone_40N</option>
+    <option value = "32641">WGS_1984_UTM_Zone_41N</option>
+    <option value = "32642">WGS_1984_UTM_Zone_42N</option>
+    <option value = "32643">WGS_1984_UTM_Zone_43N</option>
+</select>
+<br>
+<label for="upload_files_id" >Faylni biriktirish</label>
+<label class="form-control">
+<input type='file' id="upload_files_id" webkitdirectory directory multiple style='display:none;' class="input_vec_file" >
+<span class="span_admin_tab">Faylni tanlang</span>
+</label>
+  <button class="btn btn-success" id="load_vector_files">Yuklash</button>
+  <div id="load_alert_div3"></div>
+</div>
+
+<div id="modal_create_pdp" title="Pdp ustida amallar bajarish"></div>
+<div id="modal_create_genplan" title="Genplan ustida amallar bajarish"></div>
+<div id="modal_create_apot" title="Apot ustida amallar bajarish"></div>
+<div id="modal_create_redline" title="Qizil chiziqlar ustida amallar bajarish"></div>
+<div id="modal_create_funk_gen" title="Bosh reja bo'yicha funksional zona admin"></div>
+<div id="modal_create_funk_apot" title="ARLT bo'yicha funksional zona admin"></div>
+<div id="modal_create_geo_ray_data" title="Geologik rayonlashtirishga asos bo'ladigan manba(hisobot)"></div>
+<div id="modal_create_geo_ray" title="Geologik rayonlashtirish admin"></div>
+
+
+<!-- <button data-val='0' id="button_x">X</button> -->
+<div id="map" style = "z-index:1"></div>
+<div class="tag_marquee"><marquee >Geoportal test rejimida ishlamoqda !</marquee></div>
+<div id="logo_ugashk">
+  <img src="{% static 'img/logo.png' %}" height="60px;"> ГУП «УзГАШКЛИТИ»
+</div>
+
+<div id="contol_zoom_plus">
+<i class="fa fa-plus" style="font-size: 25px;" aria-hidden="true"></i>
+</div>
+<div id="contol_zoom_view">6</div>
+<div id="contol_zoom_minus">
+<i class="fa fa-minus" style="font-size: 25px;" aria-hidden="true"></i>
+</div>
+
+<div id="contol_box_zoom">
+<!-- <img src="{% static 'img/layer.png' %}" style="opacity: 0.85;" width="28px" height="28px"> -->
+</div>
+
+<div id="all_maps" data-val='0'>
+	<img src="{% static 'img/layer.png' %}" style="opacity: 0.65;" width="28px" height="28px">
+</div>
+
+<div id="live_layers" data-val='0'>
+  <img src="{% static 'img/layer_liv.png' %}" style="opacity: 0.85;" width="28px" height="28px">
+</div>
+
+<div id="draw_point">
+  <img src="{% static 'img/img/location.png' %}" style="opacity: 0.65;" width="28px" height="28px">
+</div>
+
+{% if request.session.authenticate %}
+{% if request.session.status == '1' %}
+<div id="draw_polyline">
+  <img src="{% static 'img/img/polyline.png' %}" style="opacity: 0.70;" width="32px" height="32px">
+</div>
+{% else %}
+<div id="draw_polyline">
+  <img src="{% static 'img/img/ruler.png' %}" style="opacity: 0.70;" width="32px" height="32px">
+</div>
+
+{% endif %}
+{% else %}
+<div id="draw_polyline">
+  <img src="{% static 'img/img/ruler.png' %}" style="opacity: 0.70;" width="32px" height="32px">
+</div>
+{% endif %}
+
+
+<div id="draw_polygon">
+  <img src="{% static 'img/img/polygon.png' %}" style="opacity: 0.65;" width="28px" height="28px">
+</div>
+
+<div id="draw_delete">
+  <img src="{% static 'img/img/delete.png' %}" style="opacity: 0.65;" width="28px" height="28px">
+</div>
+
+{% if request.session.authenticate %}
+{% if request.session.status == '1' %}
+ <div id="draw_load">
+  <img src="{% static 'img/img/upload-file.png' %}" style="opacity: 0.65;" width="28px" height="28px">
+</div>
+ <div id="draw_edit">
+  <img src="{% static 'img/img/edit-layer.png' %}" style="opacity: 0.65;" width="28px" height="28px">
+</div>
+{% endif %}
+{% endif %}
+
+<div id="tab-action-draw"></div>
+
+<div id = "scale_div" class = "bottom-footer-item">[ 1:10,000,000 ]</div>
+
+<div id="live_layer_control">
+<strong>Hozirda faol qatlamlar:</strong>
+<hr>
+<table id="live_layer_table">
+  
+</table>
+</div>
+
+<div id="map_div"></div>
+
+<div id="layer_control" >
+<table class="table_layers" >
+<tr><td>
+			 <input class="checkbox_layer_change" type="radio" id="test1" name="radio-group" value="openstreetmap" >
+			 <label for="test1">OpenStreetMap <br><img  class="layer_img" src="{% static 'img/img/opensteetmap.png' %}"></label>
+		</td>
+<td>
+				    <input type="radio" class="checkbox_layer_change" id="test2" value="googleStreets" name="radio-group" checked>
+		    <label for="test2">GoogleStreets<br><img class="layer_img" src="{% static 'img/img/googlestreet.png' %}"></label>
+		 
+</td>
+<td>
+				    <input type="radio" class="checkbox_layer_change" id="test3" value="googleTerrain" name="radio-group">
+		    <label for="test3">GoogleTerrain<br><img class="layer_img" src="{% static 'img/img/googlterrain.png' %}"></label>
+		</td>
+</tr>
+	<tr>
+<td> 	  	
+		    <input type="radio" id="test4" class="checkbox_layer_change" value="googleHybrid" name="radio-group">
+		    <label for="test4">GoogleHybrid<br><img class="layer_img" src="{% static 'img/img/googlehybrid.png' %}"></label>
+			
+</td>
+<td>   
+	    <input type="radio" id="test5" class="checkbox_layer_change" value="googleSat" name="radio-group">
+	    <label for="test5">GoogleSat<br><img class="layer_img" src="{% static 'img/img/googleset.png' %}"> </label>
+ 
+  </td>
+  <td>
+          <input type="checkbox" id="test6" class="checkbox_layer_change" value="mytile" name="radio-group">
+          <label for="test6">Аэроснимок<br><img class="layer_img" src="{% static 'img/img/googleset.png' %}"> </label>
+  </td>
+  </tr>
+</table> 
+</div>
+
+<div id="header_div"> 
+<div class="logo"><a href="{% url 'index' %}">
+<img src="{% static 'img/logo.jpeg' %}" height="70px;" width="100px;" >
+</a>
+</div>
+<div class="div2">
+{% if request.session.authenticate %}
+<div id="login_logo" click='0' >
+<i class="fa fa-user i_user"  style="font-size: 23px; color: rgba(50,150,7,.8);" ></i>
+</div>
+{% else %}
+<div id="login_logo" click='0' >
+<i class="fa fa-user i_user"  style="font-size: 23px; color: rgba(200,0,0,.8);" ></i>
+</div>
+{% endif %}
+<span class="span">O'zbekiston Respublikasi <br> DSHK GAT GEOPORTALI </span><br>
+
+<!-- <span class="span">ГЕОПОРТАЛ ГГК  <br> Республики Узбекистан </span><br>
+ --><input class="search" type="text" placeholder="izlash"><span id="menu" data-val='1'>☰</span>
+</div>
+</div>
+
+<div id="login_logout">
+{% if request.session.authenticate %}
+<span class='user_fulname' >{{ request.session.full_name }} || </span><span id="logout_button" class="login_span" >Chiqish</span>
+
+{% else %}
+<span class='user_fulname' >Siz avtorizatsiyadan o'tmagansiz! || </span><span id="login_button" class="login_span" >Kirish</span>
+{% endif %}
+</div>
+
+<div id="submenu" class="submenu_0">
+
+<div class="menu-items" data-val='1' data-n='1'>
+<a class="services-icon" href="#">
+<i class="fa fa-pencil-square-o"></i>
+</a>
+<h4 class="menu_h4" >Shaharsozlik reglamentlari</h4>
+</div>
+<div class="menu-items" data-val='2' data-n='2'>
+<a class="services-icon" href="#">
+<i class="fa fa-files-o"></i>
+</a>
+<h4 class="menu_h4" >Shaharsozlik hujjatlari</h4>
+</div>
+<div class="menu-items" data-val='3' data-n='3'>
+<a class="services-icon" href="#">
+<i class="fa fa-file-text-o"></i>
+</a>
+<h4 class="menu_h4" >Shaharsozlik faoliyati monitoringi</h4>
+</div>
+<div class="menu-items" data-val='4' data-n='4'>
+<a class="services-icon" href="#">
+<i class="fa fa-share-square"></i>
+</a>
+<h4 class="menu_h4"  >Bazis asos</h4>
+</div>
+
+<div class="menu-items" data-val='5' data-n='5'>
+<a class="services-icon" href="#">
+<i class="fa fa-map-marker"></i>
+</a>
+<h4 class="menu_h4" >Manzillar reestri</h4>
+</div>
+
+
+{% if request.session.authenticate %}
+<div class="menu-items" data-val='6' data-n='6'>
+<a class="services-icon" href="#">
+<i class="fa fa-file-text-o"></i>
+</a>
+<h4 class="menu_h4" >Loyihalar reestri</h4>
+</div>
+
+<div class="menu-items" data-val='7' data-n='7'>
+<a class="services-icon" href="#">
+<i class="fa fa-building-o"></i>
+</a>
+<h4 class="menu_h4" >Shaharsozlik faoliyati ob'yektlari reestri</h4>
+</div>
+<div class="menu-items" data-val='8' data-n='8'>
+<a class="services-icon" href="#">
+<i class="fa fa-sort-amount-asc"></i>
+</a>
+<h4 class="menu_h4" >Shaharsozlik faoliyati sub'yektlari reestri</h4>
+</div>
+
+{% else %}
+<div class="menu-items" data-val='00' data-n='6'>
+<a class="services-icon" href="#">
+<i class="fa fa-file-text-o"></i>
+</a>
+<h4 class="menu_h4" >Loyihalar reestri</h4>
+</div>
+
+<div class="menu-items" data-val='00' data-n='7'>
+<a class="services-icon" href="#">
+<i class="fa fa-building-o"></i>
+</a>
+<h4 class="menu_h4" >Shaharsozlik faoliyati ob'yektlari reestri</h4>
+</div>
+<div class="menu-items" data-val='00' data-n='8'>
+<a class="services-icon" href="#">
+<i class="fa fa-sort-amount-asc"></i>
+</a>
+<h4 class="menu_h4" >Shaharsozlik faoliyati sub'yektlari reestri</h4>
+</div>
+{% endif %}
+
+
+
+
+<div class="menu-items" data-val='9' data-n='9'>
+<a class="services-icon" href="#">
+<i class="fa fa-files-o"></i>
+</a>
+<h4 class="menu_h4" >Normativ-huquqiy hujjatlar</h4>
+</div>
+                   
+</div>
+
+<div id="sub2menu" >
+<span id="close_sub2menu"></span><br>
+  <h4 id="p_sub2menu"></h4>
+  <hr>
+  <div id="sub2menu_div" ></div>
+</div>
+
+<div id="sub3menu" >
+<span id="close_sub3menu"></span><br>
+  <h4 id="p_sub3menu"></h4>
+  <hr>
+  <div id="sub3menu_div" ></div>
+</div>
+
+<div id="sub4menu" >
+<span id="close_sub4menu"></span><br>
+  <h4 id="p_sub4menu"></h4>
+  <hr>
+  <div id="sub4menu_div" ></div>
+</div>
+<a id="a_magnify" data-magnify='gallery' style="display: none"></a>
+
+
+{% if request.session.authenticate %}
+
+<div id="dialog_apz_table" title="Arxitektura-rejalashtirish topshiriqlari reestri">
+
+ <div class="table-info-div-head">
+
+  <h4 style="font-weight: bold;" id='title_table_apz'>Arxitektura-rejalashtirish topshiriqlari reestri</h4>
+
+<div class="input-group" style="margin-top:5px;">
+<div class="input-group-addon"><label>Saralash maydonini tanlang</label></div>
+<select class="form-control" id="apz_sort_field" >
+  <option value="date" selected >Ariza berilgan sana</option>
+  <option  value="task_id">Ariza nomeri bo'yicha</option>
+  <option  value="region">Viloyat nomi bo'yicha</option>
+  <option  value="district">Tuman, shahar nomi bo'yicha</option>
+ 
+
+</select>
+
+<div class="input-group-addon"><label>Saralash turi</label></div>
+<select  class="form-control" id="apz_sort_type">
+<option value="">O'sish tartibida</option>
+<option selected value="-">Kamayish tartibida</option>
+</select>
+</div>
+ 
+<div class="input-group" style="margin-top:5px;">
+
+  <div class="input-group-addon">
+    <label>Qidiruv maydonini</label>
+  </div>
+  <select id="search_field_apz"  class="form-control">
+  <option value="legal_entity_tin">Buyurtmachi STIR(yuridik shaxs)</option>
+  <option value="tin">Buyurtmachi STIR(jismoniy shaxs)</option>
+   <option value="passport_number">Buyurtmachi pasport seriyasi(Jismoniy shaxs)</option>
+    <option value="name_building"> Ob'yekt nomi bo'yicha</option>
+    <option value="task_id"> Ariza nomeri bo'yicha</option>
+    <option value="betwen_date"> Ariza sanasi bo'yicha</option>
+    <option value="region"> Viloyat nomi bo'yicha</option>
+    <option value="district"> Tuman nomi bo'yicha</option>
+    
+    </select>
+<div class="input-group-addon"><label>Qidiruv turi</label></div>
+  <select id="search_type_apz" class="form-control" >
+    <option selected value='1'>Satr boshidan mosligi bo'yicha qidiruv</option>
+    <option value='0'>Satrning ixtiyoriy mosligi</option>
+  </select>
+</div>
+
+<div class="input-group" id="search_data_div_apz" style="margin-top: 5px;">
+
+
+<div class="input-group-addon"> <label >Qidiriluvchi so'z</label> </div>
+<input type="text" id="search_text_apz" class = "form-control">
+<div class="input-group-addon"> <label id="count_apz_all"></label> </div>
+
+</div>
+
+</div>
+  
+  <div class="table-info-div" id='apz_table_div' style="height: 550px;" >
+  <table id="apz_table" class="table table-bordered"></table>
+  </div>
+
+
+
+<div class="page_size_div" id="page_size_apz_div">Sahifa o'lchami: <input type="number" value="100" id="page_size_apz"></div>
+<div class="pagination_div" id="pagination-apz_div"></div>
+<div class="pagination_info" id="pagination-apz_info"></div>
+<!-- <button id="button_load_table">Load</button> -->
+
+</div>
+
+
+
+
+
+<div id="dialog_psd_table" title="Binolar, inshootlar va boshqa obyektlar qurilishining loyiha-smeta hujjatlari reestri">
+
+ <div class="table-info-div-head">
+
+  <h4 style="font-weight: bold;" id='title_table_psd'>Binolar, inshootlar va boshqa obyektlar qurilishining loyiha-smeta hujjatlari reestri</h4>
+
+<div class="input-group" style="margin-top:5px;">
+<div class="input-group-addon"><label>Saralash maydonini tanlang</label></div>
+<select class="form-control" id="psd_sort_field" >
+  <option value="date" selected >Ariza berilgan sana</option>
+  <option  value="task_id">Ariza nomeri bo'yicha</option>
+  <option  value="region">Viloyat nomi bo'yicha</option>
+  <option  value="district">Tuman, shahar nomi bo'yicha</option>
+ 
+
+</select>
+
+<div class="input-group-addon"><label>Saralash turi</label></div>
+<select  class="form-control" id="psd_sort_type">
+<option value="">O'sish tartibida</option>
+<option selected value="-">Kamayish tartibida</option>
+</select>
+</div>
+ 
+<div class="input-group" style="margin-top:5px;">
+
+  <div class="input-group-addon">
+    <label>Qidiruv maydonini</label>
+  </div>
+  <select id="search_field_psd"  class="form-control">
+  <option value="tin_project_org">Loyihalovchi STIR bo'yicha</option>
+  <option value="legal_entity_tin">Buyurtmachi STIR(yuridik shaxs)</option>
+  <option value="tin">Buyurtmachi STIR(jismoniy shaxs)</option>
+   <option value="passport_number">Buyurtmachi pasport seriyasi(Jismoniy shaxs)</option>
+    <option value="name_design_estimates"> Hujjat nomi bo'yicha</option>
+    <option value="task_id"> Ariza nomeri bo'yicha</option>
+    <option value="betwen_date"> Ariza sanasi bo'yicha</option>
+    <option value="region"> Viloyat nomi bo'yicha</option>
+    <option value="district"> Tuman nomi bo'yicha</option>
+    
+    </select>
+<div class="input-group-addon"><label>Qidiruv turi</label></div>
+  <select id="search_type_psd" class="form-control" >
+    <option selected value='1'>Satr boshidan mosligi bo'yicha qidiruv</option>
+    <option value='0'>Satrning ixtiyoriy mosligi</option>
+  </select>
+</div>
+
+<div class="input-group" id="search_data_div_psd" style="margin-top: 5px;">
+
+
+<div class="input-group-addon"> <label >Qidiriluvchi so'z</label> </div>
+<input type="text" id="search_text_psd" class = "form-control">
+<div class="input-group-addon"> <label id="count_psd_all"></label> </div>
+
+</div>
+
+</div>
+  
+  <div class="table-info-div" id='psd_table_div' style="height: 550px;" >
+  <table id="psd_table" class="table table-bordered"></table>
+  </div>
+
+
+
+<div class="page_size_div" id="page_size_psd_div">Sahifa o'lchami: <input type="number" value="100" id="page_size_psd"></div>
+<div class="pagination_div" id="pagination-psd_div"></div>
+<div class="pagination_info" id="pagination-psd_info"></div>
+ <!-- <button id="button_load_table">Load</button>  -->
+
+</div>
+
+
+
+<div id="dialog_psd_ind_table" title="  Yakka tartibda uy-joy qurishga (rekonstruktsiya qilishga) loyiha-smeta hujjatlari reestri">
+
+ <div class="table-info-div-head">
+
+<h4 style="font-weight: bold;" id='title_table_psd_ind'>Yakka tartibda uy-joy qurishga (rekonstruktsiya qilishga) loyiha-smeta hujjatlari reestri</h4>
+
+<div class="input-group" style="margin-top:5px;">
+<div class="input-group-addon"><label>Saralash maydonini tanlang</label></div>
+<select class="form-control" id="psd_ind_sort_field" >
+  <option value="date" selected >Ariza berilgan sana</option>
+  <option  value="task_id">Ariza nomeri bo'yicha</option>
+  <option  value="region">Viloyat nomi bo'yicha</option>
+  <option  value="district">Tuman, shahar nomi bo'yicha</option>
+ 
+
+</select>
+
+<div class="input-group-addon"><label>Saralash turi</label></div>
+<select  class="form-control" id="psd_ind_sort_type">
+<option value="">O'sish tartibida</option>
+<option selected value="-">Kamayish tartibida</option>
+</select>
+</div>
+ 
+<div class="input-group" style="margin-top:5px;">
+
+  <div class="input-group-addon">
+    <label>Qidiruv maydonini</label>
+  </div>
+  <select id="search_field_psd_ind"  class="form-control">
+
+<option value="passport_number">Buyurtmachi pasport seriyasi(Jismoniy shaxs)</option>
+   <option value="tin">Buyurtmachi STIR(jismoniy shaxs)</option>
+    <option value="object_adress"> Manzili bo'yicha</option>
+    <option value="task_id"> Ariza nomeri bo'yicha</option>
+    <option value="region"> Viloyat nomi bo'yicha</option>
+    <option value="district"> Tuman nomi bo'yicha</option>
+    <option value="betwen_date"> Ariza sanasi bo'yicha</option>
+    
+    </select>
+    <div class="input-group-addon"><label>Qidiruv turi</label></div>
+  <select id="search_type_psd_ind" class="form-control" >
+    <option selected value='1'>Satr boshidan mosligi bo'yicha qidiruv</option>
+    <option value='0'>Satrning ixtiyoriy mosligi</option>
+  </select>
+</div>
+
+<div class="input-group" id="search_data_div_psd_ind" style="margin-top: 5px;">
+
+
+<div class="input-group-addon"> <label >Qidiriluvchi so'z</label> </div>
+<input type="text" id="search_text_psd_ind" class = "form-control">
+<div class="input-group-addon"> <label id="count_psd_ind_all"></label> </div>
+
+</div>
+
+</div>
+  
+  <div class="table-info-div" id='psd_ind_table_div' style="height: 550px;" >
+  <table id="psd_ind_table" class="table table-bordered"></table>
+  </div>
+
+
+
+<div class="page_size_div" id="page_size_psd_ind_div">Sahifa o'lchami: <input type="number" value="100" id="page_size_psd_ind"></div>
+<div class="pagination_div" id="pagination-psd_ind_div"></div>
+<div class="pagination_info" id="pagination-psd_ind_info"></div>
+ <!-- <button id="button_load_table">Load</button>  -->
+
+</div>
+
+
+
+
+
+<div id="dialog_perm_rec_table" title=" Ob'yektni qayta ixtisoslashtirish va rekonstruktsiya qilish reestri">
+
+ <div class="table-info-div-head">
+
+  <h4 style="font-weight: bold;" id='title_table_perm_rec'>Ob'yektni qayta ixtisoslashtirish va rekonstruktsiya qilish reestri</h4>
+
+<div class="input-group" style="margin-top:5px;">
+<div class="input-group-addon"><label>Saralash maydonini tanlang</label></div>
+<select class="form-control" id="perm_rec_sort_field" >
+  <option value="date" selected >Ariza berilgan sana</option>
+    <option  value="building_location">Manzili bo'yicha</option>
+  <option  value="task_id">Ariza nomeri bo'yicha</option>
+  <option  value="district">Tuman, shahar nomi bo'yicha</option>
+ 
+
+</select>
+
+<div class="input-group-addon"><label>Saralash turi</label></div>
+<select  class="form-control" id="perm_rec_sort_type">
+<option value="">O'sish tartibida</option>
+<option selected value="-">Kamayish tartibida</option>
+</select>
+</div>
+ 
+<div class="input-group" style="margin-top:5px;">
+
+  <div class="input-group-addon">
+    <label>Qidiruv maydonini</label>
+  </div>
+  <select id="search_field_perm_rec"  class="form-control">
+
+  <option value="legal_entity_tin">Buyurtmachi STIR(yuridik shaxs)</option>
+  <option value="tin">Buyurtmachi STIR(jismoniy shaxs)</option>
+   <option value="passport_number">Buyurtmachi pasport seriyasi(Jismoniy shaxs)</option>
+    <option value="building_location">Manzili bo'yicha</option>
+    <option value="task_id"> Ariza nomeri bo'yicha</option>
+    <option value="betwen_date"> Ariza sanasi bo'yicha</option>
+    <option value="district"> Tuman nomi bo'yicha</option>
+    
+    </select>
+    <div class="input-group-addon"><label>Qidiruv turi</label></div>
+  <select id="search_type_perm_rec" class="form-control" >
+    <option selected value='1'>Satr boshidan mosligi bo'yicha qidiruv</option>
+    <option value='0'>Satrning ixtiyoriy mosligi</option>
+  </select>
+</div>
+
+<div class="input-group" id="search_data_div_perm_rec" style="margin-top: 5px;">
+
+
+<div class="input-group-addon"> <label >Qidiriluvchi so'z</label> </div>
+<input type="text" id="search_text_perm_rec" class = "form-control">
+<div class="input-group-addon"> <label id="count_perm_rec_all"></label> </div>
+
+</div>
+
+</div>
+  
+  <div class="table-info-div" id='perm_rec_table_div' style="height: 550px;" >
+  <table id="perm_rec_table" class="table table-bordered"></table>
+  </div>
+
+
+
+<div class="page_size_div" id="page_size_perm_rec_div">Sahifa o'lchami: <input type="number" value="100" id="page_size_perm_rec"></div>
+<div class="pagination_div" id="pagination-perm_rec_div"></div>
+<div class="pagination_info" id="pagination-perm_rec_info"></div>
+ <!-- <button id="button_load_table">Load</button>  -->
+
+</div>
+
+
+<div id="dialog_smr_table" title="Qurilish-montaj ishlarini amalga oshirish reestri">
+
+ <div class="table-info-div-head">
+
+  <h4 style="font-weight: bold;" id='title_table_smr'>Qurilish-montaj ishlarini amalga oshirish reestri</h4>
+
+<div class="input-group" style="margin-top:5px;">
+<div class="input-group-addon"><label>Saralash maydonini tanlang</label></div>
+<select class="form-control" id="smr_sort_field" >
+
+  <option value="date" selected >Ariza berilgan sana</option>
+  <option  value="task_id">Ariza nomeri bo'yicha</option>
+  <option  value="user_type_real">Buyurtmachi bo'yicha</option>
+  <option  value="construction_works">Qurulish ko'rinishi bo'yicha</option>
+  <option  value="region_id">Viloyat nomi bo'yicha</option>
+  <option  value="district_id">Tuman, shahar nomi bo'yicha</option>
+</select>
+
+<div class="input-group-addon"><label>Saralash turi</label></div>
+<select  class="form-control" id="smr_sort_type">
+<option value="">O'sish tartibida</option>
+<option selected value="-">Kamayish tartibida</option>
+</select>
+</div>
+ 
+<div class="input-group" style="margin-top:5px;">
+
+  <div class="input-group-addon">
+    <label>Qidiruv maydonini</label>
+  </div>
+  <select id="search_field_smr"  class="form-control">
+
+ <option value="legal_entity_tin">Buyurtmachi STIR(yuridik shaxs)</option>
+  <option value="tin">Buyurtmachi STIR(jismoniy shaxs)</option>
+   <option value="passport_number">Buyurtmachi pasport seriyasi(Jismoniy shaxs)</option>
+    <option value="location_building"> Manzili bo'yicha</option>
+    <option value="task_id"> Ariza nomeri bo'yicha</option>
+    <option value="region_id"> Viloyat nomi bo'yicha</option>
+    <option value="district_id"> Tuman nomi bo'yicha</option>
+    <option value="betwen_date"> Ariza sanasi bo'yicha</option>
+    
+    </select>
+    <div class="input-group-addon"><label>Qidiruv turi</label></div>
+  <select id="search_type_smr" class="form-control" >
+    <option selected value='1'>Satr boshidan mosligi bo'yicha qidiruv</option>
+    <option value='0'>Satrning ixtiyoriy mosligi</option>
+  </select>
+</div>
+
+<div class="input-group" id="search_data_div_smr" style="margin-top: 5px;">
+
+
+<div class="input-group-addon"> <label >Qidiriluvchi so'z</label> </div>
+<input type="text" id="search_text_smr" class = "form-control">
+<div class="input-group-addon"> <label id="count_smr_all"></label> </div>
+
+</div>
+
+</div>
+  
+  <div class="table-info-div" id='smr_table_div' style="height: 550px;" >
+  <table id="smr_table" class="table table-bordered"></table>
+  </div>
+
+
+
+<div class="page_size_div" id="page_size_smr_div">Sahifa o'lchami: <input type="number" value="100" id="page_size_smr"></div>
+<div class="pagination_div" id="pagination-smr_div"></div>
+<div class="pagination_info" id="pagination-smr_info"></div>
+ <!-- <button id="button_load_table">Load</button>  -->
+
+</div>
+
+
+
+<div id="dialog_pexpl_table" title="Turar joy obyekti hisoblangan bino va inshootni foydalanishga qabul qilishi reestri">
+
+ <div class="table-info-div-head">
+
+  <h4 style="font-weight: bold;" id='title_table_pexpl'>Turar joy obyekti hisoblangan bino va inshootni foydalanishga qabul qilishi reestri</h4>
+
+<div class="input-group" style="margin-top:5px;">
+<div class="input-group-addon"><label>Saralash maydonini tanlang</label></div>
+<select class="form-control" id="pexpl_sort_field" >
+  <option value="date" selected >Ariza berilgan sana</option>
+  <option  value="task_id">Ariza nomeri bo'yicha</option>
+  <option  value="user_type_real">Buyurtmachi bo'yicha</option>
+  <option  value="region_id">Viloyat nomi bo'yicha</option>
+<option  value="district_id">Tuman, shahar nomi bo'yicha</option>
+ 
+</select>
+
+<div class="input-group-addon"><label>Saralash turi</label></div>
+<select  class="form-control" id="pexpl_sort_type">
+<option value="">O'sish tartibida</option>
+<option selected value="-">Kamayish tartibida</option>
+</select>
+</div>
+ 
+<div class="input-group" style="margin-top:5px;">
+
+  <div class="input-group-addon">
+    <label>Qidiruv maydonini</label>
+  </div>
+  <select id="search_field_pexpl"  class="form-control">
+
+  <option value="legal_entity_tin">Buyurtmachi STIR(yuridik shaxs)</option>
+  <option value="tin">Buyurtmachi STIR(jismoniy shaxs)</option>
+  <option value="passport_number">Buyurtmachi pasport seriyasi(Jismoniy shaxs)</option>
+  <option value="tin_project_org">Loyihalovchi STIR</option>
+  <option value="tin_contractor_org">Pudratchi STIR</option>
+
+    <option value="buildings_location"> Manzili bo'yicha</option>
+    <option value="task_id"> Ariza nomeri bo'yicha</option>
+    <option value="region_id"> Viloyat nomi bo'yicha</option>
+    <option value="district_id"> Tuman nomi bo'yicha</option>
+    <option value="betwen_date"> Ariza sanasi bo'yicha</option>
+    
+    </select>
+    <div class="input-group-addon"><label>Qidiruv turi</label></div>
+  <select id="search_type_pexpl" class="form-control" >
+    <option selected value='1'>Satr boshidan mosligi bo'yicha qidiruv</option>
+    <option value='0'>Satrning ixtiyoriy mosligi</option>
+  </select>
+</div>
+
+<div class="input-group" id="search_data_div_pexpl" style="margin-top: 5px;">
+
+
+<div class="input-group-addon"> <label >Qidiriluvchi so'z</label> </div>
+<input type="text" id="search_text_pexpl" class = "form-control">
+<div class="input-group-addon"> <label id="count_pexpl_all"></label> </div>
+
+</div>
+
+</div>
+  
+  <div class="table-info-div" id='pexpl_table_div' style="height: 550px;" >
+  <table id="pexpl_table" class="table table-bordered"></table>
+  </div>
+
+
+
+<div class="page_size_div" id="page_size_pexpl_div">Sahifa o'lchami: <input type="number" value="100" id="page_size_pexpl"></div>
+<div class="pagination_div" id="pagination-pexpl_div"></div>
+<div class="pagination_info" id="pagination-pexpl_info"></div>
+ <!-- <button id="button_load_table">Load</button>  -->
+
+</div>
+
+
+
+
+
+
+<div id="dialog_pexpl_ind_table" title="Noturar joy obyekti hisoblangan bino va inshootni foydalanishga qabul qilish reestri">
+
+ <div class="table-info-div-head">
+
+  <h4 style="font-weight: bold;" id='title_table_pexpl_ind'>Noturar joy obyekti hisoblangan bino va inshootni foydalanishga qabul qilish reestri</h4>
+
+<div class="input-group" style="margin-top:5px;">
+<div class="input-group-addon"><label>Saralash maydonini tanlang</label></div>
+<select class="form-control" id="pexpl_ind_sort_field" >
+  <option value="date" selected >Ariza berilgan sana</option>
+  <option  value="task_id">Ariza nomeri bo'yicha</option>
+  <option  value="region_id">Viloyat nomi bo'yicha</option>
+  <option  value="district_id">Tuman, shahar nomi bo'yicha</option>
+ 
+
+</select>
+
+<div class="input-group-addon"><label>Saralash turi</label></div>
+<select  class="form-control" id="pexpl_ind_sort_type">
+<option value="">O'sish tartibida</option>
+<option selected value="-">Kamayish tartibida</option>
+</select>
+</div>
+ 
+<div class="input-group" style="margin-top:5px;">
+
+  <div class="input-group-addon">
+    <label>Qidiruv maydonini</label>
+  </div>
+  <select id="search_field_pexpl_ind"  class="form-control">
+
+  <option value="legal_entity_tin">Buyurtmachi STIR(yuridik shaxs)</option>
+  <option value="tin">Buyurtmachi STIR(jismoniy shaxs)</option>
+  <option value="passport_number">Buyurtmachi pasport seriyasi(Jismoniy shaxs)</option>
+  <option value="tin_project_org">Loyihalovchi STIR</option>
+  <option value="tin_contractor_org">Pudratchi STIR</option>
+    <option value="buildings_location"> Manzili bo'yicha</option>
+    <option value="task_id"> Ariza nomeri bo'yicha</option>
+    <option value="region_id"> Viloyat nomi bo'yicha</option>
+    <option value="district_id"> Tuman nomi bo'yicha</option>
+    <option value="betwen_date"> Ariza sanasi bo'yicha</option>
+    
+    </select>
+    <div class="input-group-addon"><label>Qidiruv turi</label></div>
+  <select id="search_type_pexpl_ind" class="form-control" >
+    <option selected value='1'>Satr boshidan mosligi bo'yicha qidiruv</option>
+    <option value='0'>Satrning ixtiyoriy mosligi</option>
+  </select>
+</div>
+
+<div class="input-group" id="search_data_div_pexpl_ind" style="margin-top: 5px;">
+
+
+<div class="input-group-addon"> <label >Qidiriluvchi so'z</label> </div>
+<input type="text" id="search_text_pexpl_ind" class = "form-control">
+<div class="input-group-addon"> <label id="count_pexpl_ind_all"></label> </div>
+
+</div>
+
+</div>
+  
+  <div class="table-info-div" id='pexpl_ind_table_div' style="height: 550px;" >
+  <table id="pexpl_ind_table" class="table table-bordered"></table>
+  </div>
+
+
+
+<div class="page_size_div" id="page_size_pexpl_ind_div">Sahifa o'lchami: <input type="number" value="100" id="page_size_pexpl_ind"></div>
+<div class="pagination_div" id="pagination-pexpl_ind_div"></div>
+<div class="pagination_info" id="pagination-pexpl_ind_info"></div>
+ <!-- <button id="button_load_table">Load</button>  -->
+
+</div>
+
+
+
+<div id="dialog_loy_table" title="Loyihalovchi tashkilotlar">
+
+ <div class="table-info-div-head">
+
+  <h4 style="font-weight: bold;" id='title_table_loy'>Loyihalovchi tashkilot</h4>
+
+<div class="input-group" style="margin-top:5px;">
+<div class="input-group-addon"><label>Saralash maydonini tanlang</label></div>
+<select class="form-control" id="loy_sort_field" >
+<option  value="pk">Nomeri bo'yicha</option>
+<option  value="nomi">Tashkilot nomi bo'yicha</option>
+<option  value="adress">Manzili bo'yicha</option>
+<option  value="inn">STIR bo'yicha</option>
+ 
+</select>
+
+<div class="input-group-addon"><label>Saralash turi</label></div>
+<select  class="form-control" id="loy_sort_type">
+<option selected value="">O'sish tartibida</option>
+<option  value="-">Kamayish tartibida</option>
+</select>
+</div>
+ 
+<div class="input-group" style="margin-top:5px;">
+
+  <div class="input-group-addon">
+    <label>Qidiruv maydonini</label>
+  </div>
+  <select id="search_field_loy"  class="form-control">
+    
+    <option value="nomi">Tashkilot nomi bo'yicha</option>
+    <option value="adress"> Manzili bo'yicha</option>    
+    <option value="inn">STIR bo'yicha</option>
+    
+    </select>
+    <div class="input-group-addon"><label>Qidiruv turi</label></div>
+  <select id="search_type_loy" class="form-control" >
+    <option selected value='1'>Satr boshidan mosligi bo'yicha qidiruv</option>
+    <option value='0'>Satrning ixtiyoriy mosligi</option>
+  </select>
+</div>
+
+<div class="input-group" id="search_data_div_loy" style="margin-top: 5px;">
+
+
+<div class="input-group-addon"> <label >Qidiriluvchi so'z</label> </div>
+<input type="text" id="search_text_loy" class = "form-control">
+<div class="input-group-addon"> <label id="count_loy_all"></label> </div>
+
+</div>
+
+</div>
+  
+  <div class="table-info-div" id='loy_table_div' style="height: 550px;" >
+  <table id="loy_table" class="table table-bordered"></table>
+  </div>
+
+
+<div class="page_size_div" id="page_size_loy_div">Sahifa o'lchami: <input type="number" value="100" id="page_size_loy"></div>
+<div class="pagination_div" id="pagination-loy_div"></div>
+<div class="pagination_info" id="pagination-loy_info"></div>
+ <!-- <button id="button_load_table">Load</button>  -->
+
+</div>
+
+
+
+
+
+
+<div id="dialog_pud_table" title="Pudratchi tashkilotlar">
+
+ <div class="table-info-div-head">
+
+  <h4 style="font-weight: bold;" id='title_table_pud'>Pudratchi tashkilot</h4>
+
+<div class="input-group" style="margin-top:5px;">
+<div class="input-group-addon"><label>Saralash maydonini tanlang</label></div>
+<select class="form-control" id="pud_sort_field" >
+<option  value="pk">Nomeri bo'yicha</option>
+<option  value="nomi">Tashkilot nomi bo'yicha</option>
+<option  value="adress">Manzili bo'yicha</option>
+<option  value="inn">STIR bo'yicha</option>
+ 
+</select>
+
+<div class="input-group-addon"><label>Saralash turi</label></div>
+<select  class="form-control" id="pud_sort_type">
+<option selected value="">O'sish tartibida</option>
+<option  value="-">Kamayish tartibida</option>
+</select>
+</div>
+ 
+<div class="input-group" style="margin-top:5px;">
+
+  <div class="input-group-addon">
+    <label>Qidiruv maydonini</label>
+  </div>
+  <select id="search_field_pud"  class="form-control">
+    
+    <option value="nomi">Tashkilot nomi bo'yicha</option>
+    <option value="adress"> Manzili bo'yicha</option>    
+    <option value="inn">STIR bo'yicha</option>
+    
+    </select>
+    <div class="input-group-addon"><label>Qidiruv turi</label></div>
+  <select id="search_type_pud" class="form-control" >
+    <option selected value='1'>Satr boshidan mosligi bo'yicha qidiruv</option>
+    <option value='0'>Satrning ixtiyoriy mosligi</option>
+  </select>
+</div>
+
+<div class="input-group" id="search_data_div_pud" style="margin-top: 5px;">
+
+
+<div class="input-group-addon"> <label >Qidiriluvchi so'z</label> </div>
+<input type="text" id="search_text_pud" class = "form-control">
+<div class="input-group-addon"> <label id="count_pud_all"></label> </div>
+
+</div>
+
+</div>
+  
+  <div class="table-info-div" id='pud_table_div' style="height: 550px;" >
+  <table id="pud_table" class="table table-bordered"></table>
+  </div>
+
+
+<div class="page_size_div" id="page_size_pud_div">Sahifa o'lchami: <input type="number" value="100" id="page_size_pud"></div>
+<div class="pagination_div" id="pagination-pud_div"></div>
+<div class="pagination_info" id="pagination-pud_info"></div>
+ <!-- <button id="button_load_table">Load</button>  -->
+
+</div>
+
+
+
+<div id="dialog_bjs_table" title="Buyurtmcahi (jismoniy shaxs)">
+
+ <div class="table-info-div-head">
+
+  <h4 style="font-weight: bold;" id='title_table_bjs'>Buyurtmcahi (jismoniy shaxs)</h4>
+
+<div class="input-group" style="margin-top:5px;">
+<div class="input-group-addon"><label>Saralash maydonini tanlang</label></div>
+<select class="form-control" id="bjs_sort_field" >
+<option  value="pk">Nomeri bo'yicha</option>
+<option  value="full_name">F.I.SH</option>
+<option  value="permit_address">Manzili bo'yicha</option>
+<option  value="passport_number">Pasport nomeri bo'yicha</option>
+<option  value="tin">STIR bo'yicha</option>
+ 
+</select>
+
+<div class="input-group-addon"><label>Saralash turi</label></div>
+<select  class="form-control" id="bjs_sort_type">
+<option selected value="">O'sish tartibida</option>
+<option  value="-">Kamayish tartibida</option>
+</select>
+</div>
+ 
+<div class="input-group" style="margin-top:5px;">
+
+  <div class="input-group-addon">
+    <label>Qidiruv maydonini</label>
+  </div>
+  <select id="search_field_bjs"  class="form-control">
+    
+    <option  value="full_name">F.I.SH</option>
+    <option  value="permit_address">Manzili bo'yicha</option>
+    <option  value="passport_number">Pasport nomeri bo'yicha</option>
+    <option  value="tin">STIR bo'yicha</option>
+    
+    </select>
+    <div class="input-group-addon"><label>Qidiruv turi</label></div>
+  <select id="search_type_bjs" class="form-control" >
+    <option selected value='1'>Satr boshidan mosligi bo'yicha qidiruv</option>
+    <option value='0'>Satrning ixtiyoriy mosligi</option>
+  </select>
+</div>
+
+<div class="input-group" id="search_data_div_bjs" style="margin-top: 5px;">
+
+
+<div class="input-group-addon"> <label >Qidiriluvchi so'z</label> </div>
+<input type="text" id="search_text_bjs" class = "form-control">
+<div class="input-group-addon"> <label id="count_bjs_all"></label> </div>
+
+</div>
+
+</div>
+  
+  <div class="table-info-div" id='bjs_table_div' style="height: 550px;" >
+  <table id="bjs_table" class="table table-bordered"></table>
+  </div>
+
+
+<div class="page_size_div" id="page_size_bjs_div">Sahifa o'lchami: <input type="number" value="100" id="page_size_bjs"></div>
+<div class="pagination_div" id="pagination-bjs_div"></div>
+<div class="pagination_info" id="pagination-bjs_info"></div>
+ <!-- <button id="button_load_table">Load</button>  -->
+
+</div>
+
+
+
+
+<div id="dialog_bys_table" title="Buyurtmcahi (yuridik shaxs)">
+
+ <div class="table-info-div-head">
+
+  <h4 style="font-weight: bold;" id='title_table_bys'>Buyurtmcahi (yuridik shaxs)</h4>
+
+<div class="input-group" style="margin-top:5px;">
+<div class="input-group-addon"><label>Saralash maydonini tanlang</label></div>
+<select class="form-control" id="bys_sort_field" >
+
+<option  value="pk">Nomeri bo'yicha</option>
+<option  value="legal_entity_name">Tashkilot nomi bo'yicha</option>
+<option  value="legal_entity_address">Manzili bo'yicha</option>
+<option  value="legal_entity_tin">STIR bo'yicha</option>
+ 
+</select>
+
+<div class="input-group-addon"><label>Saralash turi</label></div>
+<select  class="form-control" id="bys_sort_type">
+<option selected value="">O'sish tartibida</option>
+<option  value="-">Kamayish tartibida</option>
+</select>
+</div>
+ 
+<div class="input-group" style="margin-top:5px;">
+
+  <div class="input-group-addon">
+  <label>Qidiruv maydonini</label>
+  </div>
+  <select id="search_field_bys"  class="form-control">    
+<option  value="legal_entity_name">Tashkilot nomi bo'yicha</option>
+<option  value="legal_entity_address">Manzili bo'yicha</option>
+<option  value="legal_entity_tin">STIR bo'yicha</option>
+    
+    </select>
+    <div class="input-group-addon"><label>Qidiruv turi</label></div>
+  <select id="search_type_bys" class="form-control" >
+    <option selected value='1'>Satr boshidan mosligi bo'yicha qidiruv</option>
+    <option value='0'>Satrning ixtiyoriy mosligi</option>
+  </select>
+</div>
+
+<div class="input-group" id="search_data_div_bys" style="margin-top: 5px;">
+
+
+<div class="input-group-addon"> <label >Qidiriluvchi so'z</label> </div>
+<input type="text" id="search_text_bys" class = "form-control">
+<div class="input-group-addon"> <label id="count_bys_all"></label> </div>
+
+</div>
+
+</div>
+  
+  <div class="table-info-div" id='bys_table_div' style="height: 550px;" >
+  <table id="bys_table" class="table table-bordered"></table>
+  </div>
+
+
+<div class="page_size_div" id="page_size_bys_div">Sahifa o'lchami: <input type="number" value="100" id="page_size_bys"></div>
+<div class="pagination_div" id="pagination-bys_div"></div>
+<div class="pagination_info" id="pagination-bys_info"></div>
+ <!-- <button id="button_load_table">Load</button>  -->
+
+</div>
+
+<div id="dialog_buyurtmachi_full_info" title="">
+</div>
+<div id="dialog_loyihalovchi_full_info" title="">
+</div>
+<div id="dialog_pudratchi_full_info" title="">
+</div>
+<div id="dialog_apz_full_info" title="">
+</div>
+<div id="dialog_perm_rec_full_info" title="">
+</div>
+<div id="dialog_psd_full_info" title="">
+</div>
+<div id="dialog_psd_ind_full_info" title="">
+</div>
+<div id="dialog_smr_full_info" title="">
+</div>
+<div id="dialog_pexpl_full_info" title="">
+</div>
+<div id="dialog_pexpl_ind_full_info" title="">
+</div>
+
+{% endif %}
+
+
+<div id="popup_dialog_genplan" title="Bosh reja"></div>
+<div id="popup_dialog_genplan_edit" title="Bosh reja o'zgartirish"></div>
+
+<div id="popup_dialog_pdp" title="PDP"></div>
+<div id="popup_dialog_pdp_edit" title="PDP edit"></div>
+
+<div id="popup_dialog_apot" title="АПОТ"></div>
+<div id="popup_dialog_apot_edit" title="АПОТ edit"></div>
+
+<div id="popup_dialog_redline" title="Qizil chiziqlar"></div>
+<div id="popup_dialog_redline_edit" title="Qizil chiziqlar edit"></div>
+
+<div id="popup_dialog_funk_zones_po_genplan" title="Genplan bo'yicha qilingan funksianal zonalar"></div>
+<div id="popup_dialog_funk_zones_po_genplan_edit" title="Genplan bo'yicha qilingan funksianal zonalar edit"></div>
+
+<div id="popup_dialog_funk_zones_po_apot" title="APOT bo'yicha qilingan funksianal zonalar"></div>
+<div id="popup_dialog_funk_zones_po_apot_edit" title="APOT bo'yicha qilingan funksianal zonalar edit"></div>
+
+<div id="popup_dialog_geologik_rayonlash" title="Geologik rayonlashtirish"></div>
+<div id="popup_dialog_geologik_rayonlash_edit" title="Geologik rayonlashtirish_edit"></div>
+
+<div id="popup_dialog_geo_ray_data" title="Geologik rayonlashtirish data"></div>
+<div id="popup_dialog_geo_ray_data_edit" title="Geologik rayonlashtirish data edit"></div>
+
+<div id="pdf_viewer" title="PDF viewer" >
+
+<iframe id="myIframe" src="" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen   width="100%"    height="98%">
+</iframe>
+</div>
+
+
+<div id = "dialog_documents_info" style="display: none;" title = " Doc Ma'lumotlar"  style = "overflow: fixed">
+  <div class="table-info-div-head">
+
+  <h4 style="font-weight: bold;" id='title_table0'>Normativ-huquqiy asos</h4>
+
+<div class="input-group" style="margin-top:5px;">
+<div class="input-group-addon"><label>Hujjatlar guruhi</label></div>
+<select id="search-type_tip_pod9" class="form-control search-pod9_tip" ></select>
+
+<div class="input-group-addon"><label>Hujjat turi</label></div>
+<select id="search-type_hujjat_pod9" class="form-control search-pod9_hujjat" >
+  </select>
+
+</div>
+ 
+<div class="input-group" style="margin-top:5px;">
+
+  <div class="input-group-addon">
+    <label>Qidiruv maydonini</label>
+  </div>
+  <select id="search-field-id_pod9" data-input_id='search-field_pod9'  data-count='item-count_pod9' data-type_id='search-type_pod9'  data-maydon_id='search-field-id_pod9'  data-table_id='table-info_pod9' class="form-control search-field-id_pod9">
+    </select>
+<div class="input-group-addon"><label>Qidiruv turi</label></div>
+  <select id="search-type_pod9" data-input_id='search-field_pod9'  data-count='item-count_pod9' data-type_id='search-type_pod9'  data-maydon_id='search-field-id_pod9'  data-table_id='table-info_pod9' class="form-control search-type" >
+    <option selected value='1'>Satr boshidan mosligi bo'yicha qidiruv</option>
+    <option value='0'>Satrning ixtiyoriy mosligi</option>
+  </select>
+</div>
+
+
+<div class="input-group" id="search_data_div" style="margin-top: 5px;">
+
+
+<div class="input-group-addon"> <label >Qidiriluvchi so'z</label> </div>
+<input type="text" data-input_id='search-field_pod9'  data-count='item-count_pod9' data-type_id='search-type_pod9'  data-maydon_id='search-field-id_pod9'  data-table_id='table-info_pod9' id="search-field_pod9" class = "form-control search_input">
+<div class="input-group-addon"> <label id="item-count_pod9" ></label> </div>
+
+</div>
+
+
+</div>
+
+  <div class="table-info-div" id="table-info-div-id_pod9">
+  <table class="table table-bordered" id = "table-info_pod9"></table>
+  </div>
+</div>
+
+
+
+
+<div id = "dialog_table" style="display: none;" title = "Ma'lumotlar"  style = "overflow: fixed">
+  <div class="table-info-div-head">
+
+  <h4 style="font-weight: bold;" id='title_table' ></h4>
+ 
+<div class="input-group" style="margin-top:5px;">
+  <div class="input-group-addon">
+    <label>Qidiruv maydonini</label>
+  </div>
+  <select id="search-field-id" data-input_id='search-field'  data-count='item-count' data-type_id='search-type'  data-maydon_id='search-field-id'  data-table_id='table-info' class="form-control search-field-id">
+    </select>
+</div>
+
+<div class="input-group" style="margin-top:5px;">
+<div class="input-group-addon"><label>Qidiruv turi</label></div>
+<select id="search-type" data-input_id='search-field'  data-count='item-count' data-type_id='search-type'  data-maydon_id='search-field-id'  data-table_id='table-info' class="form-control search-type" >
+    <option selected value='1'>Satr boshidan mosligi bo'yicha qidiruv</option>
+    <option value='0'>Satrning ixtiyoriy mosligi</option>
+  </select>
+</div>
+
+<div class="input-group" style="margin-top: 5px;">
+  <div class="input-group-addon"> <label >Qidiriluvchi so'z</label> </div>
+<input type="text" data-input_id='search-field'  data-count='item-count' data-type_id='search-type'  data-maydon_id='search-field-id'  data-table_id='table-info' id="search-field" class = "form-control search_input">
+<div class="input-group-addon"> <label id="item-count" >Obyektlar soni:</label> </div>
+<div class="input-group-addon save_list" data-table_id='table-info' id='to_pdf' dtype='' type='pdf' > <label >PDF</label></div>
+<div class="input-group-addon save_list" data-table_id='table-info' id='to_xlsx' dtype='' type='xlsx'> <label >XLSX</label></div>
+</div>
+
+  </div>
+  <div class="table-info-div" id="table-info-div-id">
+  <table class="table table-bordered" id = "table-info"></table>
+  </div>
+</div>
+
+
+<div id = "dialog_table0" style="display: none;" title = "Ma'lumotlar"  style = "overflow: fixed">
+  <div class="table-info-div-head">
+
+  <h4 style="font-weight: bold;" id='title_table0'></h4>
+ 
+<div class="input-group" style="margin-top:5px;">
+  <div class="input-group-addon">
+    <label>Qidiruv maydonini</label>
+  </div>
+  <select id="search-field-id0" data-input_id='search-field0'  data-count='item-count0' data-type_id='search-type0'  data-maydon_id='search-field-id0'  data-table_id='table-info0' class="form-control search-field-id">
+    </select>
+</div>
+
+<div class="input-group" style="margin-top:5px;">
+<div class="input-group-addon"><label>Qidiruv turi</label></div>
+<select id="search-type0" data-input_id='search-field0'  data-count='item-count0' data-type_id='search-type0'  data-maydon_id='search-field-id0'  data-table_id='table-info0' class="form-control search-type" >
+    <option selected value='1'>Satr boshidan mosligi bo'yicha qidiruv</option>
+    <option value='0'>Satrning ixtiyoriy mosligi</option>
+  </select>
+</div>
+
+<div class="input-group" style="margin-top: 5px;">
+  <div class="input-group-addon"> <label >Qidiriluvchi so'z</label> </div>
+<input type="text" data-input_id='search-field0'  data-count='item-count0' data-type_id='search-type0'  data-maydon_id='search-field-id0'  data-table_id='table-info0' id="search-field0" class = "form-control search_input">
+<div class="input-group-addon"> <label id="item-count0" >Ob'yektlar soni:</label> </div>
+<div class="input-group-addon save_list" data-table_id='table-info0' id='to_pdf0' dtype='' type='pdf' > <label >PDF</label></div>
+<div class="input-group-addon save_list" data-table_id='table-info0' id='to_xlsx0' dtype='' type='xlsx'> <label >XLSX</label></div>
+</div>
+
+  </div>
+  <div class="table-info-div" id="table-info-div-id0">
+  <table class="table table-bordered" id = "table-info0"></table>
+  </div>
+</div>
+
+
+<div id = "dialog_maktab_info" style="display: none; font-size: 14px;" title = "Maktablar haqida to'liq ma'lumot"  style = "overflow: fixed"></div>
+
+<div id = "dialog_maktab_qur_info" style="display: none; font-size: 14px;" title = "Maktablar qurulishi haqida to'liq ma'lumot"  style = "overflow: fixed"></div>
+
+ <a href="" id='download_file' style="display: none;" download></a>
+
+
+
+
+<script type="text/javascript">
+  
+var viloyat=[{% for i in viloyat %} {'id':{{ i.vil_id }},'disUz':'{{ i.disUz }}','disRu':'{{ i.disRu }}'},{% endfor %} ];
+
+
+var zone_type=[{% for i in funk_zone %} {'type':{{ i.type }},'disUz':'{{ i.disUz }}','disRu':'{{ i.disRu }}','color':'{{ i.color }}','yesgenplan':'{{ i.yesGenplan }}','yesapot':'{{ i.yesApot }}'},{% endfor %}];
+
+
+function vil(vil_id){
+  let res;
+  for (let i in viloyat){
+    if(viloyat[i].id==vil_id){
+      res= viloyat[i];
+     break;
+   }
+  }
+  return res;
+}
+
+function funk_zone(t){
+  let res;
+  for (let i in zone_type){
+    if(zone_type[i].type==t){
+      res= zone_type[i];
+     break;
+   }
+  }
+  return res;
+}
+
+
+</script>
+
+<div id="jquery_min"></div>
+<script type="text/javascript" src="/static/main/myajax.js"></script>  
+
+<div id="bootstrap_4"></div>
+
+{% if request.session.authenticate %}
+<div id="pod_6_7_8_min" ></div>
+<script type="text/javascript" src="/static/main/myajax_sec.js"></script> 
+{% endif %}
+
+<script type="text/javascript">
+  
+  $(document).on('click','#load_alert_div p',function(){
+$(this).css({'display':'none'});
+});
+
+function repath(path){
+  if(path!=''){
+  path=path.match(/[^\/\\]+$/)[0];
+  if(path.length>30){
+    return path.substring(0,10)+'...'+path.substring(path.length-10,path.length);
+  }
+  else{
+    return path;
+  }
+}
+else{
+  return 'Faylni tanlang';
+}
+}
+
+function repath2(path){
+  if(path!=''){
+  path=path.match(/[^\/\\]+$/)[0];
+  if(path.length>50){
+    return path.substring(0,25)+'...'+path.substring(path.length-25,path.length);
+  }
+  else{
+    return path;
+  }
+}
+else{
+  return 'Faylni tanlang';
+}
+}
+
+
+$(document).on('change','.input_file',function(){
+  $(this).next().html(repath($(this).val()));
+});
+
+$(document).on('change','.input_vec_file',function(){
+  $(this).next().html($(this)[0].files.length+' ta fayl biriktirildi');
+});
+
+
+$('#load_vector_files').on('click',function(){
+
+  $('#load_alert_div3').html("<img width='80px' height='80px' src='/static/img/processing.gif'>");
+  $('#load_alert_div3').css({'display':'block'});
+ 
+    var data = new FormData();
+    $.each($('#upload_files_id')[0].files, function(i, file) {
+        data.append("file", file);
+    });
+  data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
+    data.append('file-type',$('#vec_file_type').val());
+    data.append("epsg",$('#vec_file_proj').val());
+    if($('#upload_files_id')[0].files.length!=0)
+    {
+    $.ajax({
+        url: '/convert_data',
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        type: 'post',
+        beforeSend: function () {
+        },
+        success: function (data_res) {
+          if(data_res==1){
+$.ajax('/static/folder_for_download/result.json').done(function(json) {
+
+for(var j in json.features){
+if(json.features[j].geometry.type=='MultiPolygon'){
+json.features[j].geometry.coordinates.forEach(function(corr,i){
+var polygon={type:'Polygon',coordinates:corr};
+L.geoJson(polygon,{
+  onEachFeature:function(features,layer){
+    drawnItems.addLayer(layer);
+  }
+});
+});
+}
+if(json.features[j].geometry.type=='Polygon'){
+  var polygon={'type':'Feature',
+  'geometry':{'type':'Polygon','coordinates':json.features[j].geometry.coordinates},
+  'properties':json.features[j].properties
+  };
+  var layers=L.geoJson(polygon,{
+    onEachFeature:function(features,layer){
+    drawnItems.addLayer(layer);
+  }
+
+  });
+
+}
+
+if(json.features[j].geometry.type=='MultiLineString'){
+  // console.log('MultiLineString');
+json.features[j].geometry.coordinates.forEach(function(corr,i){
+var polyline={type:'LineString',coordinates:corr};
+L.geoJson(polyline,{
+  onEachFeature:function(features,layer){
+    drawnItems.addLayer(layer);
+  }
+});
+});
+}
+
+if(json.features[j].geometry.type=='LineString'){
+    // console.log('LineString');
+  var polyline={'type':'Feature',
+  'geometry':{'type':'LineString','coordinates':json.features[j].geometry.coordinates},
+  'properties':json.features[j].properties
+  };
+  var layers=L.geoJson(polyline,{
+    onEachFeature:function(features,layer){
+    drawnItems.addLayer(layer);
+  }
+
+  });
+
+    // for(layer in layers._layers){
+   // drawnItems.addLayer(layers._layers[layer]);
+   //  }
+
+}
+}
+
+map.flyToBounds(drawnItems.getBounds());
+$('#load_alert_div3').css({'display':'none'});
+$('#dialog_load_vector').dialog('close');
+
+          });
+}
+        },
+        error: function () {
+          console.log("Error uploading file")
+        }
+      });
+}
+});
+
+$(document).on('change','.secret_inputs_checkbox',function(){
+if($(this).val()=='1'){
+    $('#secret_inputs_div').css({'display':'block'});
+   }
+else
+{
+$('#secret_inputs_div').css({'display':'none'});
+$('#secret_inputs_div input').each(function(){
+  $(this).val('');
+
+});
+}
+
+});
+
+
+
+$(document).on('change','.secret_inputs_checkbox',function(){
+if($(this).val()=='3'){
+    $('#secret_inputs_div_plan').css({'display':'block'});
+   }
+else
+{
+$('#secret_inputs_div_plan').css({'display':'none'});
+$('#secret_inputs_div_plan input').each(function(){
+  $(this).val('');
+
+});
+}
+
+});
+
+
+ 
+
+
+</script>
+
+<div id="admin_div_sec"></div>
+
+<script type="text/javascript">
+
+
+function scrollHendle(e){
+var scrollTop=this.scrollTop;
+this.querySelector('#table_head').style.transform='translateY('+(scrollTop-2)+'px)';
+}
+
+
+
+
+var mapOptions = {
+  center: [41.558,63.486062],
+  zoom: 6,
+  attributionControl: false,
+  zoomControl:true,
+  maxZoom:20,
+  zoomControl:false,
+  minZoom:5,
+  maxBounds: [
+        //south west
+        [33.3029861, 46.01074218],
+        //north east
+        [49.3966750,78.474609]
+        ], 
+};
+
+var map = new L.map('map', mapOptions);
+
+</script>
+<div id="bootstrap_3"></div>
+<script type="text/javascript">
+$(document).on('click','.tag_download',function(){
+
+var folder = $(this).attr('data-folder') 
+var filename=$(this).attr('data-filename');
+var path="/static/"+mydecode(folder)+"/"+mydecode(filename);
+
+$('#download_file').attr({href:path});
+
+window.location.href=$('#download_file').attr('href');
+
+});
+ 
+</script>
+
+<!-- START WWW.UZ TOP-RATING -->
+<SCRIPT language="javascript" type="text/javascript">
+
+top_js="1.0";top_r="id=44179&r="+escape(document.referrer)+"&pg="+escape(window.location.href);document.cookie="smart_top=1; path=/"; top_r+="&c="+(document.cookie?"Y":"N")
+
+</SCRIPT>
+
+<SCRIPT language="javascript1.1" type="text/javascript">
+
+top_js="1.1";top_r+="&j="+(navigator.javaEnabled()?"Y":"N")
+
+</SCRIPT>
+<SCRIPT language="javascript1.2" type="text/javascript">
+
+top_js="1.2";top_r+="&wh="+screen.width+'x'+screen.height+"&px="+
+(((navigator.appName.substring(0,3)=="Mic"))?screen.colorDepth:screen.pixelDepth)
+
+</SCRIPT>
+<SCRIPT language="javascript1.3" type="text/javascript">
+
+top_js="1.3";
+
+</SCRIPT>
+
+<SCRIPT language="JavaScript" type="text/javascript">
+
+top_rat="&col=0063AF&t=ffffff&p=DD7900";top_r+="&js="+top_js+"";
+
+document.write('<a href="https://www.uz/ru/res/visitor/index?id=44179" target=_top><img style="display:none;" src="https://cnt0.www.uz/counter/collect?'+top_r+top_rat+'" width=88 height=31 border=0 alt="Топ рейтинг www.uz"></a>');
+
+</SCRIPT>
+<script type="text/javascript">
+  
+
+       new L.Control.GeoSearch({
+            provider: new L.GeoSearch.Provider.OpenStreetMap(),
+        }).addTo(map);
+
+
+
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,6 @@
+from django.apps import AppConfig
+
+
+class ProjConfig(AppConfig):
+	name = 'proj'
+	verbose_name = "Davlat shaharsozlik kadastri"

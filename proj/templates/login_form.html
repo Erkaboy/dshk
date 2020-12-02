@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Геопортал ГГК</title>
+
+{% load static %}
+<meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
+
+
+<script type="text/javascript" src="{% static 'js/jquery/jquery1.12.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/jquery/jquery.ui.js' %}"></script> 
+
+<script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}">
+
+
+<style type="text/css">
+	body{
+/*		background: rgba(0, 0, 0, 0.76);*/
+		  background: url(/static/img/55.JPG) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+	}
+.form_div{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 330px;
+	border:1px solid #000;
+	padding: 20px;
+	background-color: rgba(255,255,255,1);
+	 border: 1px solid rgba(0,0,0,.25);
+	box-shadow: 1px 2px 6px 0 rgba(0,0,0,.25);
+	border-radius: 5px;
+}
+#error_login{
+	display: none;
+}
+
+</style>
+
+</head>
+<body>
+{% csrf_token %}
+
+<div class="form_div" >
+<div style="float: left;"> 
+<img src="/static/img/logo.jpeg" height="65px">
+</div>
+<div style="padding-top:10px; padding-left: 125px;">
+<span style="font-weight: bold;" >ГЕОПОРТАЛ ГГК</span> <br>
+<span>Республики Узбекистан</span>
+</div>
+<hr width="100%">
+
+<div class="form-group">
+    <label for="login_input_login">Видите логин </label>
+    <input type="text" class="form-control" id="login_input_login" aria-describedby="emailHelp" placeholder="логин">
+  </div>
+  <div class="form-group">
+    <label for="login_input_parol">Видите парол</label>
+    <input type="password" class="form-control" id="login_input_parol" placeholder="парол">
+  </div>
+    <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="login_remember_me">
+    <label class="form-check-label" for="login_remember_me">Запомнить</label>
+  </div>
+  <div class="alert alert-danger" id="error_login" role="alert">
+  This is a warning alert—check it out!
+</div>
+  <hr> 
+  <button type="submit" id="login_button" class="btn btn-primary">Войти</button>
+  <button type="submit" id="login_button_open" class="btn btn-success">Открытые данные</button>
+<br>
+<hr>
+<span>Забыли пароль?</span>
+<span style="float: right;">Регистрация</span>
+
+<script type="text/javascript">
+$('#login_button_open').on('click',function(){
+window.location.href='/main';	
+});
+
+
+$('#login_button').on('click',function(){
+
+var url = new URL(window.location.href);
+var page = url.searchParams.get("page");
+
+  var data = new FormData();
+  data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
+  data.append("login", $('#login_input_login').val());
+  data.append("parol", $('#login_input_parol').val());
+  data.append("remember_me", $('#login_remember_me').prop('checked'));
+
+$.ajax({
+        url: 'loginn',
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        type: 'post',
+        beforeSend: function () {
+        },
+        success: function (data) {
+
+if(data==1){
+window.location.href=page;
+}
+else if(data==-1){
+$('#login_input_parol').val('');
+$('#login_input_login').val('');
+$('#error_login').html('В настоящее время логин используется другим пользователем системы !');
+$('#error_login').css({'display':'block'}); 
+}
+else{
+$('#login_input_parol').val('');
+$('#login_input_login').val('');
+$('#error_login').html('Логин или пароль неверно!');
+$('#error_login').css({'display':'block'});
+}
+        },
+        error: function () {
+         console.log('ajax da xatolik !! ');
+         
+        }
+      });
+});
+
+
+$('#login_input_login').keypress(function( event ) {
+  if ( event.which == 13 ){
+    $('#login_button').click();
+  }
+
+    });
+$('#login_input_parol').keypress(function( event ) {
+  if ( event.which == 13 ){
+    $('#login_button').click();
+  }
+    });
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
