@@ -1,6 +1,5 @@
 var search_marker;
-
-$('#dialog_object_events').dialog({
+          $('#dialog_object_events').dialog({
   resizable: true,
   autoOpen:false,
   height: 720,
@@ -29,7 +28,7 @@ function get_event_type(type) {
  }
  function get_event_tas_type(type) {
  if(type==null){return ' - '}
- else{  
+ else{
   if(type==0){return "Tasdiqlanmagan";}
   else{ return "Tasdiqlangan"}}
 }
@@ -245,7 +244,7 @@ $(document).on('click','.sub_data_link',function(){
   $('#a_magnify').attr('href',mydecode(filename));
   $('#a_magnify')[0].click();
 });
- 
+
 function myencode(str){
   return btoa(encodeURI(str));
 }
@@ -261,7 +260,7 @@ function sortTable(n,m=0) {
 
 if(n!=0){
 
-  dir = "asc"; 
+  dir = "asc";
   while (switching) {
     switching = false;
     rows = table.rows;
@@ -286,7 +285,7 @@ if(n!=0){
     if (shouldSwitch) {
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
-      switchcount ++;      
+      switchcount ++;
     } else {
       if (switchcount == 0 && dir == "asc") {
         dir = "desc";
@@ -335,7 +334,7 @@ $.each($('td',row),function(){
 
   rowObj[i]=col.text();
   i++;
-   
+
 })
 tableObj.push(rowObj);
 }
@@ -382,7 +381,7 @@ $(this).attr('data-val','1');
 }
 else{
   $('#layer_control').css({'width':'0px','height':'0px','border':'0px solid rgba(0,0,0,.25)','padding':'0px'});
-$(this).attr('data-val','0'); 
+$(this).attr('data-val','0');
 }
 });
 
@@ -409,7 +408,7 @@ live_layer=[
 {'layer1':perm_rec,'layer2':perm_rec,'id':'perm_rec_id','layer_name':"perm_rec",'dis':'perm_rec'},
 {'layer1':smr,'layer2':smr,'id':'smr_id','layer_name':"smr",'dis':'smr'},
 {'layer1':pexpl,'layer2':pexpl,'id':'pexpl_id','layer_name':"pexpl",'dis':'pexpl'},
-{'layer1':pexpl_ind,'layer2':pexpl_ind,'id':'pexpl_ind_id','layer_name':"pexpl_ind",'dis':'pexpl_ind'},  
+{'layer1':pexpl_ind,'layer2':pexpl_ind,'id':'pexpl_ind_id','layer_name':"pexpl_ind",'dis':'pexpl_ind'},
 ];
 
 
@@ -428,7 +427,7 @@ $(this).attr('data-val','1');
 else{
   live_layer=0;
   $('#live_layer_control').css({'width':'0px','height':'0px','border':'0px solid rgba(0,0,0,.25)','padding':'0px'});
-$(this).attr('data-val','0'); 
+$(this).attr('data-val','0');
 }
 });
 
@@ -554,6 +553,7 @@ text=`<table class='table_2'>
 <tr class='tr2_sub2menu' data-val='11' ><td class='td_icon'></td><td>Funksional zonalash sxemalari</td></tr>
 <tr class='tr2_sub2menu' data-val='12' ><td class='td_icon'></td><td>Qizil chiziqlar</td></tr>
 <tr class='tr2_sub2menu' data-val='13' ><td class='td_icon'></td><td>Geologik rayonlashtirish </td></tr>
+<tr class='tr2_sub2menu' data-val='14' ><td class='td_icon'></td><td>Kadastr ma'lumotlari</td></tr>
 </table>`;
 
   $('#sub2menu_div').html(text);
@@ -640,10 +640,10 @@ if($(this).attr('data-val')=='9'){
 
 
 var data = new FormData();
- 
+
   data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
   data.append('query_type','docs_type');
-  
+
 var myUrl='/documents';
 $.ajax({
         url: myUrl,
@@ -658,7 +658,7 @@ var text="<table class='table_2'>";
 
           for(var i in data['list']){
 text+="<tr class='tr2_sub2menu_pod9' data-tip_doc='"+data['list'][i]['id']+"' ><td class='td_icon'></td><td>"+data['list'][i]['tip_dis']+"</td></tr>";
-          
+
           }
 
 text+='</table>';
@@ -687,19 +687,19 @@ function create_table_pod9(tip_id,sub_tip_id=-1,date_begin=0,date_end=0,filter_d
    text+=`<tr id='table_head'>
    <td >№</td>
    <td >Info</td>
-   <td >Hujjat turi(guruh) </td> 
+   <td >Hujjat turi(guruh) </td>
    <td >Hujjat turi</td>
-   <td >Hujjat nomi</td>   
+   <td >Hujjat nomi</td>
    <td >Sana</td>
    <td >Hujjat raqami</td>
    </tr>`;
  var data = new FormData();
- 
+
   data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
   data.append("query_type",'docs_list');
   data.append("docs_tip_id",tip_id);
   data.append("docs_sub_tip_id",sub_tip_id);
-  data.append("filter_date",filter_date);  
+  data.append("filter_date",filter_date);
   data.append("date_begin",date_begin);
   data.append("date_end",date_end);
 
@@ -736,7 +736,7 @@ if(d[x]['file_doc']==''||d[x]['file_doc']==null){
 }
 else{
       text+=`<td style='vertical-align:middle;'><a href='`+d[x]['file_doc']+`' target='blank'><button class='btn'>Ko'rish</button></a></td>`;
-  
+
 }
       text+=`<td style='vertical-align:middle;'>`+doc_type[d[x]['tip_doc_id']]+`</td>
       <td style='vertical-align:middle;'>`+sub_tip[d[x]['sub_tip_doc_id']]+`</td>
@@ -759,7 +759,7 @@ $('#search_data_div').html(text2);
 
 $('#button_date_filter').on('click',function(){
   var begin=$('#search_data_input_begin').val();
-  var end=$('#search_data_input_end').val();  
+  var end=$('#search_data_input_end').val();
 create_table_pod9($('#search-type_tip_pod9').val(),$('#search-type_hujjat_pod9').val(),begin,end,1);
 });
 
@@ -771,12 +771,12 @@ $('.info_table').css({'cursor':'pointer'});
 
 var tablecont=document.querySelector('#table-info-div-id_pod9');
 tablecont.addEventListener('scroll',scrollHendle);
-      
+
         },
         error:function(){
           console.log('Ajaxda xatolik!!');
         }
-  
+
   });
 }
 
@@ -859,13 +859,13 @@ $('#search-field').val('');
    </tr>`;
 
  var data = new FormData();
- 
+
   data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
   data.append("query_type",query_type);
   data.append("filter",filter);
   data.append("pro_or_obj",pro_or_obj);
   data.append('inn',inn);
-  
+
 
 $.ajax({
         url: myUrl,
@@ -929,7 +929,7 @@ element.css({'cursor':'pointer'});
 
 var tablecont=document.querySelector('#table-info-div-id2');
 tablecont.addEventListener('scroll',scrollHendle);
-      
+
         },
         error:function(){
           console.log('Ajaxda xatolik!!');
@@ -954,13 +954,13 @@ $('#search-field').val('');
    </tr>`;
 
  var data = new FormData();
- 
+
   data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
   data.append("query_type",query_type);
   data.append("filter",filter);
   data.append("pro_or_obj",pro_or_obj);
   data.append("inn",inn);
-  
+
 
 $.ajax({
         url: myUrl,
@@ -1029,18 +1029,18 @@ element.css({'cursor':'pointer'});
 
 var tablecont=document.querySelector('#table-info-div-id1');
 tablecont.addEventListener('scroll',scrollHendle);
-      
+
         },
         error:function(){
           console.log('Ajaxda xatolik!!');
         }
       });
-} 
+}
 
 
 $(document).on('click','.img_mini_maxi',function(){
   if($(this).attr('data-val')=='0'){
-$(this).parent().parent().css({'height':'auto'}); 
+$(this).parent().parent().css({'height':'auto'});
 $(this).parent().next().css({'display':'none'});
 $(this).html('-X-');
 $(this).attr('data-val','1');
@@ -1049,7 +1049,7 @@ else{
 
  $(this).parent().next().css({'display':'block'});
  $(this).html('-x-');
-$(this).attr('data-val','0'); 
+$(this).attr('data-val','0');
 }
 });
 
@@ -1057,7 +1057,7 @@ $(document).on('click','.tr2_sub2menu',function(){
 
 var mythis=this;
 
-var data = new FormData(); 
+var data = new FormData();
 data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
 $.ajax({
         url: '/sessia',
@@ -1068,6 +1068,7 @@ $.ajax({
         type: 'post',
         success: function (data ) {
           sessia=data[0].sessia;
+
 var text='';
 $('#p_sub3menu').text($(mythis).text());
 $('#sub3menu').css({'height':'380px','border': '1px solid rgba(0,0,0,.25)',
@@ -1093,7 +1094,7 @@ $('#sub3menu_div').html(text);
 }
 
 if($(mythis).attr('data-val')=='12'){
- 
+
 text=`<table class='table_4' style='width:100%;'>
   <tr><td><img src='/static/img/table-icon.png' data-layer_name='redline' data-filter='-0'  class='info_table'></td><td><img src='/static/img/red_lines.png' class='img_label'></td><td><input type='checkbox' `+check_checked(redline)+` data-layer_name='redline' class='checkbox_sub3menu' id='checkbox_id_1_2_1'></td><td><label class='info_label' for='checkbox_id_1_2_1'>Qizil chiziqlar</label></td><td><img class='info_png' data-layer_name='redline' data-layer_dis="Qizil chiziqlar"  src='/static/img/info.png'></tr>
     `;
@@ -1120,6 +1121,25 @@ text+=`</table>`;
 
 $('#sub3menu_div').html(text);
 }
+
+
+if($(mythis).attr('data-val')=='14'){
+
+if(sessia.status!=-1){
+text=`<table class='table_4' style='width:100%;'>
+<tr><td><img src='/static/img/table-icon.png' data-layer_name='yer_uchaskalari' data-filter='-0'  class='info_table'></td><td><img src='/static/img/genplan_0.png' class='img_label'></td><td><input type='checkbox' `+check_checked(yer_uchaskalari)+` data-layer_name='yer_uchaskalari' class='checkbox_sub3menu' id='checkbox_id_1_4_1'></td><td><label class='info_label' for='checkbox_id_1_4_1'>Yer uchaskalari</label></td></tr>
+    `;
+text+=`</table>`;
+}
+else{
+  text=`<p style='margin:10px;font-style:italic;'>Bu xizmatdan foydalanish uchun avtorizatsiyadan o'tish talab qilinadi !</p>`;
+
+}
+$('#sub3menu_div').html(text);
+}
+
+
+
 
 if($(mythis).attr('data-val')=='21'){
   text=`<table class='table_3'>
@@ -1202,7 +1222,7 @@ text=`<input type='search' id='input_geosearch_from_our' placeholder="Adresni ki
         error:function(){
           console.log("Ajaxda xatolik!!");
       }
-      }); 
+      });
 });
 
 
@@ -1247,7 +1267,7 @@ var lang;
 if (rforeign.test(text)) {
   lang=0;
 } else {
-  lang=1; 
+  lang=1;
 }
 
 var data = new FormData();
@@ -1550,7 +1570,7 @@ var openstreetmap_topo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{
   maxZoom: 17,
 });
 
- 
+
 
 map.addLayer(googleStreets);
 
@@ -1570,19 +1590,19 @@ L.Control.boxzoom({ position:'topleft' }).addTo(map);
 var maktablar = L.nonTiledLayer.wms('/geodata/', {
             maxZoom: 22,
             minZoom: 1,
-            zIndex: 2, 
+            zIndex: 2,
             opacity: 0.8,
             layers: 'dshk:maktablar',
             format: 'image/png',
             transparent: true,
-          
+
         });
 
 
 var apz = L.nonTiledLayer.wms('/geodata/', {
             maxZoom: 22,
             minZoom: 1,
-            zIndex: 2, 
+            zIndex: 2,
             opacity: 0.8,
             layers: 'dshk:apz',
             format: 'image/png',
@@ -1592,7 +1612,7 @@ var apz = L.nonTiledLayer.wms('/geodata/', {
 var psd = L.nonTiledLayer.wms('/geodata/', {
             maxZoom: 22,
             minZoom: 1,
-            zIndex: 2, 
+            zIndex: 2,
             opacity: 0.8,
             layers: 'dshk:psd',
             format: 'image/png',
@@ -1602,7 +1622,7 @@ var psd = L.nonTiledLayer.wms('/geodata/', {
 var psd_ind = L.nonTiledLayer.wms('/geodata/', {
             maxZoom: 22,
             minZoom: 1,
-            zIndex: 2, 
+            zIndex: 2,
             opacity: 0.8,
             layers: 'dshk:psd_ind',
             format: 'image/png',
@@ -1612,7 +1632,7 @@ var psd_ind = L.nonTiledLayer.wms('/geodata/', {
 var perm_rec = L.nonTiledLayer.wms('/geodata/', {
             maxZoom: 22,
             minZoom: 1,
-            zIndex: 2, 
+            zIndex: 2,
             opacity: 0.8,
             layers: 'dshk:perm_rec',
             format: 'image/png',
@@ -1622,7 +1642,7 @@ var perm_rec = L.nonTiledLayer.wms('/geodata/', {
 var smr = L.nonTiledLayer.wms('/geodata/', {
             maxZoom: 22,
             minZoom: 1,
-            zIndex: 2, 
+            zIndex: 2,
             opacity: 0.8,
             layers: 'dshk:smr',
             format: 'image/png',
@@ -1632,7 +1652,7 @@ var smr = L.nonTiledLayer.wms('/geodata/', {
 var pexpl = L.nonTiledLayer.wms('/geodata/', {
             maxZoom: 22,
             minZoom: 1,
-            zIndex: 2, 
+            zIndex: 2,
             opacity: 0.8,
             layers: 'dshk:pexpl',
             format: 'image/png',
@@ -1642,7 +1662,7 @@ var pexpl = L.nonTiledLayer.wms('/geodata/', {
 var pexpl_ind = L.nonTiledLayer.wms('/geodata/', {
             maxZoom: 22,
             minZoom: 1,
-            zIndex: 2, 
+            zIndex: 2,
             opacity: 0.8,
             layers: 'dshk:pexpl_ind',
             format: 'image/png',
@@ -1652,7 +1672,7 @@ var pexpl_ind = L.nonTiledLayer.wms('/geodata/', {
 var loy = L.nonTiledLayer.wms('/geodata/', {
             maxZoom: 22,
             minZoom: 1,
-            zIndex: 2, 
+            zIndex: 2,
             opacity: 0.8,
             layers: 'dshk:loy',
             format: 'image/png',
@@ -1661,7 +1681,7 @@ var loy = L.nonTiledLayer.wms('/geodata/', {
 var pud = L.nonTiledLayer.wms('/geodata/', {
             maxZoom: 22,
             minZoom: 1,
-            zIndex: 2, 
+            zIndex: 2,
             opacity: 0.8,
             layers: 'dshk:pud',
             format: 'image/png',
@@ -1681,11 +1701,11 @@ var genplan_edit_geotiff=new Array();
 var geologik_rayonlash= L.nonTiledLayer.wms();
 var geologik_rayonlash_edit= L.nonTiledLayer.wms();
 
-var funk_zones_po_genplan=L.nonTiledLayer.wms(); 
-var funk_zones_po_genplan_edit=L.nonTiledLayer.wms(); 
+var funk_zones_po_genplan=L.nonTiledLayer.wms();
+var funk_zones_po_genplan_edit=L.nonTiledLayer.wms();
 
-var funk_zones_po_apot=L.nonTiledLayer.wms(); 
-var funk_zones_po_apot_edit=L.nonTiledLayer.wms(); 
+var funk_zones_po_apot=L.nonTiledLayer.wms();
+var funk_zones_po_apot_edit=L.nonTiledLayer.wms();
 
 var pdp = L.nonTiledLayer.wms();
 var pdp_edit = L.nonTiledLayer.wms();
@@ -1695,7 +1715,10 @@ var pdp_edit_geotiff=new Array();
 
 
 var redline = L.nonTiledLayer.wms();
+
 var redline_edit = L.nonTiledLayer.wms();
+
+var yer_uchaskalari = L.nonTiledLayer.wms();
 
 
 for (var i=0;i<50;i++){
@@ -1708,11 +1731,11 @@ pdp_edit_geotiff[i]=L.tileLayer.wms();
 
 $(document).on('click','.view_pdf_file',function(){
 
-var folder = $(this).attr('data-folder') 
+var folder = $(this).attr('data-folder')
 var filename=$(this).attr('data-file');
   $('#myIframe').attr("src","/static/pdf_viewer/web/viewer.html?file=/static/"+folder+"/"+filename+"");
   $('#pdf_viewer').dialog('open');
- 
+
 });
 
 
@@ -1743,7 +1766,7 @@ var filename=$(this).attr('data-file');
 //   $("input[data-layer_id='"+$(this).attr('data-layer_id')+"'][type='range']").attr("disabled",true);
 //   map.removeLayer(genplan_geotiff[$(this).attr('data-layer_id')]);
 //   var c=0;
- 
+
 //    $('.checkbox_geotiff').each(function(){
 //   if($(this).prop('checked'))
 //     c++;
@@ -1781,7 +1804,7 @@ else{
   $("input[data-layer_id='"+$(this).attr('data-layer_id')+"'][type='range']").attr("disabled",true);
   map.removeLayer(pdp_geotiff[$(this).attr('data-layer_id')]);
   var c=0;
- 
+
    $('.checkbox_geotiff_pdp').each(function(){
   if($(this).prop('checked'))
     c++;
@@ -1818,7 +1841,7 @@ else{
   $("input[data-layer_id='"+$(this).attr('data-layer_id')+"'][type='range']").attr("disabled",true);
   map.removeLayer(pdp_edit_geotiff[$(this).attr('data-layer_id')]);
   var c=0;
- 
+
    $('.checkbox_geotiff_pdp_edit').each(function(){
   if($(this).prop('checked'))
     c++;
@@ -1857,7 +1880,7 @@ else{
   $("input[data-layer_id='"+$(this).attr('data-layer_id')+"'][type='range']").attr("disabled",true);
   map.removeLayer(genplan_geotiff[$(this).attr('data-layer_id')]);
   var c=0;
- 
+
    $('.checkbox_geotiff_genplan').each(function(){
   if($(this).prop('checked'))
     c++;
@@ -1895,7 +1918,7 @@ else{
   $("input[data-layer_id='"+$(this).attr('data-layer_id')+"'][type='range']").attr("disabled",true);
   map.removeLayer(genplan_edit_geotiff[$(this).attr('data-layer_id')]);
   var c=0;
- 
+
    $('.checkbox_geotiff_genplan_edit').each(function(){
   if($(this).prop('checked'))
     c++;
@@ -2099,7 +2122,7 @@ $.ajax({
       url: URL1,
       dataType: "json",
       type: "GET",
-      success: function(data) 
+      success: function(data)
       {
 if(data.features.length){
 
@@ -2144,7 +2167,7 @@ $.ajax({
       url: URL1,
       dataType: "json",
       type: "GET",
-      success: function(data) 
+      success: function(data)
       {
 
 if(data.features.length){
@@ -2187,7 +2210,7 @@ $.ajax({
       url: URL1,
       dataType: "json",
       type: "GET",
-      success: function(data) 
+      success: function(data)
       {
 
 if(data.features.length){
@@ -2233,7 +2256,7 @@ $.ajax({
       url: URL1,
       dataType: "json",
       type: "GET",
-      success: function(data) 
+      success: function(data)
       {
 
 if(data.features.length){
@@ -2274,7 +2297,7 @@ $.ajax({
       url: URL1,
       dataType: "json",
       type: "GET",
-      success: function(data) 
+      success: function(data)
       {
 
 if(data.features.length){
@@ -2316,7 +2339,7 @@ $.ajax({
       url: URL1,
       dataType: "json",
       type: "GET",
-      success: function(data) 
+      success: function(data)
       {
 
 if(data.features.length){
@@ -2358,10 +2381,10 @@ $.ajax({
       url: URL1,
       dataType: "json",
       type: "GET",
-      success: function(data) 
+      success: function(data)
       {
 if(data.features.length){
- 
+
 
 var bounds=gsch.bbox(gsch.multiPolygon(data.features[0].geometry.coordinates));
 map.flyToBounds([[bounds[1],bounds[0]],[bounds[3],bounds[2]]]);
@@ -2390,6 +2413,53 @@ popup = L.popup()
 }
 
 
+if(map.hasLayer(yer_uchaskalari)){
+
+var URL1 = 'http://127.0.0.1:8080/geoserver/dshk/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetFeatureInfo&LAYERS=dshk:yer_uchaskalari&QUERY_LAYERS=dshk:yer_uchaskalari&BBOX='+BBOX+'&FEATURE_COUNT=100&HEIGHT='+HEIGHT+'&WIDTH='+WIDTH+'&INFO_FORMAT=application/json&SRS=EPSG:4326&X='+X+'&Y='+Y;
+
+$.ajax({
+      url: URL1,
+      dataType: "json",
+      type: "GET",
+      success: function(data)
+      {
+
+if(data.features.length){
+
+var bounds=gsch.bbox(gsch.multiPolygon(data.features[0].geometry.coordinates));
+map.flyToBounds([[bounds[1],bounds[0]],[bounds[3],bounds[2]]]);
+if(data.features.length==1){
+
+
+  var text=``;
+  text+=`<h4><b>Yer uchaskasi haqida qisqacha ma'lumot</b></h4><hr class='my_hr'><table class='my_table table-striped' style="font-size:14px;">
+  <tr><td width='100px'>Kadastr raqami</td><td>`+check_null(data.features[0].properties.nomi)+`</td></tr>
+  <tr><td>Turi</td><td>`+check_null(data.features[0].properties.turi)+`</td></tr>
+  <tr><td>Joylashgan joyi</td><td>`+check_null(data.features[0].properties.joyi)+`</td></tr>
+  <tr><td>F.I.SH</td><td>`+check_null(data.features[0].properties.fio)+`</td></tr>
+  <tr><td>Hujjat</td><td>`+check_null(data.features[0].properties.hujjat)+`</td></tr>
+    <tr><td>Sana</td><td>`+check_null(data.features[0].properties.sana)+`</td></tr>
+      <tr><td>Maydoni</td><td>`+check_null(data.features[0].properties.maydon)+` m<sup>2</sup></td></tr>
+  </table>`;
+
+
+popup = L.popup()
+    .setLatLng(e.latlng)
+    .setContent(text)
+    .openOn(map);
+}
+
+}
+}
+
+});
+}
+
+
+
+
+
+
 if(map.hasLayer(genplan)){
 
 var URL1 = ms_url + 'SERVICE=WMS&VERSION=1.1.0&REQUEST=GetFeatureInfo&LAYERS=dshk:genplans&QUERY_LAYERS=dshk:genplans&BBOX='+BBOX+'&FEATURE_COUNT=100&HEIGHT='+HEIGHT+'&WIDTH='+WIDTH+'&INFO_FORMAT=application/json&SRS=EPSG:4326&X='+X+'&Y='+Y;
@@ -2398,7 +2468,7 @@ $.ajax({
       url: URL1,
       dataType: "json",
       type: "GET",
-      success: function(data) 
+      success: function(data)
       {
 if(data.features.length){
 
@@ -2437,7 +2507,7 @@ $.ajax({
       url: URL1,
       dataType: "json",
       type: "GET",
-      success: function(data) 
+      success: function(data)
       {
 
 if(data.features.length){
@@ -2479,7 +2549,7 @@ $.ajax({
       url: URL1,
       dataType: "json",
       type: "GET",
-      success: function(data) 
+      success: function(data)
       {
 
 if(data.features.length){
@@ -2522,7 +2592,7 @@ $.ajax({
       url: URL1,
       dataType: "json",
       type: "GET",
-      success: function(data) 
+      success: function(data)
       {
 
 if(data.features.length){
@@ -2570,9 +2640,9 @@ $.ajax({
       url: URL1,
       dataType: "json",
       type: "GET",
-      success: function(data) 
+      success: function(data)
       {
-        
+
 if(data.features.length){
 
 var bounds=gsch.bbox(gsch.multiPolygon(data.features[0].geometry.coordinates));
@@ -2610,7 +2680,7 @@ $.ajax({
       url: URL1,
       dataType: "json",
       type: "GET",
-      success: function(data) 
+      success: function(data)
       {
 
 if(data.features.length){
@@ -2651,7 +2721,7 @@ $.ajax({
       url: URL1,
       dataType: "json",
       type: "GET",
-      success: function(data) 
+      success: function(data)
       {
 
 if(data.features.length){
@@ -2685,7 +2755,7 @@ $.ajax({
       url: URL1,
       dataType: "json",
       type: "GET",
-      success: function(data) 
+      success: function(data)
       {
 
 if(data.features.length){
@@ -2817,7 +2887,7 @@ $.ajax({
       url: URL1,
       dataType: "json",
       type: "GET",
-      success: function(data) 
+      success: function(data)
       {
 if(data.features.length){
 create_loyihachi_full_info(data.features[0].properties.inn);
@@ -2835,7 +2905,7 @@ $.ajax({
       url: URL1,
       dataType: "json",
       type: "GET",
-      success: function(data) 
+      success: function(data)
       {
 if(data.features.length){
 create_pudratchi_full_info(data.features[0].properties.inn);
@@ -2868,8 +2938,8 @@ error:function(){
     $('#login_logout').css({'width':'auto','padding':'9','border':'1px solid rgba(0,0,0,0.25)'});
     $(this).attr('click','1');
   }
-    
-  }); 
+
+  });
 
 $(document).on('click','.a_feature_list',function(){
   map.removeLayer(popup);
@@ -2940,7 +3010,7 @@ create_popup_apot(data.features[0].properties);
 if(layer_name=='apots_edit'){
 create_popup_apot_edit(data.features[0].properties);
 }
-});  
+});
 }
 
 
@@ -2973,7 +3043,7 @@ console.log(data)
         },
 error: function () {
 console.log('ajax da xatolik !!');
-         
+
 }
       });
 });
@@ -2995,9 +3065,9 @@ function get_style_vil(d){
            d == "Jizzax viloyati"  ? '#ff7f50' :
            d == "Sirdaryo viloyati"  ? '#D2691E' :
            d == "Toshkent viloyati"  ? '#ff1443' :
-           d == "Namangan viloyati"  ? '#FFA500' : 
-           d == "Farg'ona viloyati"  ? '#009900' : 
-           d == "Andijon viloyati"  ? '#7FFF00' : '';                     
+           d == "Namangan viloyati"  ? '#FFA500' :
+           d == "Farg'ona viloyati"  ? '#009900' :
+           d == "Andijon viloyati"  ? '#7FFF00' : '';
 }
 
 
@@ -3029,7 +3099,7 @@ function click_vil(e) {
            });
     }
 function mouseover_vil(e) {
-  
+
     var layer = e.target;
     layer.setStyle({
         fillColor:'#fff',
@@ -3040,12 +3110,12 @@ function mouseover_vil(e) {
         fillOpacity: 0.6,
     });
 layer.bindTooltip(layer.feature.properties.RegionNa_1,{
-                      // permanent: true,   
+                      // permanent: true,
                       direction:"top",
                       className :'tooltip_vil',
                       offset: [0,-10],
                       sticky:true,
-                      opacity:0.9,  
+                      opacity:0.9,
                    }).openTooltip();;
    }
 function mouseout_vil(e) {
@@ -3059,7 +3129,7 @@ var uzb_vil = L.geoJson(null,{
 
 function $_GET(param) {
   var vars = {};
-  window.location.href.replace( location.hash, '' ).replace( 
+  window.location.href.replace( location.hash, '' ).replace(
     /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
     function( m, key, value ) { // callback
       vars[key] = value !== undefined ? value : '';
@@ -3067,7 +3137,7 @@ function $_GET(param) {
   );
 
   if ( param ) {
-    return vars[param] ? vars[param] : null;  
+    return vars[param] ? vars[param] : null;
   }
   return vars;
 }
@@ -3079,7 +3149,7 @@ if ($_GET('sub')){
 }
 else{
   map.addLayer(uzb_vil);
-} 
+}
 
 $.getJSON("/static/uzb.json", function (data) {
     uzb_vil.addData(data);
@@ -3088,7 +3158,7 @@ $.getJSON("/static/uzb.json", function (data) {
 var uzb_res = L.nonTiledLayer.wms('/geodata/', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: -1, 
+            zIndex: -1,
             opacity: 0.8,
             layers: 'dshk:uzb',
             format: 'image/png',
@@ -3108,7 +3178,7 @@ style : {
 
        pointToLayer: function(feature, latlng) {
         return new L.CircleMarker(latlng, {
-          radius: 8, 
+          radius: 8,
           fillOpacity: 0.85,
         });
       }
@@ -3153,7 +3223,7 @@ $(document).on('click','.click_set_object',function(){
 
   if($(this).attr('data-dtype')=='setObject'){
    var data = new FormData();
- 
+
   data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
   data.append("query_type",'location');
   data.append("id",$(this).attr('data-id'));
@@ -3162,7 +3232,7 @@ $.ajax({
         url: myUrl,
         data: data,
         processData: false,
-        contentType: false, 
+        contentType: false,
         cache: false,
         type: 'post',
         success: function ( data ) {
@@ -3184,7 +3254,7 @@ console.log('Ajaxda xatolik!!!');
           }});
   }
   else{
-  
+
 map.flyToBounds([[$(this).attr('data-bounds-1'),$(this).attr('data-bounds-0')],[$(this).attr('data-bounds-3'),$(this).attr('data-bounds-2')]]);
 }
 
@@ -3194,11 +3264,11 @@ function searchFromTable(input_id,type_id,maydon_id,table_id,count){
     var input, filter, table, tr, td, i,j;
     var max_coumns = 25;
     input = document.getElementById(input_id);
-    var col_id = $('#'+maydon_id+'').val();  
+    var col_id = $('#'+maydon_id+'').val();
     var full_search = true;
     if($('#'+type_id+'').val()==1)full_search = false;
     filter = input.value.toUpperCase();
-      table = document.getElementById(table_id); 
+      table = document.getElementById(table_id);
       tr = table.getElementsByTagName("tr");
       var cnt = 0;
       if(col_id > -1)max_coumns = 1;
@@ -3216,7 +3286,7 @@ function searchFromTable(input_id,type_id,maydon_id,table_id,count){
               if (td.innerHTML.search(exx) > -1) {
                 found = true;
                 break;
-              } 
+              }
           }
         }
       if(found){
@@ -3225,7 +3295,7 @@ function searchFromTable(input_id,type_id,maydon_id,table_id,count){
         }
         else {
           tr[i].style.display = "none";
-        }   
+        }
       }
 if(count!='item-count_pod9'){
 
@@ -3287,19 +3357,19 @@ $('#search_data_input_begin').datepicker({
   changeMonth:true,
   changeYear:true
 });
- 
+
 $('#search_data_input_begin').datepicker('option','dateFormat','dd.mm.yy');
 
 $('#search_data_input_end').datepicker({
   changeMonth:true,
   changeYear:true
-}); 
+});
 $('#search_data_input_end').datepicker('option','dateFormat','dd.mm.yy');
 
 
 $('#button_date_filter').on('click',function(){
   var begin=$('#search_data_input_begin').val();
-  var end=$('#search_data_input_end').val();  
+  var end=$('#search_data_input_end').val();
 create_table_pod9($('#search-type_tip_pod9').val(),$('#search-type_hujjat_pod9').val(),begin,end,1);
 });
 
@@ -3308,7 +3378,7 @@ create_table_pod9($('#search-type_tip_pod9').val(),$('#search-type_hujjat_pod9')
 
 $(document).on('click','.open_close_secret_div_pdp',function(){
 
-if($(this).attr('data-status')=='0'){  
+if($(this).attr('data-status')=='0'){
 $(this).attr('data-status','1');
 
 $('#secret_div_pdp').css({'display':'block'});
@@ -3326,7 +3396,7 @@ else{
 
 $(document).on('click','.open_close_secret_div_pdp_edit',function(){
 
-if($(this).attr('data-status')=='0'){  
+if($(this).attr('data-status')=='0'){
 $(this).attr('data-status','1');
 
 $('#secret_div_pdp_edit').css({'display':'block'});
@@ -3344,7 +3414,7 @@ else{
 
 $(document).on('click','.open_close_secret_div_genplan',function(){
 
-if($(this).attr('data-status')=='0'){  
+if($(this).attr('data-status')=='0'){
 $(this).attr('data-status','1');
 
 $('#secret_div_genplan').css({'display':'block'});
@@ -3361,7 +3431,7 @@ else{
 
 $(document).on('click','.open_close_secret_div_genplan_edit',function(){
 
-if($(this).attr('data-status')=='0'){  
+if($(this).attr('data-status')=='0'){
 $(this).attr('data-status','1');
 
 $('#secret_div_genplan_edit').css({'display':'block'});
@@ -3387,7 +3457,7 @@ map.on('zoomend',function(){
 
 drawnItems = new L.FeatureGroup();
 
-map.addLayer(drawnItems); 
+map.addLayer(drawnItems);
 const drawControl = new L.Control.Draw({
   position: 'bottomright',
   draw: {
@@ -3436,7 +3506,7 @@ var strLatLng = function(latlng) {
 var getPopupContent = function(layer) {
   if(layer instanceof L.Marker) {
     return strLatLng(layer.getLatLng());
-  } 
+  }
   else if(layer instanceof L.Circle) {
     var center = layer.getLatLng(),
     radius = layer.getRadius();
@@ -3481,9 +3551,9 @@ map.on(L.Draw.Event.EDITED, function(event) {
     }
   });
 });
- 
+
 $('#contol_box_zoom').on('click',function(){
-  $('.leaflet-control-boxzoom')[0].click();   
+  $('.leaflet-control-boxzoom')[0].click();
 });
 
 $('#draw_point').on('click',function(){
@@ -3523,6 +3593,6 @@ $('#draw_edit').on('click',function(){
 $('.leaflet-draw-actions').appendTo('#tab-action-draw');
 
 $(document).on('click','.draw_delete_all',function(){
- drawnItems.clearLayers(); 
+ drawnItems.clearLayers();
 ($('.leaflet-draw-actions-bottom a').first())[0].click();
 });

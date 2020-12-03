@@ -1,10 +1,9 @@
-
 $(document).on('click','#checkbox_id_2_3_2',function(){
     if($(this).prop('checked')&&map.hasLayer(pdp)==false){
         pdp = L.nonTiledLayer.wms('/geodata', {
             zIndex: 1,
             maxZoom: 20,
-            minZoom: 1,             
+            minZoom: 1,
             opacity: 0.8,
             layers: 'dshk:pdp',
             format: 'image/png',
@@ -21,7 +20,7 @@ $(document).on('click','#checkbox_id_2_3_2_1',function(){
      pdp_edit = L.nonTiledLayer.wms('/geodata', {
             zIndex: 1,
             maxZoom: 20,
-            minZoom: 1,             
+            minZoom: 1,
             opacity: 0.8,
             layers: 'dshk:pdp_edit',
             format: 'image/png',
@@ -46,7 +45,7 @@ $(document).on('click','#checkbox_id_1_2_1',function(){
      redline = L.nonTiledLayer.wms('/geodata', {
             zIndex: 1,
             maxZoom: 20,
-            minZoom: 1,             
+            minZoom: 1,
             opacity: 0.8,
             layers: 'dshk:redline',
             format: 'image/png',
@@ -59,7 +58,7 @@ $(document).on('click','#checkbox_id_1_2_1',function(){
  $('.redline_vil_checkbox').each(function(){
   $(this).prop('checked',true);
 });
-    
+
 }
 else{
     map.removeLayer(redline);
@@ -79,7 +78,7 @@ $(document).on('click','#checkbox_id_1_2_2',function(){
      redline_edit = L.nonTiledLayer.wms('/geodata', {
             zIndex: 1,
             maxZoom: 20,
-            minZoom: 1,             
+            minZoom: 1,
             opacity: 0.8,
             layers: 'dshk:redline_edit',
             format: 'image/png',
@@ -92,7 +91,7 @@ $(document).on('click','#checkbox_id_1_2_2',function(){
  $('.redline_edit_vil_checkbox').each(function(){
   $(this).prop('checked',true);
 });
-    
+
 }
 else{
     map.removeLayer(redline_edit);
@@ -112,20 +111,20 @@ $(document).on('click','#checkbox_id_2_3_1',function(){
          {
             zIndex: 1,
             maxZoom: 20,
-            minZoom: 1,             
+            minZoom: 1,
             opacity: 0.8,
             layers: 'dshk:genplans',
             format: 'image/png',
             transparent: true,
         }).addTo(map);
-  
+
   $('.genplan_checkbox').each(function(){
   $(this).prop('checked',true);
 });
  $('.genplan_vil_checkbox').each(function(){
   $(this).prop('checked',true);
 });
-    
+
 }
 else{
         map.removeLayer(genplan);
@@ -145,7 +144,7 @@ $(document).on('click','#checkbox_id_2_3_1_1',function(){
      genplan_edit = L.nonTiledLayer.wms('/geodata', {
             zIndex: 1,
             maxZoom: 20,
-            minZoom: 1,             
+            minZoom: 1,
             opacity: 0.8,
             layers: 'dshk:genplans_edit',
             format: 'image/png',
@@ -172,7 +171,7 @@ $(document).on('click','#checkbox_id_2_2_1_1',function(){
      apot_edit = L.nonTiledLayer.wms('/geodata', {
             zIndex: 1,
             maxZoom: 20,
-            minZoom: 1,             
+            minZoom: 1,
             opacity: 0.8,
             layers: 'dshk:apots_edit',
             format: 'image/png',
@@ -197,7 +196,7 @@ if($(this).prop('checked')){
 apot = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:apots',
             format: 'image/png',
@@ -228,7 +227,7 @@ if($(this).prop('checked')){
 funk_zones_po_genplan = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 2, 
+            zIndex: 2,
             opacity: 0.8,
             layers: 'dshk:funk_zones_po_genplan',
             format: 'image/png',
@@ -256,7 +255,7 @@ if($(this).prop('checked')){
 funk_zones_po_genplan_edit = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 2, 
+            zIndex: 2,
             opacity: 0.8,
             layers: 'dshk:funk_zones_po_genplan_edit',
             format: 'image/png',
@@ -292,7 +291,7 @@ $(document).on('click','#checkbox_id_1_3_1',function(){
      geologik_rayonlash = L.nonTiledLayer.wms('/geodata', {
             zIndex: 1,
             maxZoom: 20,
-            minZoom: 1,             
+            minZoom: 1,
             opacity: 0.8,
             layers: 'dshk:geologik_rayonlash',
             format: 'image/png',
@@ -305,7 +304,7 @@ $(document).on('click','#checkbox_id_1_3_1',function(){
  $('.geologik_rayonlash_vil_checkbox').each(function(){
   $(this).prop('checked',true);
 });
-    
+
 }
 else{
     map.removeLayer(geologik_rayonlash);
@@ -318,7 +317,24 @@ else{
     }
 });
 
+$(document).on('click','#checkbox_id_1_4_1',function(){
+    if($(this).prop('checked')&&map.hasLayer(yer_uchaskalari)==false){
+     yer_uchaskalari = L.nonTiledLayer.wms('http://127.0.0.1:8080/geoserver/dshk/wms',
+          {
+            zIndex: 1,
+            maxZoom: 20,
+            minZoom: 1,
+            opacity: 0.8,
+            layers: 'dshk:yer_uchaskalari',
+            format: 'image/png',
+            transparent: true,
+            }).addTo(map);
 
+}
+else{
+    map.removeLayer(yer_uchaskalari);
+    }
+});
 
 
 $(document).on('click','#checkbox_id_1_3_1_1',function(){
@@ -326,7 +342,7 @@ if($(this).prop('checked')&&map.hasLayer(geologik_rayonlash_edit)==false){
      geologik_rayonlash_edit = L.nonTiledLayer.wms('/geodata', {
             zIndex: 1,
             maxZoom: 20,
-            minZoom: 1,             
+            minZoom: 1,
             opacity: 0.8,
             layers: 'dshk:geologik_rayonlash_edit',
             format: 'image/png',
@@ -339,7 +355,7 @@ if($(this).prop('checked')&&map.hasLayer(geologik_rayonlash_edit)==false){
  $('.geologik_rayonlash_edit_vil_checkbox').each(function(){
   $(this).prop('checked',true);
 });
-    
+
 }
 else{
     map.removeLayer(geologik_rayonlash_edit);
@@ -359,7 +375,7 @@ if($(this).prop('checked')){
 funk_zones_po_apot = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 2, 
+            zIndex: 2,
             opacity: 0.8,
             layers: 'dshk:funk_zones_po_apot',
             format: 'image/png',
@@ -387,7 +403,7 @@ if($(this).prop('checked')){
 funk_zones_po_apot_edit = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 2, 
+            zIndex: 2,
             opacity: 0.8,
             layers: 'dshk:funk_zones_po_apot_edit',
             format: 'image/png',
@@ -431,7 +447,7 @@ if($(this).attr('data-layer_name')=='funk_zones_po_genplan'){
 
 for(var zone in zone_type){
     if(zone_type[zone].yesgenplan=='True'){
-   text+=`<tr><td><img src='/static/img/img_funk_zones/funk_zone_`+zone_type[zone].type+`.png' class='img_label'></td><td><input type='checkbox' class='funk_zones_po_genplan_checkbox' data-filter='`+zone_type[zone].type+`' id='fzpg_info_`+zone+`'></td><td><label class='info_label' for='fzpg_info_`+zone+`'>`+zone_type[zone].disUz+`</label></td><tr>`; 
+   text+=`<tr><td><img src='/static/img/img_funk_zones/funk_zone_`+zone_type[zone].type+`.png' class='img_label'></td><td><input type='checkbox' class='funk_zones_po_genplan_checkbox' data-filter='`+zone_type[zone].type+`' id='fzpg_info_`+zone+`'></td><td><label class='info_label' for='fzpg_info_`+zone+`'>`+zone_type[zone].disUz+`</label></td><tr>`;
   }}
    text+="</table>";
 $('#sub4menu_div').html(text);
@@ -455,7 +471,7 @@ if($(this).attr('data-layer_name')=='funk_zones_po_genplan_edit'){
 for(var zone in zone_type){
 
 if(zone_type[zone].yesgenplan=='True'){
-   text+=`<tr><td><img src='/static/img/img_funk_zones/funk_zone_`+zone_type[zone].type+`.png' class='img_label'></td><td><input type='checkbox' class='funk_zones_po_genplan_edit_type_checkbox' data-filter='`+zone_type[zone].type+`' id='fzpg_info_`+zone+`'></td><td><label class='info_label' for='fzpg_info_`+zone+`'>`+zone_type[zone].disUz+`</label></td><tr>`; 
+   text+=`<tr><td><img src='/static/img/img_funk_zones/funk_zone_`+zone_type[zone].type+`.png' class='img_label'></td><td><input type='checkbox' class='funk_zones_po_genplan_edit_type_checkbox' data-filter='`+zone_type[zone].type+`' id='fzpg_info_`+zone+`'></td><td><label class='info_label' for='fzpg_info_`+zone+`'>`+zone_type[zone].disUz+`</label></td><tr>`;
   }}
    text+="</table>";
 
@@ -473,10 +489,10 @@ if($(this).attr('data-layer_name')=='funk_zones_po_apot'){
 
 for(var zone in zone_type){
   if(zone_type[zone].yesapot=='True'){
-   text+=`<tr><td><img src='/static/img/img_funk_zones/funk_zone_`+zone_type[zone].type+`.png' class='img_label'></td><td><input type='checkbox' class='funk_zones_po_apot_checkbox' data-filter='`+zone_type[zone].type+`' id='fzpa_info_`+zone+`'></td><td><label class='info_label' for='fzpa_info_`+zone+`'>`+zone_type[zone].disUz+`</label></td></tr>`; 
+   text+=`<tr><td><img src='/static/img/img_funk_zones/funk_zone_`+zone_type[zone].type+`.png' class='img_label'></td><td><input type='checkbox' class='funk_zones_po_apot_checkbox' data-filter='`+zone_type[zone].type+`' id='fzpa_info_`+zone+`'></td><td><label class='info_label' for='fzpa_info_`+zone+`'>`+zone_type[zone].disUz+`</label></td></tr>`;
   }
   }
-  
+
    text+="</table>";
 $('#sub4menu_div').html(text);
 }
@@ -501,7 +517,7 @@ if($(this).attr('data-layer_name')=='funk_zones_po_apot_edit'){
 for(var zone in zone_type){
 
 if(zone_type[zone].yesapot=='True'){
-   text+=`<tr><td><img src='/static/img/img_funk_zones/funk_zone_`+zone_type[zone].type+`.png' class='img_label'></td><td><input type='checkbox' class='funk_zones_po_apot_edit_type_checkbox' data-filter='`+zone_type[zone].type+`' id='fzpg_info_`+zone+`'></td><td><label class='info_label' for='fzpg_info_`+zone+`'>`+zone_type[zone].disUz+`</label></td><tr>`; 
+   text+=`<tr><td><img src='/static/img/img_funk_zones/funk_zone_`+zone_type[zone].type+`.png' class='img_label'></td><td><input type='checkbox' class='funk_zones_po_apot_edit_type_checkbox' data-filter='`+zone_type[zone].type+`' id='fzpg_info_`+zone+`'></td><td><label class='info_label' for='fzpg_info_`+zone+`'>`+zone_type[zone].disUz+`</label></td><tr>`;
   }}
    text+="</table>";
 
@@ -694,7 +710,7 @@ $('#sub4menu_div').html(text);
 
 if($(this).attr('data-layer_name')=='pdp'){
   text=`
-<table class='table_4'> 
+<table class='table_4'>
 <tr><td><img src='/static/img/table-icon.png' data-layer_name='pdp' data-filter_type='tas' data-filter='-0' class='info_table'></td><td colspan='3' >Barcha ob'yektlar ro'yxati</td></tr>
   <tr><td><img src='/static/img/table-icon.png' data-layer_name='pdp' data-filter_type='tas' data-filter='1' class='info_table'></td><td><img src='/static/img/pdp_tas_1.png' class='img_label'></td><td><input type='checkbox' class='pdp_checkbox' data-filter='1' id='pdp_info_1'></td><td><label class='info_label' for='pdp_info_1'>Tasdiqlangan</label></td></tr>
    <tr><td><img src='/static/img/table-icon.png' data-layer_name='pdp' data-filter_type='tas' data-filter='0' class='info_table'></td><td><img src='/static/img/pdp_tas_0.png' class='img_label'></td><td><input type='checkbox' class='pdp_checkbox' data-filter='0' id='pdp_info_0'></td><td><label class='info_label' for='pdp_info_0'>Tasdiqlanmagan</label></td></tr>
@@ -794,7 +810,7 @@ map.removeLayer(funk_zones_po_genplan);
 funk_zones_po_genplan = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:funk_zones_po_genplan',
             format: 'image/png',
@@ -803,7 +819,7 @@ funk_zones_po_genplan = L.nonTiledLayer.wms('/geodata', {
         }).addTo(map);
 
   }
-      
+
 });
 
 $(document).on('click','.funk_zones_po_apot_checkbox',function(){
@@ -839,7 +855,7 @@ map.removeLayer(funk_zones_po_apot);
 funk_zones_po_apot = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:funk_zones_po_apot',
             format: 'image/png',
@@ -848,7 +864,7 @@ funk_zones_po_apot = L.nonTiledLayer.wms('/geodata', {
         }).addTo(map);
 
   }
-      
+
 });
 
 
@@ -917,7 +933,7 @@ map.removeLayer(genplan);
 genplan = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:genplans',
             format: 'image/png',
@@ -994,7 +1010,7 @@ map.removeLayer(genplan);
 genplan = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:genplans',
             format: 'image/png',
@@ -1003,7 +1019,7 @@ genplan = L.nonTiledLayer.wms('/geodata', {
         }).addTo(map);
 
   }
-   
+
 });
 
 
@@ -1075,7 +1091,7 @@ map.removeLayer(genplan_edit);
 genplan_edit = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:genplans_edit',
             format: 'image/png',
@@ -1155,7 +1171,7 @@ map.removeLayer(genplan_edit);
 genplan_edit = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:genplans_edit',
             format: 'image/png',
@@ -1234,7 +1250,7 @@ map.removeLayer(funk_zones_po_genplan_edit);
 funk_zones_po_genplan_edit = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:funk_zones_po_genplan_edit',
             format: 'image/png',
@@ -1311,7 +1327,7 @@ map.removeLayer(funk_zones_po_genplan_edit);
 funk_zones_po_genplan_edit = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:funk_zones_po_genplan_edit',
             format: 'image/png',
@@ -1390,7 +1406,7 @@ map.removeLayer(funk_zones_po_apot_edit);
 funk_zones_po_apot_edit = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:funk_zones_po_apot_edit',
             format: 'image/png',
@@ -1470,7 +1486,7 @@ map.removeLayer(funk_zones_po_apot_edit);
 funk_zones_po_apot_edit = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:funk_zones_po_apot_edit',
             format: 'image/png',
@@ -1549,7 +1565,7 @@ map.removeLayer(apot);
 apot = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:apots',
             format: 'image/png',
@@ -1624,7 +1640,7 @@ map.removeLayer(apot);
 apot = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:apots',
             format: 'image/png',
@@ -1633,7 +1649,7 @@ apot = L.nonTiledLayer.wms('/geodata', {
         }).addTo(map);
 
   }
-   
+
 });
 
 
@@ -1700,7 +1716,7 @@ map.removeLayer(apot_edit);
 apot_edit = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:apots_edit',
             format: 'image/png',
@@ -1772,7 +1788,7 @@ map.removeLayer(apot_edit);
 apot_edit = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:apots_edit',
             format: 'image/png',
@@ -1823,7 +1839,7 @@ map.removeLayer(redline);
 redline = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:redline',
             format: 'image/png',
@@ -1871,7 +1887,7 @@ map.removeLayer(geologik_rayonlash);
 geologik_rayonlash = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:geologik_rayonlash',
             format: 'image/png',
@@ -1947,7 +1963,7 @@ map.removeLayer(geologik_rayonlash_edit);
 geologik_rayonlash_edit = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:geologik_rayonlash_edit',
             format: 'image/png',
@@ -2022,7 +2038,7 @@ map.removeLayer(geologik_rayonlash_edit);
 geologik_rayonlash_edit = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:geologik_rayonlash_edit',
             format: 'image/png',
@@ -2100,7 +2116,7 @@ map.removeLayer(redline_edit);
 redline_edit = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:redline_edit',
             format: 'image/png',
@@ -2174,7 +2190,7 @@ map.removeLayer(redline_edit);
 redline_edit = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:redline_edit',
             format: 'image/png',
@@ -2257,7 +2273,7 @@ map.removeLayer(pdp);
 pdp = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:pdp',
             format: 'image/png',
@@ -2333,7 +2349,7 @@ map.removeLayer(pdp);
 pdp = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:pdp',
             format: 'image/png',
@@ -2342,7 +2358,7 @@ pdp = L.nonTiledLayer.wms('/geodata', {
         }).addTo(map);
 
   }
-   
+
 });
 
 $(document).on('click','.pdp_edit_checkbox',function(){
@@ -2410,7 +2426,7 @@ map.removeLayer(pdp_edit);
 pdp_edit = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:pdp_edit',
             format: 'image/png',
@@ -2420,7 +2436,7 @@ pdp_edit = L.nonTiledLayer.wms('/geodata', {
 
   }
 
-  
+
 });
 
 $(document).on('click','.pdp_edit_vil_checkbox',function(){
@@ -2487,7 +2503,7 @@ map.removeLayer(pdp_edit);
 pdp_edit = L.nonTiledLayer.wms('/geodata', {
             maxZoom: 20,
             minZoom: 1,
-            zIndex: 1, 
+            zIndex: 1,
             opacity: 0.8,
             layers: 'dshk:pdp_edit',
             format: 'image/png',
@@ -2496,7 +2512,7 @@ pdp_edit = L.nonTiledLayer.wms('/geodata', {
         }).addTo(map);
 
   }
- 
+
 });
 
 
@@ -2512,7 +2528,7 @@ $('#search-field').val('');
 if($(this).attr('data-layer_name')=='geologik_rayonlash' || $(this).attr('data-layer_name')=='geologik_rayonlash_edit'){
 
  var data = new FormData();
- 
+
   data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
   data.append("filter",$(this).attr('data-filter'));
   data.append("filter_type",$(this).attr('data-filter_type'));
@@ -2529,7 +2545,7 @@ $.ajax({
         type: 'post',
         success: function ( result ) {
 
- 
+
    data=JSON.parse(result.data);
 
    var text='';
@@ -2558,7 +2574,7 @@ data_type='geolograyon_data_id_id';
 else{
 json_data=data[i].fields.geolograyon_data_edit_id;
 data_type='geolograyon_data_edit_id_id';
-} 
+}
     text+="<tr><td>"+(1+i);
 
 if(filter_type=='vil' && type=='geologik_rayonlash_edit'){
@@ -2632,7 +2648,7 @@ tablecont.addEventListener('scroll',scrollHendle);
 
 if($(this).attr('data-layer_name')=='apot' || $(this).attr('data-layer_name')=='apot_edit'){
  var data = new FormData();
- 
+
   data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
   data.append("filter",$(this).attr('data-filter'));
   data.append("filter_type",$(this).attr('data-filter_type'));
@@ -2665,14 +2681,14 @@ if($(this).attr('data-layer_name')=='apot' || $(this).attr('data-layer_name')=='
   for(var i=0;i<data.length;i++){
 
  text+="<tr><td>"+(1+i);
-      
+
       if(type=='apot'){
       text+="<br><img src='/static/img/apot_tas_"+data[i].fields.tasdiqlanganligi+".png' class='fly_to_bounds' data-layer_name='apots' data-id='"+data[i].fields.id+"'></td>";
       }
       if(type=='apot_edit'){
       text+="<br><img src='/static/img/status_"+data[i].fields.status+".png' class='fly_to_bounds' data-layer_name='apots_edit' data-id='"+data[i].fields.id+"'></td>";
       }
-  
+
       text+="<td>"+data[i].fields.fuqarolar_yiginlari+"</td>\
       <td>"+vil(parseInt(data[i].fields.respublika_viloyat)).disUz+"</td>\
       <td>"+data[i].fields.tuman_shahar+"</td>\
@@ -2737,7 +2753,7 @@ if($(this).attr('data-layer_name')=='funk_zones_po_genplan' || $(this).attr('dat
 
 
  var data = new FormData();
- 
+
   data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
   data.append("filter",$(this).attr('data-filter'));
   data.append("filter_type",$(this).attr('data-filter_type'));
@@ -2771,13 +2787,13 @@ $.ajax({
    <td>Aholi punktining loyihaviy maydoni ga</td>\
    <td>Aholining loyihaviy soni</td>\
    </tr>";
- 
+
     for(var i=0;i<data.length;i++){
 
     let json_data=data[i].fields.genplan_id;
     text+="<tr><td>"+(1+i);
 
-     
+
       if(type=='funk_zones_po_genplan'){
       text+="<br><img src='/static/img/img/polygon.png' class='fly_to_bounds img_opa' data-layer_name='genplans' data-id='"+json_data.id+"'></td>";
       }
@@ -2800,7 +2816,7 @@ text+="<td>"+json_data.aholi_punktining_nomi+"</td>\
 <td>"+json_data.aholining_loyihaviy_soni+"</td>\
  <td style='display:none;' >"+(1+i)+"</td>\
             </tr>";
-   
+
     }
 
 $('#item-count').html("Barcha ob'yektlar soni:"+data.length+"<br>");
@@ -2845,7 +2861,7 @@ tablecont.addEventListener('scroll',scrollHendle);
           console.log('Ajaxda xatolik!');
         }
       });
- 
+
 }
 
 
@@ -2856,14 +2872,14 @@ if($(this).attr('data-layer_name')=='funk_zones_po_apot' || $(this).attr('data-l
 
 
  var data = new FormData();
- 
+
   data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
   data.append("filter",$(this).attr('data-filter'));
   data.append("filter_type",$(this).attr('data-filter_type'));
   data.append("type",$(this).attr('data-layer_name'));
   var type=$(this).attr('data-layer_name');
 
-$.ajax({ 
+$.ajax({
         url: "/funk_apot_data",
         data: data,
         processData: false,
@@ -2893,14 +2909,14 @@ $.ajax({
     let json_data=data[i].fields.apot_id;
 
  text+="<tr><td>"+(1+i);
-      
+
       if(type=='funk_zones_po_apot'){
       text+="<br><img src='/static/img/img/polygon.png' class='fly_to_bounds img_opa' data-layer_name='apots' data-id='"+json_data.id+"'></td>";
       }
       if(type=='funk_zones_po_apot_edit'){
       text+="<br><img src='/static/img/status_"+json_data.status+".png' class='fly_to_bounds' data-layer_name='apots' data-id='"+json_data.id+"'></td>";
       }
-  
+
       text+="<td>"+json_data.fuqarolar_yiginlari+"</td>\
       <td>"+vil(parseInt(json_data.respublika_viloyat)).disUz+"</td>\
       <td>"+json_data.tuman_shahar+"</td>\
@@ -2956,7 +2972,7 @@ tablecont.addEventListener('scroll',scrollHendle);
           console.log('Ajaxda xatolik!');
         }
       });
- 
+
 }
 
 
@@ -2965,7 +2981,7 @@ if($(this).attr('data-layer_name')=='genplan' || $(this).attr('data-layer_name')
 
 
  var data = new FormData();
- 
+
   data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
   data.append("filter",$(this).attr('data-filter'));
   data.append("filter_type",$(this).attr('data-filter_type'));
@@ -2999,10 +3015,10 @@ $.ajax({
    <td>Aholi punktining loyihaviy maydoni ga</td>\
    <td>Aholining loyihaviy soni</td>\
    </tr>";
- 
+
     for(var i=0;i<data.length;i++){
  text+="<tr><td>"+(1+i);
-      
+
       if(type=='genplan'){
       text+="<br><img src='/static/img/genplan_tas_"+data[i].fields.tasdiqlanganligi+".png' class='fly_to_bounds' data-layer_name='genplans' data-id='"+data[i].fields.id+"'></td>";
       }
@@ -3025,7 +3041,7 @@ text+="<td>"+data[i].fields.aholi_punktining_nomi+"</td>\
 <td>"+data[i].fields.aholining_loyihaviy_soni+"</td>\
  <td style='display:none;' >"+(1+i)+"</td>\
             </tr>";
-   
+
     }
 
 $('#item-count').html("Barcha ob'yektlar soni:"+data.length+"<br>");
@@ -3070,7 +3086,7 @@ tablecont.addEventListener('scroll',scrollHendle);
           console.log('Ajaxda xatolik!');
         }
       });
- 
+
 }
 
 
@@ -3079,7 +3095,7 @@ if($(this).attr('data-layer_name')=='redline' || $(this).attr('data-layer_name')
 
 
  var data = new FormData();
- 
+
   data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
   data.append("filter",$(this).attr('data-filter'));
   data.append("filter_type",$(this).attr('data-filter_type'));
@@ -3094,7 +3110,7 @@ $.ajax({
         cache: false,
         type: 'post',
         success: function ( result ) {
- 
+
    data=JSON.parse(result.data);
    var text='';
    text+="<tr id='table_head'>\
@@ -3113,13 +3129,13 @@ $.ajax({
    <td>Aholi punktining loyihaviy maydoni ga</td>\
    <td>Aholining loyihaviy soni</td>\
    </tr>";
- 
+
     for(var i=0;i<data.length;i++){
 
     let json_data=data[i].fields.genplan_id;
     text+="<tr><td>"+(1+i);
 
-     
+
       if(type=='redline'){
       text+="<br><img src='/static/img/genplan_tas_"+json_data.tasdiqlanganligi+".png' class='fly_to_bounds' data-layer_name='redline' data-id='"+data[i].fields.id+"'></td>";
       }
@@ -3142,7 +3158,7 @@ text+="<td>"+json_data.aholi_punktining_nomi+"</td>\
 <td>"+json_data.aholining_loyihaviy_soni+"</td>\
  <td style='display:none;' >"+(1+i)+"</td>\
             </tr>";
-   
+
     }
 
 $('#item-count').html("Barcha ob'yektlar soni:"+data.length+"<br>");
@@ -3187,7 +3203,7 @@ tablecont.addEventListener('scroll',scrollHendle);
           console.log('Ajaxda xatolik!');
         }
       });
- 
+
 }
 
 
@@ -3197,7 +3213,7 @@ tablecont.addEventListener('scroll',scrollHendle);
 if($(this).attr('data-layer_name')=='pdp' || $(this).attr('data-layer_name')=='pdp_edit'){
 
  var data = new FormData();
- 
+
   data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
   data.append("filter",$(this).attr('data-filter'));
   data.append("filter_type",$(this).attr('data-filter_type'));
@@ -3229,10 +3245,10 @@ $.ajax({
    <td>Aholi punktining loyihaviy maydoni ga</td>\
    <td>Aholining loyihaviy soni</td>\
    </tr>";
- 
+
     for(var i=0;i<data.length;i++){
  text+="<tr><td>"+(1+i);
-      
+
       if(type=='pdp'){
       text+="<br><img src='/static/img/pdp_tas_"+data[i].fields.tasdiqlanganligi+".png' class='fly_to_bounds' data-layer_name='pdp' data-id='"+data[i].fields.id+"'></td>";
       }
@@ -3255,7 +3271,7 @@ text+="<td>"+data[i].fields.aholi_punktining_nomi+"</td>\
 <td>"+data[i].fields.aholining_loyihaviy_soni+"</td>\
  <td style='display:none;' >"+(1+i)+"</td>\
             </tr>";
-   
+
     }
 
 $('#item-count').html("Barcha ob'yektlar soni:"+data.length+"<br>");
@@ -3331,8 +3347,8 @@ $('.popup_dialog_genplan').children('.ui-dialog-titlebar').append("<button  type
       if(map.hasLayer(genplan_geotiff[i]))
         map.removeLayer(genplan_geotiff[i]);
          }
-  
-    
+
+
 if($('#checkbox_id_2_3_1').prop('checked'))
 {
 map.addLayer(genplan);
@@ -3344,7 +3360,7 @@ $(".genplan_checkbox").each(function(){
 });
 
 }
-      
+
 
       },
 
@@ -3377,8 +3393,8 @@ $('.popup_dialog_genplan_edit').children('.ui-dialog-titlebar').append("<button 
       if(map.hasLayer(genplan_edit_geotiff[i]))
         map.removeLayer(genplan_edit_geotiff[i]);
          }
-  
-    
+
+
 if($('#checkbox_id_2_3_1_1').prop('checked'))
 {
 map.addLayer(genplan_edit);
@@ -3389,7 +3405,7 @@ $(".genplan_edit_checkbox").each(function(){
         $(this).prop('checked',true);
 });
 
-}  
+}
 },
 
 });
@@ -3420,8 +3436,8 @@ $('.popup_dialog_pdp').children('.ui-dialog-titlebar').append("<button  type='bu
       if(map.hasLayer(pdp_geotiff[i]))
         map.removeLayer(pdp_geotiff[i]);
          }
-  
-    
+
+
 if($('#checkbox_id_2_3_2').prop('checked'))
 {
 map.addLayer(pdp);
@@ -3433,7 +3449,7 @@ pdp.setOpacity(0.8);
 // });
 
 }
-  
+
 
       },
 
@@ -3466,8 +3482,8 @@ $('.popup_dialog_pdp_edit').children('.ui-dialog-titlebar').append("<button  typ
       if(map.hasLayer(pdp_edit_geotiff[i]))
         map.removeLayer(pdp_edit_geotiff[i]);
          }
-  
-    
+
+
 if($('#checkbox_id_2_3_2_1').prop('checked'))
 {
 map.addLayer(pdp_edit);
@@ -3479,7 +3495,7 @@ $(".pdp_edit_checkbox").each(function(){
 });
 
 }
-  
+
 
       },
 
