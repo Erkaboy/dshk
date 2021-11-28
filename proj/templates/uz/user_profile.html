@@ -1,0 +1,331 @@
+{% extends 'uz/master.html' %}
+
+ {% block content %}
+
+   <div class="container" id="main_body">
+       <hr>
+      <div class="text text-info">
+<!--          <a href="{% url 'workers' lang='uz' %}" > <i class="fa fa-group" aria-hidden="true"></i> Barcha mavjud hodimlar ro'yhati</a>-->
+          {% if messages %}
+				<ul class="text text-center" style="font-size:20px">
+					{% for message in messages %}
+						{% if message.tags == "error"  %}
+							<div class="alert alert-error" style="background-color: #f7d7da">
+						  		<b ><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> </b> <span>{{ message }}</span>
+							</div>
+
+						{% else %}
+							<div class="alert alert-success" style="background-color:#d4edda">
+						  		<b>Tabriklaymiz !</b> <span class="text text-success">{{ message }}</span>
+							</div>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			{% endif %}
+          <div class="password" style="float:right">
+<!--            <button type="button" c>-->
+<!--              Parolni o'zgartirish-->
+<!--            </button>-->
+              <a href="#" data-toggle="modal"  data-target="#myModal"> <i class="fa fa-check-square-o" aria-hidden="true"></i> Parolni o'zgartirish</a>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="{% url 'ajax_logout' %}" > <i class="fa fa-sign-out"></i> Logout</a>
+
+            <!-- The Modal -->
+            <div class="modal" id="myModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+
+                  <!-- Modal Header -->
+                   <div class="modal-header">
+                              <h4 class="modal-title text-danger" style="text-align:center">Parolni o'zgartirish </h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                   </div>
+
+                  <!-- Modal body -->
+                 <div class="modal-body">
+
+                       <ul class="messages text text-center text-danger" id="error_change" style="display:none;width:100%">
+                           <div class="alert alert-danger">
+                               <li style="font-size:20px" class="text text-info" ><b> Eski parol xato kiritildi !</b></li>
+                           </div>
+                       </ul>
+
+                      <ul class="messages text text-center text-danger" id="error_change_check" style="display:none;width:100%">
+                           <div class="alert alert-danger">
+                               <li style="font-size:20px" class="text text-info" ><b> Qayta kiritilgan parol xato !</b></li>
+                           </div>
+                      </ul>
+
+                      <ul class="messages text text-center text-success" id="password_change_success" style="display:none;width:100%">
+                           <div class="alert alert-success">
+                               <li style="font-size:20px" class="text text-info" ><b> Tabriklaymiz parol o'zgartirildi! </b></li>
+                           </div>
+                      </ul>
+
+                       <form action="" method="post">
+
+                            <div class="form-group">
+                                <label><span class="text text-danger">*</span> Eski parol:</label>
+                                <input type="password" placeholder="Eski parolni kiriting *" id="password" name="password" class="form-control">
+                            </div>
+
+                           <div class="form-group">
+                                 <label><span class="text text-danger">*</span> Yangi parol:</label>
+                                <input type="password" placeholder="Yangi parolni kiriting *" id="new_password" name="new_password" class="form-control">
+                           </div>
+
+                            <div class="form-group">
+                                <label><span class="text text-danger">*</span> Parolni tasdiqlang:</label>
+                                <input type="password" placeholder="Parolni qayta kiriting *" id="re_password" name="re_password" class="form-control">
+                           </div>
+                           <hr>
+                            <div style="float:right" >
+                                <a href="#" id="change_company_password" class="btn btn-success" >Parolni o'zgartirish</a>
+                            </div>
+                           <br><br>
+                       </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+       </div>
+          <br>
+
+
+
+      </div>
+
+       <br>
+           <div class="row">
+               <div class="col-md-12 " >
+                    <div class="row">
+                        <div class="col-md-1">
+
+                        </div>
+
+                        <div class="col-md-10">
+
+                                <form method="POST">
+                                    {% csrf_token %}
+<!--                                    <h4 class="text text-center  text-info">Uzbekiston Respublikasi Qurilish vazirligi</h4>-->
+                                     <div class="form-group" style="width:100%;" id="content">
+<!--                                         <h3 class="text text-center">Tashkilot ma'lumotlari</h3>-->
+                                         <br>
+                                         <table class="table table-hover" style="font-size:17px">
+                                            <tbody>
+                                              <tr>
+                                                <td><label>Tashkilot nomi:</label></td>
+                                                <td><input type="text"  value="{{ ministry.companyname }}" id="companyname" name="companyname" class="form-control"></td>
+                                              </tr>
+
+                                              <tr>
+                                               <td><label>Adresi:</label></td>
+                                                <td><input type="text" value="{{ ministry.address }}" id="address" name="address" class="form-control"></td>
+                                              </tr>
+
+                                              <tr>
+                                               <td><label>STIR raqami:</label></td>
+                                                <td><input type="text"  value="{{ ministry.stir }}" id="stir" name="stir"  class="form-control"></td>
+                                              </tr>
+
+                                                <tr>
+                                               <td><label>Email:</label></td>
+                                                <td><input type="email"  value="{{ ministry.email }}" disabled  class="form-control"></td>
+                                              </tr>
+
+                                              <tr>
+                                               <td><label>Tel nomer:</label></td>
+                                                <td><input type="text" value="{{ ministry.tel_number }}" id="tel_number" name="tel_number" class="form-control"></td>
+                                              </tr>
+
+                                              <tr>
+                                               <td><label>Tashkilot rahbari:</label></td>
+                                                <td><input type="text" value="{{ ministry.leader }}"  id="leader" name="leader" class="form-control"></td>
+                                              </tr>
+                                             <tr>
+                                               <td></td>
+                                                <td></td>
+                                              </tr>
+
+                                            </tbody>
+                                         </table>
+                                         <label style="font-size:18px;"><span class="text text-danger">*</span> Ma'lumotlarda xatoliklar bo'lsa o'zgartira olish imkoniga egasiz !</label>
+
+                                  <br><br>
+                                        <div style="float:right;font-weight:bold" >
+                                            <input type="text" value="{{ministry.id}}" id="company_id" name="company_id" style="display:none" class="form-control">
+                                            <a href="#" class="btn btn-success" id="dshk_info_update"> <i class="fa fa-cog" aria-hidden="true"></i> Ma'lumotlarni yangilash</a>
+                                        </div>
+                                    <br>
+                                    </div>
+                         </form>
+                        </div>
+
+                        <div class="col-md-1">
+
+
+                        </div>
+                    </div>
+
+               </div>
+           </div>
+       <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text text-center text-info">Barcha tashkilotlar ro'yhati</h3>
+                  <table class="table table-hover table-stripped" style="text-align:center">
+
+                    <thead >
+                      <tr>
+                        <th style="text-align:center">Yangi kelgan <br> arizalar</th>
+                        <th style="text-align:center">Tashkilot nomi</th>
+                        <th style="text-align:center">Adres</th>
+                        <th style="text-align:center">STIR raqami</th>
+                        <th style="text-align:center">Email</th>
+                        <th style="text-align:center">Tel nomer</th>
+                        <th style="text-align:center">Tashkilot <br> rahbari</th>
+                        <th style="text-align:center">Ko'rish</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                    {% with counter=0 %}
+
+                    {% for company in companies %}
+                        {% if not company.is_dshk == True and not company.is_ministry == True %}
+                            <tr>
+                                <td class="text text-center text-success">
+
+                                    <i class="fa fa-comments-o" aria-hidden="true"></i>
+
+                                    {% for application in applications %}
+                                        {% if application.company_id == company.id %}
+<!--                                            {{ applications.type_of_application }}-->
+<!--                                            {{ application.count }}-->
+<!--                                            {{ forloop.counter }}-->
+                                                {{ counter|add:"1" }}
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {{counter|length}}
+
+                                </td>
+                            <td>{{company.companyname}}</td>
+                            <td>{{company.address}}</td>
+                            <td>{{company.stir}}</td>
+                            <td>{{company.email}}</td>
+                            <td>{{company.tel_number}}</td>
+                            <td>{{company.leader}}</td>
+                            <td>
+                                <form action="{% url 'show_ministry' lang='uz' id=company.id %}" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <input type="submit" class="btn btn-info" value="Ko'rish">
+                                </form>
+                            </td>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+
+                 {% endwith %}
+                    </tbody>
+
+                  </table>
+                <hr>
+            </div>
+
+
+                                       </div>
+
+
+
+
+
+   </div>
+
+  <hr>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#dshk_info_update").click(function(event) {
+        var data = new FormData();
+        data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
+        event.preventDefault()
+
+        data.append("companyname", $('#companyname').val());
+        data.append("address", $('#address').val());
+        data.append("stir", $('#stir').val());
+        data.append("email", $('#email').val());
+        data.append("tel_number", $('#tel_number').val());
+        data.append("leader", $('#leader').val());
+        data.append("company_id", $('#company_id').val());
+
+        $.ajax({
+            type: 'POST',
+            url: '{% url 'dshk_info_update' %}',
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+
+            success: function (result){
+                location.replace(window.location.pathname);
+            },
+
+            error: function(){
+              alert('Serverga yubara olmaymiz !! ');
+            }
+
+        });
+
+
+        });
+
+
+
+
+        $("#change_company_password").click(function(event) {
+        var data = new FormData();
+        data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
+        event.preventDefault();
+        var old = {{ministry.password}};
+
+        data.append("company_id", $('#company_id').val());
+        data.append("password", $('#password').val());
+        data.append("new_password", $('#new_password').val());
+        data.append("re_password", $('#re_password').val());
+        if (old==$("#password").val()){
+            if ($("#new_password").val() == $("#re_password").val()){
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url 'change_company_password' %}',
+                    data: data,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+
+                    success: function (result){
+                        $('#password_change_success').css({'display':'inline-block'});
+                    },
+
+                    error: function(){
+                        alert('Serverga yubara olmaymiz !! ');
+                    }
+
+                });
+                }
+                else{
+                    $('#error_change_check').css({'display':'inline-block'});
+                }
+       }
+       else{
+        $('#error_change').css({'display':'inline-block'});
+       }
+
+
+        });
+
+
+    });
+</script>
+ {% endblock content %}

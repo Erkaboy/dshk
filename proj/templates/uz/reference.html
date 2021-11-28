@@ -1,0 +1,546 @@
+{% extends 'uz/base.html' %}
+
+ {% block style %}
+
+ {% load i18n %}
+
+<style type="text/css">
+
+.mytable td{
+ padding: 8px;
+
+}
+
+</style>
+{% endblock style %}
+ 
+ {% block content %}
+
+
+
+
+
+ <div class="col-md-12 col-sm-12 col-xs-12" >
+          <div class="section-headline services-head text-center">
+            <h3 class='wow fadeInUp' id="ruls1">Shaharsozlik reglamentlari</h3>
+            <hr>
+          </div>
+</div>
+
+<div class="modal-body">
+
+           <div class="modal-text">
+          <p class="modal_p wow fadeInRight">
+              <b id="ruls2">Shaharsozlik reglamentlari</b> –
+             <span id="pod1_c1">shaharsozlik faoliyatini amalga oshirishda aholi punktlari va hududlarning parametrlari va yerdan foydalanish turlari va boshqa ko‘chmas mulk turar joylari va aholi punktlariaro hududlar qoidalari bilan belgilangan to‘plami.</span>
+          </p>
+           <p class="modal_p wow fadeInRight">
+                <b id="pod1">№1 - quyi tizim  </b>
+               <span id="pod1_c2">«Shaharsozlik reglamentlari» -
+               bu shaharning hududiy reglamentlarini yuritish (shaharsozlik, atrof-muhit, me‘moriy va tarixiy reglamentlar, huquqiy rayonlashtirish), hamda shaharsozlik faoliyati uchun ruxsat beruvchi hujjatlarni rasmiylashtirish uchun mo‘ljallangan.
+           </span>
+              </p>
+
+          </div>
+<hr>
+
+<div class="row">
+    <div class="col-md-4 col-sm-4 col-xs-12">
+             <div class="modal-img wow fadeInLeft" >
+              <a data-magnify="gallery" data-caption="Градостроительная документация" href="/static/img/img_pods/1.jpg"><img class="pod_img"  src="/static/img/img_pods/1.jpg"></a>
+            </div>
+           </div>
+           <div class="col-md-8 col-sm-8 col-xs-12">
+
+             <p class="modal_p wow fadeInRight">
+              <b id="pod1_1">№1 - quyi tizim </b>
+            <span id="pod1_c3">mahalliy aholi punktlarining «Shaharsozlik reglamentlari» axborot tizimiga xizmat ko‘rsatish, shuningdek dastlabki ruxsat beruvchi hujjatlarni, xususan, grafik va tegishli ma‘lumotlarni tayyorlash va berish uchun mo‘ljallangan: davlat va mahalliy hokimiyatlarning ma‘muriy-ma‘muriy aktlari loyihalarini tayyorlash; qurilish uchun yer tanlash haqida dastlabki ma‘lumotlar; kadastr guvohnomalari; shaharsozlik pasportlari; yangi ob‘ektni loyihalashtirish va qurish uchun ruxsat olish uchun qarorlar loyihasini tayyorlash va boshqalar.</span>
+             </p>
+             <p class="modal_p wow fadeInRight">
+                  <b id="recommends">Shaharsozlik hujjatlari tavsifiga quyidagilar kiradi</b> :
+              </p>
+                <ul class="modal_p_ul wow fadeInRight">
+                    <li id="pod1l1">foydalanishga ruxsat etilgan turlari;</li>
+                    <li id="pod1l2">ruxsat etilgan qurilishning chegaraviy (minimal va / yoki maksimal) parametrlari;</li>
+                    <li id="pod1l3">Tarixiy va madaniy yodgorliklarni muhofaza qilish talablari, ekologik va sanitariya-epidemiologiya talablaridan foydalanishni taqiqlash, cheklash.</li>
+                </ul>
+
+               <p class="modal_p wow fadeInRight" id="pod1kom">Ushbu parametrlar va ularning qiymatlari kombinatsiyasi huquqiy rayonlashtirish xaritasida ko‘rsatilgan har bir hudud uchun alohida belgilanadi.</p>
+              <p class="modal_p wow fadeInRight" id="pod1hud">
+               Hududiy zonalarda ruxsat etilgan foydalanish turlarining bir xil ro‘yxati bilan quyi zonalar o‘rnatilishi mumkin, lekin ruxsat etilgan qurilish parametrlarining turli xil kombinatsiyalari va qiymatlari bilan.
+              </p>
+           </div>
+
+</div>
+
+         </div>
+
+
+
+        <hr>
+
+
+<div class="container" style="width: 100%;">
+ <h4 class="wow fadeInRight"><b> <span id="pod1reja">Bosh rejalar bo'yicha ishlab chiqilgan funksional zonalar</span> ~ <span id='fg_count'></span> ta</b></h4>
+  <hr>
+ <div class="row">
+<div class="col-md-6 col-xs-12 col-sm-12 col-lg-6 align-self-center wow fadeInLeft">
+<h4 id="pod1zonav">(funktsional zonalari hududlar bo'yicha)</h4>
+<table class="table mytable">
+  <thead>
+  </thead>
+  <tbody id="fg_vil_tr">
+  </tbody>
+</table>
+
+
+</div>
+
+<div class="col-md-6 col-xs-12 col-sm-12 col-lg-6 align-self-start">
+<canvas id="chart_fg2" width="300px" height="480px"></canvas>
+</div>
+
+</div>
+</div>
+<hr>
+
+<div class="container" style="width: 100%;">
+ <h4 class="wow fadeInRight"><b><span id="pod1hudud">Hududlarni arxitekturaviy rejalashtirishni tashkillashtirish loyihalari bo'yicha qilingan funktsional zonalar </span> ~ <span id='fa_count'></span> <span id="pod1ta">ta</span></b></h4>
+  <hr>
+ <div class="row">
+<div class="col-md-6 col-xs-12 col-sm-12 col-lg-6 align-self-center wow fadeInLeft">
+<h4 id="pod1vil">Funksional zonalar viloyatlar kesimida</h4>
+<table class="table mytable">
+  <thead>
+  </thead>
+  <tbody id="fa_vil_tr">
+  </tbody>
+</table>
+</div>
+
+<div class="col-md-6 col-xs-12 col-sm-12 col-lg-6 align-self-start">
+<canvas id="chart_fa2" width="300px" height="480px"></canvas>
+</div>
+
+</div>
+</div>
+<hr>
+
+
+<div class="container" style="width: 100%;">
+ <h4 class="wow fadeInRight"><b><span id="pod1qizil">Qizil chiziqlar </span> ~ <span id='redline_count'></span> ta</b></h4>
+  <hr>
+ <div class="row">
+<div class="col-md-6 col-xs-12 col-sm-12 col-lg-6 align-self-center wow fadeInLeft">
+<h4 id="pod1ish">(qizil chiziqlari hududlar bo'yicha)</h4>
+<table class="table mytable">
+  <thead>
+  </thead>
+  <tbody id="redline_vil_tr">
+  </tbody>
+</table>
+</div>
+
+<div class="col-md-6 col-xs-12 col-sm-12 col-lg-6 align-self-start">
+<canvas id="chart_redline2" width="300px" height="480px"></canvas>
+</div>
+
+</div>
+</div>
+<hr>
+
+
+<div class="container" style="width: 100%;">
+ <h4 class="wow fadeInRight"><b> <span id="pod1geo">Geologik rayonlashtirish sxemalari </span> ~ <span id='gr_count'></span> ta</b></h4>
+  <hr>
+ <div class="row">
+<div class="col-md-6 col-xs-12 col-sm-12 col-lg-6 align-self-center wow fadeInLeft">
+<h4 id="pod1geor">(geologik rayonlashtirishi hududlar bo'yicha)</h4>
+<table class="table mytable">
+  <thead>
+  </thead>
+  <tbody id="gr_vil_tr">
+  </tbody>
+</table>
+</div>
+
+<div class="col-md-6 col-xs-12 col-sm-12 col-lg-6 align-self-start">
+<canvas id="chart_gr2" width="300px" height="480px"></canvas>
+</div>
+
+</div>
+</div>
+<hr>
+
+
+<!-- FINISH WWW.UZ TOP-RATING -->
+
+
+ {% endblock content %}
+
+
+ {% block script %}
+<script type="text/javascript">
+
+var pie_data_fg=  {
+    type: 'pie',
+    data: {
+     labels :[],
+      datasets: [
+        {
+          backgroundColor:[],
+          data: []
+        }
+      ]
+    },
+
+
+     options: {
+        responsive:true,
+        maintainAspectRatio: false,
+        legend: {
+          position:'right',
+          // align: "middle",
+            labels: {
+                fontColor: '#000',
+                fontSize:16,
+            },
+
+        },
+
+      hover: {
+      onHover: function(e) {
+         var point = this.getElementAtEvent(e);
+         if (point.length) e.target.style.cursor = 'pointer';
+         else e.target.style.cursor = 'default';
+      }},
+
+        title: {
+        display: false,
+        position: 'top',
+        fontColor:'#000',
+        text: "Bosh rejalar bo'yicha qilingan funksional zonalar viloyatlar kesimida",
+        fontSize:16
+      },
+        elements: {
+        center: {
+          text: '1254',
+          color: '#FF6384', // Default is #000000
+          fontStyle: 'Arial', // Default is Arial
+          sidePadding: 40 // Defualt is 20 (as a percentage)
+        }
+      }
+    }
+}
+
+var pie_data_fa=  {
+    type: 'pie',
+    data: {
+     labels :[],
+      datasets: [
+        {
+          backgroundColor:[],
+          data: []
+        }
+      ]
+    },
+
+
+     options: {
+        responsive:true,
+        maintainAspectRatio: false,
+        legend: {
+          position:'right',
+          // align: "middle",
+            labels: {
+                fontColor: '#000',
+                fontSize:16,
+            },
+
+        },
+
+      hover: {
+      onHover: function(e) {
+         var point = this.getElementAtEvent(e);
+         if (point.length) e.target.style.cursor = 'pointer';
+         else e.target.style.cursor = 'default';
+      }},
+
+        title: {
+        display: false,
+        position: 'top',
+        fontColor:'#000',
+        text: "Hududlarni arxitekturaviy rejalashtirishni tashkillashtirish loyihalari bo'yicha qilingan funksional zonalar viloyatlar kesimida",
+        fontSize:16
+      },
+        elements: {
+        center: {
+          text: '1254',
+          color: '#FF6384', // Default is #000000
+          fontStyle: 'Arial', // Default is Arial
+          sidePadding: 40 // Defualt is 20 (as a percentage)
+        }
+      }
+    }
+}
+
+var pie_data_redline=  {
+    type: 'pie',
+    data: {
+     labels :[],
+      datasets: [
+        {
+          backgroundColor:[],
+          data: []
+        }
+      ]
+    },
+
+
+     options: {
+        responsive:true,
+        maintainAspectRatio: false,
+        legend: {
+          position:'right',
+          // align: "middle",
+            labels: {
+                fontColor: '#000',
+                fontSize:16,
+            },
+
+        },
+
+      hover: {
+      onHover: function(e) {
+         var point = this.getElementAtEvent(e);
+         if (point.length) e.target.style.cursor = 'pointer';
+         else e.target.style.cursor = 'default';
+      }},
+
+        title: {
+        display: false,
+        position: 'top',
+        fontColor:'#000',
+        text: 'Qizil chiziqlar viloyatlar kesimida',
+        fontSize:16
+      },
+        elements: {
+        center: {
+          text: '1254',
+          color: '#FF6384', // Default is #000000
+          fontStyle: 'Arial', // Default is Arial
+          sidePadding: 40 // Defualt is 20 (as a percentage)
+        }
+      }
+    }
+}
+
+
+var pie_data_gr=  {
+    type: 'pie',
+    data: {
+     labels :[],
+      datasets: [
+        {
+          backgroundColor:[],
+          data: []
+        }
+      ]
+    },
+
+
+     options: {
+        responsive:true,
+        maintainAspectRatio: false,
+        legend: {
+          position:'right',
+          // align: "middle",
+            labels: {
+                fontColor: '#000',
+                fontSize:16,
+            },
+
+        },
+
+      hover: {
+      onHover: function(e) {
+         var point = this.getElementAtEvent(e);
+         if (point.length) e.target.style.cursor = 'pointer';
+         else e.target.style.cursor = 'default';
+      }},
+
+        title: {
+        display: false,
+        position: 'top',
+        fontColor:'#000',
+        text: "Geologik rayonlashtirish viloyatlar kesimida",
+        fontSize:16
+      },
+        elements: {
+        center: {
+          text: '1254',
+          color: '#FF6384', // Default is #000000
+          fontStyle: 'Arial', // Default is Arial
+          sidePadding: 40 // Defualt is 20 (as a percentage)
+        }
+      }
+    }
+}
+
+
+
+</script>
+
+
+<script type="text/javascript">
+
+
+function check_null(a){
+  return a=='0'?'-':a;
+}
+
+
+var data = new FormData();
+data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
+data.append('service','pod1');
+
+    $.ajax({
+        url: '/chart_data',
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        type: 'post',
+        success: function (result) {
+
+var data;
+data=result.fg;
+var text_tr='';
+var t=1;
+var count=0;
+for(var i in data){
+  text_tr+=`
+<tr>
+      <th scope="row">`+t+`</th>
+      <td>`+data[i]['disUz']+`</td>
+      <td><b>`+check_null(data[i]['count'])+`</b></td>
+    </tr>
+    `;
+    count+=data[i]['count'];
+    t++;
+pie_data_fg['data']['labels'].push(data[i]['shortUz']);
+pie_data_fg['data']['datasets'][0]['backgroundColor'].push(data[i]['color']);
+pie_data_fg['data']['datasets'][0]['data'].push(data[i]['count']);
+}
+
+$('#fg_vil_tr').html(text_tr);
+$('#fg_count').html(count);
+
+
+var ctx_fg2 = document.getElementById('chart_fg2').getContext('2d');
+var chart_fg2= new Chart(ctx_fg2, pie_data_fg);
+
+
+data=result.fa;
+var text_tr='';
+var t=1;
+var count=0;
+for(var i in data){
+  text_tr+=`
+<tr>
+      <th scope="row">`+t+`</th>
+      <td>`+data[i]['disUz']+`</td>
+      <td><b>`+check_null(data[i]['count'])+`</b></td>
+    </tr>
+    `;
+    count+=data[i]['count'];
+    t++;
+pie_data_fa['data']['labels'].push(data[i]['shortUz']);
+pie_data_fa['data']['datasets'][0]['backgroundColor'].push(data[i]['color']);
+pie_data_fa['data']['datasets'][0]['data'].push(data[i]['count']);
+}
+
+$('#fa_vil_tr').html(text_tr);
+$('#fa_count').html(count);
+
+
+var ctx_fa2 = document.getElementById('chart_fa2').getContext('2d');
+var chart_fa2= new Chart(ctx_fa2, pie_data_fa);
+
+
+
+
+
+data=result.redline;
+var text_tr='';
+var t=1;
+var count=0;
+for(var i in data){
+  text_tr+=`
+<tr>
+      <th scope="row">`+t+`</th>
+      <td>`+data[i]['disUz']+`</td>
+      <td><b>`+check_null(data[i]['count'])+`</b></td>
+    </tr>
+    `;
+    count+=data[i]['count'];
+    t++;
+pie_data_redline['data']['labels'].push(data[i]['shortUz']);
+pie_data_redline['data']['datasets'][0]['backgroundColor'].push(data[i]['color']);
+pie_data_redline['data']['datasets'][0]['data'].push(data[i]['count']);
+}
+
+$('#redline_vil_tr').html(text_tr);
+$('#redline_count').html(count);
+
+
+var ctx_redline2 = document.getElementById('chart_redline2').getContext('2d');
+var chart_redline2= new Chart(ctx_redline2, pie_data_redline);
+
+
+
+
+data=result.gr;
+var text_tr='';
+var t=1;
+var count=0;
+for(var i in data){
+  text_tr+=`
+<tr>
+      <th scope="row">`+t+`</th>
+      <td>`+data[i]['disUz']+`</td>
+      <td><b>`+check_null(data[i]['count'])+`</b></td>
+    </tr>
+    `;
+    count+=data[i]['count'];
+    t++;
+pie_data_gr['data']['labels'].push(data[i]['shortUz']);
+pie_data_gr['data']['datasets'][0]['backgroundColor'].push(data[i]['color']);
+pie_data_gr['data']['datasets'][0]['data'].push(data[i]['count']);
+}
+
+$('#gr_vil_tr').html(text_tr);
+$('#gr_count').html(count);
+
+
+var ctx_gr2 = document.getElementById('chart_gr2').getContext('2d');
+var chart_gr2= new Chart(ctx_gr2, pie_data_gr);
+
+
+
+        },
+        error: function(){
+          console.log('Ajaxda xatolik');
+        }
+      });
+
+
+
+
+</script>
+
+{% endblock script %}
+
+
+
+

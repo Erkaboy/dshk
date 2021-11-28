@@ -1,0 +1,379 @@
+{% extends 'uz/master.html' %}
+
+ {% block content %}
+
+  {% load i18n %}
+{% load static %}
+ {% csrf_token %}
+
+
+
+   <div class="container" id="main_body">
+       <hr>
+       <h4 class="text text-center  text-info">{{company.companyname}}</h4>
+       <br>
+           <div class="row">
+<!--               <div class="col-md-3">-->
+<!--                   <img src="{% static 'newimages/logo.png' %}" style="" alt="">-->
+<!--               </div>-->
+
+               <div class="col-md-12">
+
+                   <div class="col-md-1">
+
+                   </div>
+
+                      <div class="col-md-10">
+                                 {% if messages %}
+                                    <ul class="messages text text-center text-success">
+                                        {% for message in messages %}
+                                           <div class="alert alert-success">
+                                            <li style="font-size:20px" {% if message.tags %} class="{{ message.tags }}" {% endif %}><b>{{ message }}</b></li>
+                                            </div>
+
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+
+                                    <ul class="messages text text-center text-success" id="message_success" style="display:none;width:100%">
+
+                                           <div class="alert alert-success">
+                                               <li style="font-size:20px" class="text text-info" ><b>Buyruqni o'chirilganlarga yuborildi!</b></li>
+                                           </div>
+                                    </ul>
+
+                                    <ul class="messages text text-center text-success" id="message_success_edited" style="display:none;width:100%">
+
+                                           <div class="alert alert-success">
+                                               <li style="font-size:20px" class="text text-info" ><b>Buyruqni o'zgartirishga yuborildi! </b></li>
+                                           </div>
+                                    </ul>
+
+                                {% if worker.live == '0' %}
+                                    <ul class="messages text text-center text-danger" style="width:100%">
+
+                                           <div class="alert alert-danger">
+                                               <li style="font-size:20px" class="text text-warning" ><b>Foydalanuvchi fa'ol emas! </b></li>
+                                           </div>
+                                    </ul>
+                                {% endif %}
+
+                                <form method="POST">
+                                    {% csrf_token %}
+
+                                     <div class="form-group" style="width:100%;" id="content">
+<!--                                         <h3 class="text text-center">Tashkilot ma'lumotlari</h3>-->
+                                         <br>
+                                          <table class="table table-hover" style="font-size:17px">
+                                            <tbody>
+                                              <tr>
+                                                <td><label>F.I.SH:</label></td>
+                                                <td><input type="text"  value="{{ worker.full_name }}" id="fullname" name="fullname" class="form-control"></td>
+                                              </tr>
+
+                                              <tr>
+                                               <td><label>Tel:</label></td>
+                                                <td><input type="text" value="{{ worker.contact }}" id="tel_number" name="tel_number" class="form-control"></td>
+                                              </tr>
+
+                                              <tr>
+                                               <td><label>Email:</label></td>
+                                                <td><input type="email"  value="{{ worker.email }}" id="email" name="email"  class="form-control"></td>
+                                              </tr>
+
+                                              <tr>
+                                               <td><label>Passport raqami:</label></td>
+                                                <td><input type="text" value="{{ worker.pasport }}" id="passport_number" name="passport_number"  class="form-control"></td>
+                                              </tr>
+
+                                              <tr>
+                                               <td><label>Lavozimi:</label></td>
+                                                <td><input type="text" value="{{ worker.position }}" id="position" name="passport_number"  class="form-control"></td>
+                                              </tr>
+                                             <tr>
+
+                                               <tr>
+
+                                               <td><label>Ruhsat berish so'rovlari:</label></td>
+
+                                                 <td>
+                                                     <div class="form-group">
+                                                        <input type="radio"   name="radio_status" class="radio_status" id="id1" value=""> &nbsp;
+                                                        <label for="id1" style="font-style: italic;font-weight: 400 !important" >  Barcha ma'lumotlarni ko'rish taxrirlash imkoniyatisiz </label>
+                                                    </div>
+
+                                                     <div class="form-group">
+                                                        <input type="radio"  name="radio_status" class="radio_status" id="id2" value="1"  data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1"> &nbsp;
+                                                        <label for="id2" style="font-style: italic;font-weight: 400 !important"  data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1" >
+                                                            Barcha ma'lumotlarni ko'rish , yangi ma'lumotlarni kiritish va o'zgartirish (o'chirish)
+                                                        </label>
+                                                    </div>
+
+                                                     <div style="margin-left:45px" id="collapse1" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+<!--                                                         <label href="#" style="font-size:17px;font-weight: 400 !important">Ruhsat etilgan qatlamlarni tanlang </label><br>-->
+<!--                                                         <ul>-->
+<!--                                                             <li><input type="checkbox" class="checkbox1" name="checkbox" id="id4" value="4"> &nbsp; <label for="id4" style="font-weight: 400 !important">  Funkisonal zonalar </label></li>-->
+<!--                                                             <li><input type="checkbox" class="checkbox1" name="checkbox" id="id5" value="5"> &nbsp; <label for="id5" style="font-weight: 400 !important">  Geologik rayonlashtirish </label></li>-->
+<!--                                                             <li><input type="checkbox" class="checkbox1" name="checkbox" id="id6" value="6"> &nbsp; <label for="id6" style="font-weight: 400 !important">  Kadastr ma'lumotlari </label></li>-->
+<!--                                                             <li><input type="checkbox" class="checkbox1" name="checkbox" id="id7" value="7"> &nbsp; <label for="id7" style="font-weight: 400 !important">  Qishloq ho'shalik yerlari </label></li>-->
+<!--                                                             <li><input type="checkbox" class="checkbox1" name="checkbox" id="id8" value="8"> &nbsp; <label for="id8" style="font-weight: 400 !important">  Mahalla chegaralari </label></li>-->
+<!--                                                             <li><input type="checkbox" class="checkbox1"  name="checkbox" id="id9" value="9"> &nbsp; <label for="id9" style="font-weight: 400 !important">  Qizil chiziqlar </label></li>-->
+<!--                                                         </ul>-->
+                                                         <ul id="status1">
+                                                             {% for service in services %}
+<!--                                                             <li>{{service.id}}</li>-->
+                                                                 <li><input type="checkbox" class="checkbox1" name="checkbox"  value="{{service.id}}"> &nbsp; <label for="id4" style="font-weight: 400 !important"> {{service.title}} </label></li>
+<!--                                                                 <li><input type="checkbox" class="checkbox1" name="checkbox" id="id5_edit" value="5"> &nbsp; <label for="id5" style="font-weight: 400 !important">  Geologik rayonlashtirish </label></li>-->
+<!--                                                                 <li><input type="checkbox" class="checkbox1" name="checkbox" id="id6_edit" value="6"> &nbsp; <label for="id6" style="font-weight: 400 !important">  Kadastr ma'lumotlari </label></li>-->
+<!--                                                                 <li><input type="checkbox" class="checkbox1" name="checkbox" id="id7_edit" value="7"> &nbsp; <label for="id7" style="font-weight: 400 !important">  Qishloq ho'shalik yerlari </label></li>-->
+<!--                                                                 <li><input type="checkbox" class="checkbox1" name="checkbox" id="id8_edit" value="8"> &nbsp; <label for="id8" style="font-weight: 400 !important">  Mahalla chegaralari </label></li>-->
+<!--                                                                 <li><input type="checkbox" class="checkbox1"  name="checkbox" id="id9_edit" value="9"> &nbsp; <label for="id9" style="font-weight: 400 !important">  Qizil chiziqlar </label></li>-->
+                                                             {% endfor %}
+                                                         </ul>
+
+                                                         <br>
+                                                    </div>
+
+                                                     <div class="form-group">
+                                                            <input type="radio" class="radio_status"  name="radio_status" id="id3" value="2"  data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2"> &nbsp;
+                                                            <label for="id3" style="font-style: italic;font-weight: 400 !important"  data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">  Yangi kiritilgan ma'lumotlarni tasdiqlash va barcha ma'lumotlarni ko'rish </label>
+                                                     </div>
+
+                                                     <div  style="margin-left:45px" id="collapse2" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+<!--                                                         <b href="#" style="font-size:17px;font-weight: 400 !important" >Ruhsat etilgan qatlamlarni tanlang </b><br>-->
+
+                                                         <ul id="status2">
+                                                             {% for service in services %}
+                                                                 <li><input type="checkbox" class="checkbox1" name="checkbox" value="{{service.id}}"> &nbsp; <label for="id4" style="font-weight: 400 !important"> {{service.title}} </label></li>
+<!--                                                                 <li><input type="checkbox" class="checkbox1" name="checkbox" id="id5_edit" value="5"> &nbsp; <label for="id5" style="font-weight: 400 !important">  Geologik rayonlashtirish </label></li>-->
+<!--                                                                 <li><input type="checkbox" class="checkbox1" name="checkbox" id="id6_edit" value="6"> &nbsp; <label for="id6" style="font-weight: 400 !important">  Kadastr ma'lumotlari </label></li>-->
+<!--                                                                 <li><input type="checkbox" class="checkbox1" name="checkbox" id="id7_edit" value="7"> &nbsp; <label for="id7" style="font-weight: 400 !important">  Qishloq ho'shalik yerlari </label></li>-->
+<!--                                                                 <li><input type="checkbox" class="checkbox1" name="checkbox" id="id8_edit" value="8"> &nbsp; <label for="id8" style="font-weight: 400 !important">  Mahalla chegaralari </label></li>-->
+<!--                                                                 <li><input type="checkbox" class="checkbox1"  name="checkbox" id="id9_edit" value="9"> &nbsp; <label for="id9" style="font-weight: 400 !important">  Qizil chiziqlar </label></li>-->
+                                                             {% endfor %}
+                                                        </ul>
+                                                         <br>
+                                                    </div>
+
+<!--                                                       <input type="text" style="display:none" name="id" id="id" value="{{company.id}}"> &nbsp;-->
+
+                                                  </td>
+
+
+                                              </tr>
+
+                                               <td></td>
+                                                <td></td>
+                                              </tr>
+
+                                            </tbody>
+                                         </table>
+
+                                  <br><br>
+                                        <div style="float:right;font-weight:bold" >
+                                            <div style="float:right;font-weight:bold" >
+<!--                                               <a href="#" class="btn btn-success" id="permission_dshk"> <i class="fa fa-check-circle-o" aria-hidden="true"></i> Tasdiqlash</a>-->
+                                                &nbsp; &nbsp;&nbsp;
+
+                                            {% if worker.live != '0' %}
+                                                <ul class="messages text text-center text-danger" style="width:100%">
+                                                       <div class="alert alert-danger">
+                                                           <a href="#" class="btn btn-danger" id="company_permission_delete" data-value="{{worker.pasport}}"> <i class="fa fa-times-circle" aria-hidden="true"></i> Ruhsatni o'chirish</a>
+                                                       </div>
+                                                </ul>
+                                            {% endif %}
+                                            &nbsp;
+<!--                                                <a href="#" class="btn btn-warning"> <i class="fa fa-random" aria-hidden="true"></i> Ruhsatni o'zgartirish</a>-->
+
+
+                                            &nbsp;
+                                                <a href="#" id="company_permission_update" class="btn btn-warning"> <i class="fa fa-undo" aria-hidden="true"></i> O'zgartirish</a>
+                                                <input type="text" value="{{href_edit}}" id="href_edit" name="href_edit" style="display:none">
+                                                <input type="text" value="{{company.id}}" id="company_id" name="company_id" style="display:none">
+                                                <input type="text" value="{{worker.id}}" id="worker_id" name="worker_id" style="display:none">
+                                        </div>
+                                        </div>
+                                    <br>
+                                    </div>
+                         </form>
+                        </div>
+
+                    <div class="col-md-1">
+
+                   </div>
+
+
+
+
+
+                    </form>
+
+               </div>
+           </div>
+       <br>
+  <hr>
+
+
+   </div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+
+<script>
+$(document).ready(function(){
+    var a = '{% for i in worker.services.all %}{{i.id}},{% endfor %}';
+    var status = '{{ worker.status }}';
+    var text = a.split(",");
+
+    var one=document.getElementById('id2');
+    var two=document.getElementById('id3');
+
+    if(status == one.value){
+        $('#id2').click();
+        $('#id2').prop('checked',true);
+        for (var i in text) {
+              if(text[i] != ''){
+                  var a = text[i];
+                  console.log(a);
+                  $('#status1 input[value='+a+']').prop('checked',true);
+              }
+            }
+    }
+
+    else if(status == two.value){
+        $('#id3').click();
+        $('#id3').prop('checked',true);
+        for (var i in text) {
+              if(text[i] != ''){
+                  var a = text[i];
+<!--                  console.log(a);-->
+                  $('#status2 :input[value='+a+']').prop('checked',true);
+              }
+            }
+    }
+
+    else{
+        $('#id1').click();
+        $('#id1').prop('checked',true);
+    }
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#permission_delete_dshk").click(function(event) {
+        var data = new FormData();
+        data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
+        event.preventDefault()
+        data.append("worker_id", $('#worker_id').val());
+
+        $.ajax({
+            type: 'POST',
+            url: '{% url 'permission_delete_dshk' %}',
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+
+            success: function (result){
+                 console.log("Ruhsat olib tashlandi orqaga qaytishingiz mumkin");
+            },
+
+            error: function(){
+              alert('Serverga yubara olmaymiz !! ');
+            }
+
+        });
+
+
+        });
+    });
+
+
+
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#company_permission_update").click(function(event) {
+        var data = new FormData();
+        data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
+        event.preventDefault()
+        data.append("company_id", $('#company_id').val());
+        data.append("email", $('#email').val());
+        data.append("fullname", $('#fullname').val());
+        data.append("position", $('#position').val());
+        data.append("passport_number", $('#passport_number').val());
+        data.append("tel_number", $('#tel_number').val());
+        data.append("status", $("input:radio[name='radio_status']:checked").val());
+        var array = [];
+        $(".checkbox1:checked").each(function() {
+            array.push($(this).val());
+            });
+
+        data.append("permissions", array);
+        $.ajax({
+            type: 'POST',
+            url: '{% url 'company_permission_update' %}',
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+
+            success: function (result){
+                 $('#message_success_edited').css({'display':'inline-block'})
+            },
+
+            error: function(){
+              alert('Serverga yubara olmaymiz !! ');
+            }
+
+        });
+
+
+        });
+    });
+</script>
+
+<!--ruhsatni olib tashlashni tashkillashtirish-->
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#company_permission_delete").click(function(event) {
+        var data = new FormData();
+        data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
+        event.preventDefault()
+        data.append("pasport", $(this).attr('data-value'));
+
+        var array = [];
+        $(".checkbox1:checked").each(function() {
+            array.push($(this).val());
+            });
+        data.append("permissions", array);
+        $.ajax({
+            type: 'POST',
+            url: '{% url 'company_permission_delete' %}',
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+
+            success: function (result){
+<!--                 location.replace(window.location.pathname);-->
+            $('#message_success').css({'display':'inline-block'});
+            },
+
+            error: function(){
+              console.log('Serverga yubara olmaymiz !! ');
+            }
+
+        });
+
+
+        });
+    });
+</script>
+
+{% endblock %}

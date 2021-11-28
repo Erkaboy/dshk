@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pdf</title>
+<style>
+table, th, td {
+  border: 1px solid black;
+  text-align:center
+}
+
+table {
+  width: 100%;
+
+}
+th,td{
+	padding:2px;
+}
+html{
+  -webkit-print-color-adjust: exact;
+}
+
+
+			/* @font-face {
+			        font-family: "Alice-Regular";
+			        src: url("/Alice-Regular/alice/Alice-Regular.ttf") format("truetype");
+			        }
+
+			        body {
+			        font-family: "Alice-Regular";
+			        } */
+
+</style>
+</head>
+<body>
+
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+	<h1 style="text-align:center">Ro'yxatdan o'tish uchun berilgan ariza shakli<br>
+		TASHKILOT BLANKASIDA
+	</h1>
+	<br>
+	<p style="float:right;font-size:13px;text-align:right">O'zbekiston Respublikasi <br> Qurilish vazirligiga</p>
+	<br><br>
+	<h2 style="text-align:center">Ro'yxatdan o'tish uchun ariza</h2>
+	<p>
+		Axborot bilan toldirish va ma'lumotlarni foydalanish ishlarini amalga oshirishni ta'minlash uchun quyidagi mutaxassislarga
+		"O'zbekistan Respublikasi davlat shaharsozlik kadastri" geografik axborot tizimi geopartalining quyidagi sanab o'tilgan geoaxborot qatlamlardan
+		foydalanish uchun ro'yhatga olish ma'lumotlarini berishingizni so'raymiz:
+	</p>
+
+	<table>
+		<tr>
+				<th>F.I.SH</th>
+				<th>Lavozimi</th>
+				<th>Xizmat telefoni</th>
+				<th>Elektron pochta manzili</th>
+				<th>Foydalanish imkoniyati ta'minlanishi so'ralayotgan geoaxborot qatlamlari</th>
+		  </tr>
+	  {% for worker in workers %}
+				<tr class="text text-center">
+					<td accept-charset="UTF-8">{{worker.full_name}}</td>
+					<td>{{worker.position}}</td>
+					<td>{{worker.contact}}</td>
+					<td>{{worker.email}}</td>
+					<td>
+						 {% for i in worker.services.all %}
+                                {{i.title}}<br>
+                            {% endfor %}
+						 {% if worker.status == '0' %}
+                                    <i class="text text-warning" style="font-weight:bold"> ( Oddiy foydalanuvchi )</i>
+                                {% endif %}
+
+                                {% if worker.status == '1' %}
+                                    <i class="text text-info" style="font-weight:bold"> ( Admin )</i>
+                                {% endif %}
+
+                                {% if worker.status == '2' %}
+                                    <i class="text text-success" style="font-weight:bold"> ( Super Admin )</i>
+                                {% endif %}
+					</td>
+
+
+				</tr>
+			{% endfor %}
+	</table>
+	<br>
+
+
+<div style="width:100%">
+
+	<span>
+		<i>{{company.leader}}</i><br>
+		<i>(Tashkilot rahbari)</i>
+	</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<span>
+		<i>_________________</i>
+		<i>(F.I.O)</i>
+	</span>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;
+	<span>
+		<i style="">____________</i>
+		<i>(imzo)</i>
+	</span>
+
+
+</div>
+
+
+<div>
+	<p>M.O'. ______________</p>
+</div>
+
+<p style="font-size:13px"><b>Izox.</b> <i>Har bir mutaxassisning elektron pochta manzili takrorlanmaydigan va tashkilotning korporativ elektron pochtalari bo'lishi lozim.</i></p>
+
+
+</body>
+</html>

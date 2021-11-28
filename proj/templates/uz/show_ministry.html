@@ -1,0 +1,395 @@
+{% extends 'uz/master.html' %}
+
+ {% block content %}
+<style>
+    .tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+  {% load i18n %}
+{% load static %}
+
+   <div class="container" id="main_body">
+       <br>
+       <a href="#" style="float:right;font-size:20px"> <i class="fa fa-university"></i> Toshket Axborot Texnologiyalari Universiteti</a>
+       <br>
+       <hr>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text text-center text-info">Barcha hodimlar ro'yhati</h3>
+                  <table class="table table-hover table-stripped" style="text-align:center">
+
+                    <thead >
+                      <tr>
+                        <th style="text-align:center">#</th>
+                        <th style="text-align:center">F.I.SH</th>
+                        <th style="text-align:center">Passpot raqami</th>
+                        <th style="text-align:center">Tel nomeri</th>
+                        <th style="text-align:center">Email adresi</th>
+                        <th style="text-align:center">Ruhsatlar</th>
+                        <th style="text-align:center">Status</th>
+                        <th style="text-align:center">Buyruqni O'zgartirish</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td> 1 </td>
+                        <td>Doe</td>
+                        <td>AA 558877</td>
+                        <td>+9989787588</td>
+                        <td>mary@example.com</td>
+                        <td>Barcha ma'lumotlarni ko'rish , yangi ma'lumotlarni kiritish va o'zgartirish (o'chirish) <br> Funkisonal zonalar , Geologik rayonlashtirish</td>
+                          <td class="text text-success">Aktiv</td>
+                        <td><a href="{% url 'change' lang='uz' %}"> <i class="fa fa-check-square-o"></i> O'zgartirish</a></td>
+                      </tr>
+                      <tr>
+                         <td> 2 </td>
+                        <td>Doe</td>
+                        <td>AA 558877</td>
+                        <td>+9989787588</td>
+                        <td>mary@example.com</td>
+                        <td>Barcha ma'lumotlarni ko'rish , yangi ma'lumotlarni kiritish va o'zgartirish (o'chirish)</td>
+                          <td class="text text-success">Aktiv</td>
+                          <td><a href="#"> <i class="fa fa-check-square-o"></i> O'zgartirish</a></td>
+                      </tr>
+                      <tr>
+                        <td> 3 </td>
+                        <td>Doe</td>
+                        <td>AA 558877</td>
+                        <td>+9989787588</td>
+                        <td>mary@example.com</td>
+                        <td>Barcha ma'lumotlarni ko'rish , yangi ma'lumotlarni kiritish va o'zgartirish (o'chirish)</td>
+                          <td class="text text-danger">Noaktiv</td>
+                          <td><a href="#"> <i class="fa fa-check-square-o"></i> O'zgartirish</a></td>
+                      </tr>
+                    </tbody>
+
+                  </table>
+                <hr>
+            </div>
+        </div>
+
+              <hr>
+        <div class="row">
+            <div class="col-md-12">
+
+                <h4 class="text text-center text-info">Yangi qo'shilgan, o'zgartirilgan, o'chirilgan xodimlar ro'yhati</h4>
+                  <table class="table table-hover table-stripped" style="text-align:center">
+
+                    <thead >
+                      <tr>
+                        <th style="text-align:center">#</th>
+                        <th style="text-align:center">F.I.SH</th>
+                        <th style="text-align:center">Passport raqami</th>
+                        <th style="text-align:center">Email</th>
+                        <th style="text-align:center">Tel nomer</th>
+                        <th style="text-align:center">Ruhsat berish</th>
+                        <th style="text-align:center">Status</th>
+
+                        <th style="text-align:center">Ko'rish</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>Karim</td>
+                        <td>AA 558877</td>
+                        <td>mary@example.com</td>
+                          <td>+9989787588</td>
+                          <td>Barcha ma'lumotlarni ko'rish , yangi ma'lumotlarni kiritish va o'zgartirish (o'chirish)</td>
+                          <td class="text text-success">Yangi qo'shilgan</td>
+
+                        <td><a href="{% url 'permission' lang='uz' %}"> <i class="fa fa-eye"></i> Ko'rish</a></td>
+                      </tr>
+
+                       <tr>
+                        <td>2</td>
+                        <td>Karim</td>
+                        <td>AA 558877</td>
+                        <td>mary@example.com</td>
+                          <td>+9989787588</td>
+                          <td>Barcha ma'lumotlarni ko'rish , yangi ma'lumotlarni kiritish va o'zgartirish (o'chirish)</td>
+                           <td class="text text-info">O'zgartirilgan</td>
+                        <td><a href="{% url 'permission' lang='uz' %}"> <i class="fa fa-eye"></i> Ko'rish</a></td>
+                      </tr>
+
+                      <tr>
+                        <td>3</td>
+                        <td>Karim</td>
+                        <td>AA 558877</td>
+                        <td>mary@example.com</td>
+                          <td>+9989787588</td>
+                          <td>Barcha ma'lumotlarni ko'rish , yangi ma'lumotlarni kiritish va o'zgartirish (o'chirish)</td>
+                          <td class="text text-danger">O'chirilgan</td>
+                        <td><a href="{% url 'permission' lang='uz' %}"> <i class="fa fa-eye"></i> Ko'rish</a></td>
+                      </tr>
+
+                    </tbody>
+
+                  </table>
+                <hr>
+            </div>
+        </div>
+
+
+
+       <hr>
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                          <div class="tab">
+                          <button class="tablinks" onclick="openCity(event, 'all')" id="defaultOpen">
+                              <b class="text text-info">Barcha arizalar</b>
+                                <span class="text text-info"> &nbsp; <i class="fa fa-comments-o" aria-hidden="true"></i> 15</span>
+                          </button>
+                          <button class="tablinks" onclick="openCity(event, 'new')">
+                               <b class="text text-success">Yangi arizalar</b>
+                                <span class="text text-success"> &nbsp; <i class="fa fa-comments-o" aria-hidden="true"></i> 3</span>
+                          </button>
+                          <button class="tablinks" onclick="openCity(event, 'status')">
+                              <b class="text text-warning">Ariza holatlari</b>
+                              <span class="text text-warning"> &nbsp; <i class="fa fa-comments-o" aria-hidden="true"></i> 2</span>
+                          </button>
+                        </div>
+
+                        <div id="all" class="tabcontent">
+                          <hr>
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <h4 class="text text-center text-info">Tashkilotdan kelgan barcha arizalar</h4>
+                                    <hr>
+                                      <table class="table table-hover table-stripped" style="text-align:center">
+
+                                        <thead >
+                                          <tr>
+                                            <th style="text-align:center">#</th>
+                                            <th style="text-align:center">Ariza berilgan vaqti</th>
+                                              <th style="text-align:center">Ariza fayli</th>
+                                            <th style="text-align:center">Status</th>
+                                          </tr>
+                                        </thead>
+
+                                        <tbody>
+                                          <tr>
+                                            <td>1</td>
+                                              <td>10.10.2021</td>
+                                               <td><a href="{% static 'newimages/1.pdf' %}">Ariza fayli</a></td>
+                                            <td class="text text-success"><i class="fa fa-check-square-o" aria-hidden="true"></i> Tasdiqlangan</a></td>
+                                          </tr>
+
+                                           <tr>
+                                            <td>3</td>
+                                              <td>10.10.2021</td>
+                                               <td><a href="{% static 'newimages/1.pdf' %}">Ariza fayli</a></td>
+                                            <td class="text text-success"><i class="fa fa-check-square-o" aria-hidden="true"></i> Tasdiqlangan</a></td>
+                                          </tr>
+
+                                            <tr>
+                                            <td>3</td>
+                                              <td>10.10.2021</td>
+                                               <td><a href="{% static 'newimages/1.pdf' %}">Ariza fayli</a></td>
+                                            <td class="text text-success"><i class="fa fa-check-square-o" aria-hidden="true"></i> Tasdiqlangan</a></td>
+                                          </tr>
+
+                                        </tbody>
+
+                                      </table>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="new" class="tabcontent">
+                         <hr>
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <h4 class="text text-center text-success">Tashkilotdan kelgan yangi arizalar</h4>
+                                    <hr>
+                                       <table class="table table-hover table-stripped" style="text-align:center">
+
+                                        <thead >
+                                          <tr>
+                                            <th style="text-align:center">#</th>
+                                            <th style="text-align:center">Ariza berilgan vaqti</th>
+                                              <th style="text-align:center">Ariza fayli</th>
+                                            <th style="text-align:center">Status</th>
+                                            <th style="text-align:center">Tasdiqlash</th>
+                                          </tr>
+                                        </thead>
+
+                                        <tbody>
+                                          <tr>
+                                            <td>1</td>
+                                              <td>10.10.2021</td>
+                                               <td><a href="{% static 'newimages/1.pdf' %}">Ariza fayli</a></td>
+                                            <td class="text text-success">Yangi qo'shilgan</a></td>
+                                              <td>
+                                                  <a href="#" class="btn btn-danger"> <i class="fa fa-thumbs-down" aria-hidden="true"></i> Rad etish</a>
+                                             &nbsp;&nbsp;
+                                           <a href="#" class="btn btn-success"> <i class="fa fa-thumbs-up" aria-hidden="true"></i> Tasdiqlash</a>
+                                              </td>
+                                          </tr>
+
+                                           <tr>
+                                            <td>2</td>
+                                              <td>10.10.2021</td>
+                                               <td><a href="{% static 'newimages/1.pdf' %}">Ariza fayli</a></td>
+                                            <td class="" style="color:yellow">O'zgartirilgan</a></td>
+                                               <td>
+                                                  <a href="#" class="btn btn-danger"> <i class="fa fa-thumbs-down" aria-hidden="true"></i> Rad etish</a>
+                                             &nbsp;&nbsp;
+                                           <a href="#" class="btn btn-success"> <i class="fa fa-thumbs-up" aria-hidden="true"></i> Tasdiqlash</a>
+                                              </td>
+                                          </tr>
+
+                                           <tr>
+                                            <td>3</td>
+                                              <td>10.10.2021</td>
+                                               <td><a href="{% static 'newimages/1.pdf' %}">Ariza fayli</a></td>
+                                            <td class="" style="color:red">O'chirilgan</a></td>
+                                               <td>
+                                                  <a href="#" class="btn btn-danger"> <i class="fa fa-thumbs-down" aria-hidden="true"></i> Rad etish</a>
+                                             &nbsp;&nbsp;
+                                           <a href="#" class="btn btn-success"> <i class="fa fa-thumbs-up" aria-hidden="true"></i> Tasdiqlash</a>
+                                              </td>
+                                          </tr>
+
+                                        </tbody>
+
+                                      </table>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="status" class="tabcontent">
+                         <hr>
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <h4 class="text text-center text-info">Tashkilotdan kelgan yangi arizalar</h4>
+                                    <hr>
+                                       <table class="table table-hover table-stripped" style="text-align:center">
+
+                                        <thead >
+                                          <tr>
+                                            <th style="text-align:center">#</th>
+                                            <th style="text-align:center">Tashkilot nomi</th>
+                                            <th style="text-align:center">Tel raqami</th>
+                                            <th style="text-align:center">Ariza berilgan vaqti</th>
+                                            <th style="text-align:center">Tashkilot rahbari</th>
+                                              <th style="text-align:center">Ariza fayli</th>
+                                            <th style="text-align:center">Ruhsat berish</th>
+                                          </tr>
+                                        </thead>
+
+                                        <tbody>
+                                          <tr>
+                                            <td>1</td>
+                                            <td>Qurilish vazirligi </td>
+                                              <td>+9989787588</td>
+                                              <td>10.10.2021</td>
+                                              <td>Karimov Vali</td>
+                                               <td><a href="{% static 'newimages/1.pdf' %}">Ariza fayli</a></td>
+                                            <td class="text text-success"><i class="fa fa-check-square-o" aria-hidden="true"></i> Tasdiqlangan</a></td>
+                                          </tr>
+
+                                           <tr>
+                                            <td>1</td>
+                                            <td>Qurilish vazirligi </td>
+                                              <td>+9989787588</td>
+                                              <td>10.10.2021</td>
+                                              <td>Karimov Vali</td>
+                                               <td><a href="{% static 'newimages/1.pdf' %}">Ariza fayli</a></td>
+                                            <td class="text text-success"><i class="fa fa-check-square-o" aria-hidden="true"></i> Tasdiqlangan</a></td>
+                                          </tr>
+
+                                           <tr>
+                                            <td>1</td>
+                                            <td>Qurilish vazirligi </td>
+                                              <td>+9989787588</td>
+                                              <td>10.10.2021</td>
+                                              <td>Karimov Vali</td>
+                                               <td><a href="{% static 'newimages/1.pdf' %}">Ariza fayli</a></td>
+                                            <td class="text text-success"><i class="fa fa-check-square-o" aria-hidden="true"></i> Tasdiqlangan</a></td>
+                                          </tr>
+
+                                        </tbody>
+
+                                      </table>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+
+
+
+
+
+   </div>
+
+  <hr>
+
+      <script>
+        function openCity(evt, cityName) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(cityName).style.display = "block";
+          evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+
+    {% endblock content %}

@@ -1,0 +1,577 @@
+ {% extends 'base.html' %}
+
+ {% block style %}
+<style type="text/css">
+.ui-widget-header{
+  background-color: #5fb1ff;
+}
+</style>
+{% endblock style %}
+ 
+ {% block content %}
+ 
+      
+ <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="section-headline services-head text-center">
+            <h3 class="wow fadeInUp">РЕЕСТР ОБЪЕКТОВ ГРАДОСТРОИТЕЛЬНОЙ ДЕЯТЕЛЬНОСТИ</h3>
+            <hr>
+          </div>
+</div>
+
+<div class="modal-body">
+
+     <div class="modal-text">  
+              <p class="modal_p wow fadeInLeft">
+              Реестр объектов градостроительной деятельности содержит описание объектов, находящихся в стадии проектирования, строительства и эксплуатации. Данная подсистема устанавливает единые принципы ведения реестра объектов градостроительной деятельности и регламентирует его структуру, состав сведений, порядок формирования и представления информации об объектах градостроительной деятельности.
+            </p>
+            <p class="modal_p wow fadeInRight">
+              Объектами учета реестра являются объекты градостроительной деятельности, подлежащие государственному техническому учету и технической инвентаризации, независимо от формы собственности и назначения.
+            </p>
+
+           
+            <ul class="modal_p_ul wow fadeInLeft">
+               <p>
+              Подсистема предназначена для автоматизированного ведения реестров объектов градостроительной деятельности, к числу которых относятся:
+            </p>
+              <li>реестр зданий и сооружений; </li>
+              <li>реестр земельных участков и их учтенных частей территорий; </li>
+              <li>реестр зон градостроительной деятельности; </li>
+              <li>границы и красные линии; </li>
+              <li>реестр прочих объектов, включающий в себя объекты транспортной и инженерной инфраструктуры; </li>
+            </ul>
+  
+            </div>
+      
+
+              
+<hr>
+       
+<div class="row">
+           <div class="col-md-7 col-sm-7 col-xs-12">
+   <div class="modal-img wow fadeInLeft">
+            <a  data-magnify="gallery" data-caption="Градостроительная документация" href="/static/img/img_pods/pod7_2.png"><img src="/static/img/img_pods/pod7_2.png" class="pod_img"></a>
+          </div>
+    </div>
+           <div class="col-md-5 col-sm-5 col-xs-12">
+             <div class="modal-img  wow fadeInRight">
+              <a data-magnify="gallery" data-caption="Градостроительная документация" href="/static/img/img_pods/pod7_1.png"><img class="pod_img" src="/static/img/img_pods/pod7_1.png"></a>
+            </div>
+            
+            </div>
+</div>
+<hr>
+          <p class="modal_p  wow fadeInRight">
+              Основными целями создания реестра объектов является государственный контроль за градостроительной деятельностью, совершенствованию планирования развития территорий и населенных пунктов, обеспечение органов государственной власти достоверной информацией о среде жизнедеятельности.
+            </p>
+        
+
+</div>
+
+
+<hr>
+
+<div class="container">  
+ <h4 class="wow fadeInRight"><b>Shaharsozlik faoliyati ob'yektlari reestri quyi tizimining tarkibiy elementlarining statistikasi</b></h4> 
+ <hr>
+ <div class="row"">
+
+<div style="margin-top: 20px;" class="col-md-12 col-xs-12 col-sm-12 col-lg-12 align-self-center">
+<table class="table mytable wow fadeInLeft">
+  <thead>
+    <tr id="th_years" >
+      <th scope="col">Xizmatlar</th>
+    </tr>
+  </thead>
+  <tbody> 
+  <tr id="tr_perm_rec"><td>Ob'yektni qayta ixtisoslashtirish va rekonstruktsiya qilish</td></tr>
+
+  <tr id="tr_smr"><td>Qurilish-montaj ishlarini amalga oshirish</td></tr>
+
+  <tr id="tr_pexpl"><td>Turar joy obyekti hisoblangan bino va inshootni foydalanishga qabul qilish</td></tr>
+   <tr id="tr_pexpl_ind"><td>Noturar joy obyekti hisoblangan bino va inshootni foydalanishga qabul qilish</td></tr>
+</tbody>
+</table>
+
+ 
+</div>
+</div>
+
+ <hr>
+ <div class="row"">
+
+
+<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 align-self-start">
+<canvas  id="canvas_all" height="120px"></canvas>
+</div>
+
+</div>
+
+</div>
+
+
+
+<hr>
+<div class="container">  
+ <h4 class="wow fadeInRight"><b>Yillar va oylar kesimida shaharsozlik faoliyati ob'yektlari reestri tarkibiy elemetlarini ifodalanishi </b></h4> 
+ <hr>
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Obyektni qayta ixtisoslashtirish...qilish</a></li>
+    <li><a href="#tabs-2">Qurilish-montaj ishlari</a></li>
+    <li><a href="#tabs-3">Turar joy obyekti hisoblangan...qilish</a></li>
+    <li><a href="#tabs-4">Noturar joy obyekti hisoblangan...qilish</a></li>
+  </ul>
+  <div id="tabs-1">
+      <h4>Obyektni qayta ixtisoslashtirish va rekonstruktsiya qilish</h4>
+      <hr>
+<table class="table mytable table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Yillar\Oylar</th>
+      <th scope="col">Yanvar</th>
+      <th scope="col">Fevral</th>
+      <th scope="col">Mart</th>
+      <th scope="col">Aprel</th>
+      <th scope="col">May</th>
+      <th scope="col">Iyul</th>
+      <th scope="col">Iyun</th>
+      <th scope="col">Avgust</th>
+      <th scope="col">Sentabr</th>
+      <th scope="col">Oktabr</th>
+      <th scope="col">Noyabr</th>
+      <th scope="col">Dekabr</th>
+    </tr>
+  </thead>
+  <tbody id='perm_rec_table_tr'> 
+  </tbody>
+  </table>
+
+  <hr>
+
+<canvas  id="canvas_perm_rec"></canvas>
+  </div>
+  <div id="tabs-2">
+  <h4 > Qurilish-montaj ishlarini amalga oshirish</h4>
+<hr>
+<table class="table mytable table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Yillar\Oylar</th>
+      <th scope="col">Yanvar</th>
+      <th scope="col">Fevral</th>
+      <th scope="col">Mart</th>
+      <th scope="col">Aprel</th>
+      <th scope="col">May</th>
+      <th scope="col">Iyul</th>
+      <th scope="col">Iyun</th>
+      <th scope="col">Avgust</th>
+      <th scope="col">Sentabr</th>
+      <th scope="col">Oktabr</th>
+      <th scope="col">Noyabr</th>
+      <th scope="col">Dekabr</th>
+    </tr>
+  </thead>
+  <tbody id='smr_table_tr'> 
+  </tbody>
+  </table>
+
+  <hr>
+
+<canvas  id="canvas_smr"></canvas>
+  </div>
+  <div id="tabs-3">
+<h4 >Turar joy obyekti hisoblangan bino va inshootni foydalanishga qabul qilishi</h4>
+<hr>
+<table class="table mytable table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Yillar\Oylar</th>
+      <th scope="col">Yanvar</th>
+      <th scope="col">Fevral</th>
+      <th scope="col">Mart</th>
+      <th scope="col">Aprel</th>
+      <th scope="col">May</th>
+      <th scope="col">Iyul</th>
+      <th scope="col">Iyun</th>
+      <th scope="col">Avgust</th>
+      <th scope="col">Sentabr</th>
+      <th scope="col">Oktabr</th>
+      <th scope="col">Noyabr</th>
+      <th scope="col">Dekabr</th>
+    </tr>
+  </thead>
+  <tbody id='pexpl_table_tr'> 
+  </tbody>
+  </table>
+
+  <hr>
+
+<canvas  id="canvas_pexpl"></canvas>
+
+</div>
+
+  <div id="tabs-4">
+<h4>Noturar joy obyekti hisoblangan bino va inshootni foydalanishga qabul qilish</h4>
+<hr>
+<table class="table mytable table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Yillar\Oylar</th>
+      <th scope="col">Yanvar</th>
+      <th scope="col">Fevral</th>
+      <th scope="col">Mart</th>
+      <th scope="col">Aprel</th>
+      <th scope="col">May</th>
+      <th scope="col">Iyul</th>
+      <th scope="col">Iyun</th>
+      <th scope="col">Avgust</th>
+      <th scope="col">Sentabr</th>
+      <th scope="col">Oktabr</th>
+      <th scope="col">Noyabr</th>
+      <th scope="col">Dekabr</th>
+    </tr>
+  </thead>
+  <tbody id='pexpl_ind_table_tr'> 
+  </tbody>
+  </table>
+
+  <hr>
+
+<canvas  id="canvas_pexpl_ind"></canvas>
+
+</div>
+
+
+</div>
+</div>
+
+  
+ {% endblock content %}
+
+
+ {% block script %}
+
+<script type="text/javascript">
+  
+  $( "#tabs" ).tabs({
+  });
+
+var year_color={
+  '2018':'red',
+  '2019':'orange',
+  '2020':'blue',
+  '2021':'pink',
+  '2022':'yellow',
+  '2022':'green'
+};
+
+
+var perm_rec={
+      type: 'bar',
+      data: {
+      labels: ['Yanvar', 'Fevral', 'Mart', 'April', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'],
+      datasets: []
+
+    },
+        options: {
+          responsive: true,
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            position: 'bottom',
+            fontSize:16,
+            text: 'Yillar kesimidagi obyektni qayta ixtisoslashtirish va rekonstruktsiya qilish'
+          }
+          }
+      };
+
+
+var smr={
+      type: 'bar',
+      data: {
+      labels: ['Yanvar', 'Fevral', 'Mart', 'April', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'],
+      datasets: []
+
+    },
+        options: {
+          responsive: true,
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            position: 'bottom',
+            fontSize:16,
+            text: 'Yillar kesimidagi qurilish-montaj ishlarini amalga oshirish'
+          }
+          }
+      };
+
+
+var pexpl={
+      type: 'bar',
+      data: {
+      labels: ['Yanvar', 'Fevral', 'Mart', 'April', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'],
+      datasets: []
+
+    },
+        options: {
+          responsive: true,
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            position: 'bottom',
+            fontSize:16,
+            text: 'Yillar kesimidagi turar joy obyekti hisoblangan bino va inshootni foydalanishga qabul qilishi'
+          }
+          }
+      };
+
+var pexpl_ind={
+      type: 'bar',
+      data: {
+      labels: ['Yanvar', 'Fevral', 'Mart', 'April', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'],
+      datasets: []
+
+    },
+        options: {
+          responsive: true,
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            position: 'bottom',
+            fontSize:16,
+            text: 'Yillar kesimidagi noturar joy obyekti hisoblangan bino va inshootni foydalanishga qabul qilish'
+          }
+          }
+      };
+
+
+var data_all={
+        type: 'bar',
+        data: {
+      labels: [],
+      datasets: []
+    },
+        options: {
+          responsive: true,
+          legend: {
+            position: 'top',
+            display: true,
+          },
+          title: {
+            display: false,
+            text: ''
+          }
+        }
+      };
+
+
+
+var data = new FormData();
+data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
+data.append('service','pod7');
+
+    $.ajax({
+        url: '/chart_data',
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        type: 'post',
+        success: function (result) {
+
+let count_perm_rec=0;
+let perm_rec_chart_data=[];
+for(var service in result.perm_rec ){
+for(var x in result.perm_rec[service]){
+    perm_rec.data.datasets.push({
+        label: x+' yil',
+        backgroundColor: year_color[x],
+        borderColor: year_color[x],
+        borderWidth: 1,
+        data: result.perm_rec[service][x]
+      });
+let text='<tr><td><b>'+x+' yil</b></td>';
+let count=0;
+for(var i in result.perm_rec[service][x]){
+text+='<td>'+result.perm_rec[service][x][i]+'</td>';
+count+=result.perm_rec[service][x][i];
+}
+text+='</tr>';
+$('#th_years').append('<th scope="col">'+x+'</th>');
+data_all.data.labels.push(x);
+
+perm_rec_chart_data.push(count);
+
+$('#tr_perm_rec').append('<td>'+count+'</td>');
+
+$('#perm_rec_table_tr').append(text);
+
+count_perm_rec+=count;
+}
+}
+
+
+data_all.data.datasets.push({
+        label: "Ob'yektni qayta ixtisoslashtirish va rekonstruktsiya qilish",
+        backgroundColor: '#ef3c1b',
+        borderColor: '#ef3c1b',
+        borderWidth: 1,
+        data: perm_rec_chart_data
+      });
+
+
+$('#th_years').append('<th scope="col">Umumiy</th>');
+$('#tr_perm_rec').append('<td><b>'+count_perm_rec+'</b></td>');
+
+
+
+
+let count_smr=0;
+let smr_chart_data=[];
+for(var service in result.smr ){
+for(var x in result.smr[service]){
+    smr.data.datasets.push({
+        label: x+' yil',
+        backgroundColor: year_color[x],
+        borderColor: year_color[x],
+        borderWidth: 1,
+        data: result.smr[service][x]
+      });
+let text='<tr><td><b>'+x+' yil</b></td>';
+let count=0;
+for(var i in result.smr[service][x]){
+text+='<td>'+result.smr[service][x][i]+'</td>';
+count+=result.smr[service][x][i];
+}
+text+='</tr>';
+$('#tr_smr').append('<td>'+count+'</td>');
+smr_chart_data.push(count);
+
+$('#smr_table_tr').append(text);
+
+count_smr+=count;
+}
+}
+$('#tr_smr').append('<td><b>'+count_smr+'</b></td>');
+
+data_all.data.datasets.push({
+        label: 'Qurilish-montaj ishlari',
+        backgroundColor: '#7ed321',
+        borderColor: '#7ed321',
+        borderWidth: 1,
+        data: smr_chart_data
+      });
+
+
+
+
+
+let count_pexpl=0;
+let pexpl_chart_data=[];
+for(var service in result.pexpl ){
+for(var x in result.pexpl[service]){
+    pexpl.data.datasets.push({
+        label: x+' yil',
+        backgroundColor: year_color[x],
+        borderColor: year_color[x],
+        borderWidth: 1,
+        data: result.pexpl[service][x]
+      });
+let text='<tr><td><b>'+x+' yil</b></td>';
+let count=0;
+for(var i in result.pexpl[service][x]){
+text+='<td>'+result.pexpl[service][x][i]+'</td>';
+count+=result.pexpl[service][x][i];
+}
+text+='</tr>';
+$('#tr_pexpl').append('<td>'+count+'</td>');
+pexpl_chart_data.push(count);
+
+$('#pexpl_table_tr').append(text);
+
+count_pexpl+=count;
+}
+}
+$('#tr_pexpl').append('<td><b>'+count_pexpl+'</b></td>');
+
+
+data_all.data.datasets.push({
+        label: 'Turar joy obyekti hisoblangan bino va inshootni foydalanishga qabul qilish',
+        backgroundColor: '#4a90e2',
+        borderColor: '#4a90e2',
+        borderWidth: 1,
+        data: pexpl_chart_data
+      });
+
+
+
+
+let count_pexpl_ind=0;
+let pexpl_ind_chart_data=[];
+for(var service in result.pexpl_ind ){
+for(var x in result.pexpl_ind[service]){
+    pexpl_ind.data.datasets.push({
+        label: x+' yil',
+        backgroundColor: year_color[x],
+        borderColor: year_color[x],
+        borderWidth: 1,
+        data: result.pexpl_ind[service][x]
+      });
+let text='<tr><td><b>'+x+' yil</b></td>';
+let count=0;
+for(var i in result.pexpl_ind[service][x]){
+text+='<td>'+result.pexpl_ind[service][x][i]+'</td>';
+count+=result.pexpl_ind[service][x][i];
+}
+text+='</tr>';
+$('#tr_pexpl_ind').append('<td>'+count+'</td>');
+pexpl_ind_chart_data.push(count);
+
+$('#pexpl_ind_table_tr').append(text);
+
+count_pexpl_ind+=count;
+}
+}
+$('#tr_pexpl_ind').append('<td><b>'+count_pexpl_ind+'</b></td>');
+
+
+data_all.data.datasets.push({
+        label: 'Noturar joy obyekti hisoblangan bino va inshootni foydalanishga qabul qilish',
+        backgroundColor: '#bf5fe0',
+        borderColor: '#bf5fe0',
+        borderWidth: 1,
+        data: pexpl_ind_chart_data
+      });
+
+      var ctx_all = document.getElementById('canvas_all').getContext('2d');
+      var chart_all = new Chart(ctx_all, data_all);
+
+
+      var ctx_perm_rec = document.getElementById('canvas_perm_rec').getContext('2d');
+      var chart_perm_rec = new Chart(ctx_perm_rec, perm_rec);
+
+      var ctx_smr = document.getElementById('canvas_smr').getContext('2d');
+      var chart_smr = new Chart(ctx_smr, smr);
+
+      var ctx_pexpl = document.getElementById('canvas_pexpl').getContext('2d');
+      var chart_pexpl = new Chart(ctx_pexpl, pexpl);
+
+      var ctx_pexpl_ind = document.getElementById('canvas_pexpl_ind').getContext('2d');
+      var chart_pexpl_ind = new Chart(ctx_pexpl_ind, pexpl_ind);
+
+        },
+        error: function(){
+          console.log('Ajaxda xatolik');
+        }
+      });
+
+</script>
+{% endblock script %}

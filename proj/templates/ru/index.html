@@ -1,0 +1,1349 @@
+{% load i18n %}
+<!doctype html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <title>Геопортал ГГК</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/logo.ico' %}" rel="shortcut icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Libraries CSS Files -->
+  <link href="{% static 'lib/nivo-slider/css/nivo-slider.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/owlcarousel/owl.carousel.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/owlcarousel/owl.transitions.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/venobox/venobox.css' %}" rel="stylesheet">
+
+  <!-- Nivo Slider Theme -->
+  <link href="{% static 'css/nivo-slider-theme.css' %}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+  <!-- Responsive Stylesheet File -->
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+
+
+<style type="text/css">
+.my_modal{
+  width: 70%;
+}
+.pod_img{
+  float: left; 
+  margin: 20px;
+  width: 400px;
+
+}
+  .modal_p{
+    text-indent: 50px;
+    font-size: 16px;
+    text-align: justify;
+    margin:10px;
+
+  }
+
+  .div_pod_name{
+cursor: pointer;
+  }
+
+  .modal_p_ul p{
+    font-size: 16px;
+    text-align: justify;
+    margin:10px; 
+    font-weight: bold; 
+  }
+  .modal_p_ul li{
+    font-size: 16px;
+    list-style: circle;
+    margin-left: 30px;
+  }
+  #main_logo{
+    height: 60px;
+    margin-top: -10px;
+    opacity: 0.85;
+
+  }
+  .ppp{
+    text-align: justify;
+  }
+
+  .count
+{
+  line-height: 80px;
+  color:#3EC1D5;
+  font-weight: bold;
+  font-size:40px;
+  border-bottom: 3px solid #fff;
+}
+.progress-h4{
+  font-size: 16px !important;
+  color: #fff;
+}
+.myhr{
+  width: 100%;
+  height: 0px;
+  border:0px;
+}
+.title_pod{
+  border-bottom: 1px solid #fff;
+  padding-top: 20px;
+  /*margin-top: 15px;*/
+}
+
+.title_pod h4{
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  font-size: 24px;
+
+}
+.carousel-control{
+  background: none !important;
+}
+/*.active{
+  background-color: rgba(0,0,0,0.8) !important;
+}
+.carousel-indicators li{
+  border: 1px solid #666;
+}*/
+
+</style>
+
+</head>
+
+<body data-spy="scroll" data-target="#navbar-example">
+
+  <div id="preloader"></div>
+
+  <header>
+    <!-- header-area start -->
+    <div id="sticker" class="header-area" >
+
+
+
+      <div class="container" >
+
+        <div class="row" >
+
+            <div class="col-md-9 col-sm-9">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-default" >
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header" >
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-example-navbar-collapse-1" aria-expanded="false">
+										<span class="sr-only">Toggle navigation</span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+                <!-- Brand -->
+                <a class="navbar-brand page-scroll sticky-logo" href="/">
+                  <!-- <h1><span>uz</span>DSHK</h1> -->
+                  <!-- Uncomment below if you prefer to use an image logo -->
+                  <img src="/static/img/logo3.png" id="main_logo" alt="" title="">
+								</a>
+
+              </div>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example" >
+                <ul class="nav navbar-nav navbar-right" >
+                  <li class="active">
+                    <a class="page-scroll" id="boshsahifa" href="#home">
+                        Bosh sahifa
+                    </a>
+                  </li>
+               
+                  <li>
+                    <a class="page-scroll" id="ichkitizimlar" href="#services">
+                     Ichki tizimlar
+                    </a>
+                  </li>
+
+                  <li>
+                    <a class="page-scroll" id="bog'lanish" href="#contact">
+                        Bog'lanish
+                    </a>
+                  </li>
+
+                    <li>
+                    <a class="page-scroll" id="register" href="#about">
+                    Registratsiya
+                    </a>
+                  </li>
+
+
+
+
+
+<!--                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+
+
+
+
+
+                </ul>
+
+            <script language="javascript" type="text/javascript">
+
+            function langs(){
+                        var val = document.getElementById("langs").value;
+                        if(val == 2){
+                            document.getElementById("boshsahifa").innerHTML = "Главный";
+                            document.getElementById("ichkitizimlar").innerHTML = "Подсистемы";
+                            document.getElementById("bog'lanish").innerHTML = "Контакт";
+                            document.getElementById("register").innerHTML = "Регистрация";
+                            document.getElementById("ogeo").innerHTML = "О геопортале";
+                            document.getElementById("geotizim").innerHTML = "Геоинформационная система ДШК";
+                            document.getElementById("dshktizim").innerHTML = "Через эту систему вы можете получить подробную информацию о государственном городском кадастре на территории Республики Узбекистан. В географической системе есть два разных типа данных (общедоступные и предназначенные для определенной группы пользователей).Чтобы воспользоваться всеми преимуществами системы, системный администратор потребует от вас добавить систему в список пользователей с правами администратора. Для этого нужно обратиться к системному администратору.";
+                             document.getElementById("sahifagaotish").innerHTML = "Перейти на главную страницу системы";
+                             document.getElementById("login1").innerHTML = "Пользователи с логином и паролем";
+                             document.getElementById("register1").innerHTML = "Незарегистрированные пользователи";
+                             document.getElementById("shaharhujjat").innerHTML = "ДОКУМЕНТЫ ПЛАНИРОВАНИЯ ГОРОДА";
+                             document.getElementById("boshreja").innerHTML = "Общие планы";
+                             document.getElementById("batafsilreja").innerHTML = "Детальные планировочные проекты";
+                             document.getElementById("shaharsozlik").innerHTML = "ПРАВИЛА ПЛАНИРОВАНИЯ ГОРОДА";
+                             document.getElementById("arxitekturaviy").innerHTML = "Архитектурно-планировочные проекты (ARTL)";
+                             document.getElementById("boshrejaqilingan").innerHTML = "Функциональные зоны выполнены по генеральным планам";
+                             document.getElementById("artl").innerHTML = "Функциональные зоны по ARTL";
+                             document.getElementById("qizilchiziq").innerHTML = "Красные линии";
+                             document.getElementById("georayon").innerHTML = "Геологическое районирование";
+                             document.getElementById("loyihalarreestri").innerHTML = "РЕГИСТР ПРОЕКТОВ";
+                             document.getElementById("arxitektura").innerHTML = "Архитектурно-планировочные задачи";
+                             document.getElementById("binolar").innerHTML = "Проектно-сметная документация на строительство зданий, сооружений и других объектов";
+                             document.getElementById("yakkatartibda").innerHTML = "Проектно-сметная документация на индивидуальное жилищное строительство (реконструкцию)";
+                             document.getElementById("shaharsozlikob").innerHTML = "РЕЕСТР ДЕЯТЕЛЬНОСТИ ПО ПЛАНИРОВАНИЮ ГОРОДА";
+                             document.getElementById("obyektniqayta").innerHTML = "Переспециализация и реконструкция объекта";
+                             document.getElementById("qurilish").innerHTML = "Выполнение строительно-монтажных работ";
+                             document.getElementById("turarjoy").innerHTML = "Ввод в эксплуатацию здания или сооружения, являющегося жилым объектом";
+                             document.getElementById("noturar").innerHTML = "Ввод в эксплуатацию здания или сооружения, являющегося нежилым объектом";
+                             document.getElementById("gisggk").innerHTML = "Внутренние системы ГИС-ГГК";
+                             document.getElementById("shaharsozlikqoidalari").innerHTML = "Градостроительные регламенты";
+                             document.getElementById("shaharsozlikqoidalaris").innerHTML = "Автоматизированная подготовка и выдача разрешительных документов градостроительной деятельности в поле градостроительных регламентов";
+                             document.getElementById("shahrsozlikhujjatlarim").innerHTML = "Сбор, учет, анализ и формирование базы данных градостроительной документации.";
+                             document.getElementById("shahrsozlikhujjatlari").innerHTML = "Градостроительные документы";
+                             document.getElementById("monitoring").innerHTML = "Мониторинг";
+                             document.getElementById("shaharsozlikm").innerHTML = "градостроительной деятельности";
+                             document.getElementById("hududdoimiy").innerHTML = "Учет и анализ постоянных изменений территории и соответствия этих изменений положениям утвержденных градостроительных документов";
+                             document.getElementById("asosiysubframe").innerHTML = "Базисная подоснова";
+                             document.getElementById("shaharsozlikmuammolari").innerHTML = "Предоставление геоинформации для решения задач городского планирования.";
+                             document.getElementById("manzilregisteri").innerHTML = "Адресный реестр";
+                             document.getElementById("identifikatsiyalash").innerHTML = "Пространственная идентификация объектов в ГИС-ГГК";
+                             document.getElementById("shaharsozlikamal").innerHTML = "Учет утвержденной проектной документации, реализуемой на объектах градостроительства";
+                             document.getElementById("loyiharegisteri").innerHTML = "РЕЕСТР ПРОЕКТОВ";
+                             document.getElementById("shaharsozlikregistri").innerHTML = "Реестр городских объектов";
+                             document.getElementById("hisobgaolish").innerHTML = "Учет градостроительных объектов";
+                             document.getElementById("subektlarireestri").innerHTML = "Реестр субъектов градостроительства";
+                             document.getElementById("shaharsozlikfaoliyati").innerHTML = "Регистрация субъектов градостроительной деятельности";
+                             document.getElementById("normativ").innerHTML = "НОРМАТИВНО";
+                             document.getElementById("huquqiyasos").innerHTML = "правовая основа";
+                             document.getElementById("belgilangantartib").innerHTML = "Законодательная, нормативная и методическая база для создания и ведения должным образом утвержденных ГИС-ГГК";
+                             document.getElementById("xushkelibsiz").innerHTML = "Добро пожаловать на GAT GEOPORTAL Государственной акционерной компании Республики Узбекистан.";
+                             document.getElementById("boshlash").innerHTML = "Начать";
+                             document.getElementById("boglanish").innerHTML = "Контакт";
+                             document.getElementById("sendmessage").innerHTML = "Ваше сообщение было отправлено. Спасибо!";
+                             document.getElementById("submitted").innerHTML = "Отправить сообщение";
+                             document.getElementById("himoyalangan").innerHTML = "Все права защищены Государственный проектно-исследовательский институт инженерных изысканий в строительстве, геоинформатике и градостроительном кадастре.";
+                             document.getElementById("online1").innerHTML = "Онлайн на сайте";
+                             document.getElementById("davlatkadastri").innerHTML = "Государственного Градостроительного Кадастра Республики Узбекистан";
+
+                            }
+                    else if(val == 1){
+
+                            document.getElementById("boshsahifa").innerHTML = "Bosh sahifa";
+                            document.getElementById("ichkitizimlar").innerHTML = "Ichki tizimlar";
+                            document.getElementById("bog'lanish").innerHTML = "Bog\'lanish";
+                            document.getElementById("register").innerHTML = "Registratsiya";
+                            document.getElementById("ogeo").innerHTML = "Geoportal haqida";
+                            document.getElementById("geotizim").innerHTML = "DSHK geoaxborot tizimi";
+                            document.getElementById("dshktizim").innerHTML = "Ushbu tizim orqali O'zbeksiton Respublikasi hududida yurutilayotgan davlat shaharsozlik kadasti to'g'risida batafsil ma'lumotlarni olishingiz mumkin. Geoaxborot tizimida ikki xil turdagi(umumiy hamma uchun ochiq bo'lgan va ma'lum bir guruh foydalanuvchilari uchun mo'ljallangan) ma'lumotlar mavjud Tizimdan to'laqonli foydalanish uchun sizni tizim adminstratori tizimning admin foydalanuvchilar ro'yxatiga qo'shishi talab qilinadi. Buning uchun tizim administratoriga murojaat qilishingiz kerak.";
+                            document.getElementById("sahifagaotish").innerHTML = "Tizimning asosiy sahifasiga o'tish";
+                            document.getElementById("login1").innerHTML = "Login va parolga ega bo'lgan foydalanuvchilar";
+                            document.getElementById("register1").innerHTML = "Registratsiya qilinmagan foydalanuvchilar";
+                            document.getElementById("shaharhujjat").innerHTML = "SHAHARSOZLIK HUJJATLARI";
+                            document.getElementById("boshreja").innerHTML = "Bosh rejalar";
+                            document.getElementById("batafsilreja").innerHTML = "Batafsil rejalashtirish loyihalari";
+                            document.getElementById("arxitekturaviy").innerHTML = "Arxitekturaviy rejalashtirishni tashkillashtirish loyihalari (ARTL)";
+                            document.getElementById("shaharsozlik").innerHTML = "SHAHARSOZLIK REGLAMENTLARI";
+                            document.getElementById("boshrejaqilingan").innerHTML = "Bosh rejalar bo'yicha qilingan funksional zonalar";
+                            document.getElementById("artl").innerHTML = "ARTL bo'yicha qilingan funksional zonalar";
+                            document.getElementById("qizilchiziq").innerHTML = "Qizil chiziqlar";
+                            document.getElementById("georayon").innerHTML = "Geologik rayonlashtirish";
+                            document.getElementById("loyihalarreestri").innerHTML = "LOYIHALAR REESTRI";
+                            document.getElementById("arxitektura").innerHTML = "Arxitektura-rejalashtirish topshiriqlari";
+                            document.getElementById("binolar").innerHTML = "Binolar, inshootlar va boshqa obyektlar qurilishining loyiha-smeta hujjatlari";
+                            document.getElementById("yakkatartibda").innerHTML = "Yakka tartibda uy-joy qurishga (rekonstruktsiya qilishga) loyiha-smeta hujjatlari";
+                            document.getElementById("shaharsozlikob").innerHTML = "SHAHARSOZLIK FAOLIYATI OB'YEKTLAR REESTRI";
+                            document.getElementById("obyektniqayta").innerHTML = "Obyektni qayta ixtisoslashtirish va rekonstruktsiya qilish";
+                            document.getElementById("qurilish").innerHTML = "Qurilish-montaj ishlarini amalga oshirish";
+                            document.getElementById("turarjoy").innerHTML = "Turar joy obyekti hisoblangan bino va inshootni foydalanishga qabul qilish";
+                            document.getElementById("noturar").innerHTML = "Noturar joy obyekti hisoblangan bino va inshootni foydalanishga qabul qilish";
+                            document.getElementById("gisggk").innerHTML = " GIS-GGK ichki tizimlari";
+                            document.getElementById("shaharsozlikqoidalari").innerHTML = "Shaharsozlik reglamentlar";
+                            document.getElementById("shaharsozlikqoidalaris").innerHTML = "Shaharsozlik sohasida shaharsozlik faoliyati uchun ruxsat beruvchi hujjatlarni avtomatlashtirilgan tartibda rasmiylashtirish uchun mo‘ljallangan";
+                            document.getElementById("shahrsozlikhujjatlarim").innerHTML = "Shaharsozlik hujjatlari to`g`risida ma'lumotlarni jamlash, hisobga olish va ma'lumotlar bazasini shakllantirish";
+                            document.getElementById("shahrsozlikhujjatlari").innerHTML = "Shaharsozlik hujjatlari";
+                            document.getElementById("shaharsozlikm").innerHTML = "Shaharsozlik faoliyati";
+                            document.getElementById("monitoring").innerHTML = "monitoringi";
+                            document.getElementById("hududdoimiy").innerHTML = "Hududlarda vujudga kelgan o‘zgarishlarni ro‘yxatga olish va shaharsozlik hujatlariga muvofiqligini tahlil etish.";
+                            document.getElementById("asosiysubframe").innerHTML = "Asosiy subframe";
+                            document.getElementById("shaharsozlikmuammolari").innerHTML = "Shaharsozlik muammolariga echimlarni geoaxborot bilan ta'minlash.";
+                            document.getElementById("manzilregisteri").innerHTML = "Adres reestrlari";
+                            document.getElementById("identifikatsiyalash").innerHTML = " DShK-GAT da ob‘ektlar joylashuvini identifikatsiyalash";
+                            document.getElementById("loyiharegisteri").innerHTML = "Loyiha registri";
+                            document.getElementById("shaharsozlikamal").innerHTML = "Shaharsozlik ob'ektlarida amalga oshirilgan tasdiqlangan loyiha hujjatlarini hisobga olish";
+                            document.getElementById("shaharsozlikregistri").innerHTML = "Shaharsozlik ob'ektlari registri";
+                            document.getElementById("hisobgaolish").innerHTML = "Shaharsozlik ob'ektlarini hisobga olish";
+                            document.getElementById("subektlarireestri").innerHTML = "Shaharsozlik sub'ektlari reestri";
+                            document.getElementById("shaharsozlikfaoliyati").innerHTML = "Shaharsozlik faoliyati sub'ektlarini hisobga olish";
+                            document.getElementById("normativ").innerHTML = "Normativ";
+                            document.getElementById("huquqiyasos").innerHTML = "huquqiy asos";
+                            document.getElementById("belgilangantartib").innerHTML = "Belgilangan tartibda tasdiqlangan GIS-GGKni yaratish va yuritishning qonunchilik, me'yoriy-uslubiy bazasi";
+                            document.getElementById("xushkelibsiz").innerHTML = "O'zbeksiton Respublikasi DSHK GAT GEOPORTALIga xush kelibsiz";
+                            document.getElementById("boshlash").innerHTML = "Boshlash";
+                            document.getElementById("boglanish").innerHTML = "Bog'lanish";
+                            document.getElementById("sendmessage").innerHTML = "Xabaringiz jo'natildi. Rahmat!";
+                            document.getElementById("submitted").innerHTML = "Xabarni jo'natish";
+                            document.getElementById("himoyalangan").innerHTML = "Barcha huquqlar himoyalangan Qurilish, geoinformatika va shahar kadastri bo'yicha muhandislik tadqiqotlari davlat loyihalashtirish ilmiy-tadqiqot instituti";
+                            document.getElementById("online1").innerHTML = "Saytda onlayn";
+                            document.getElementById("davlatkadastri").innerHTML = "O'zbekiston Respublikasining shaharsozlik davlat kadastri";
+
+
+                            }
+}
+               </script>
+
+
+              </div>
+
+
+
+
+              <!-- navbar-collapse -->
+            </nav>
+            <!-- END: Navigation -->
+          </div>
+
+
+            <div class="col-md-3 col-sm-3">
+<!--                <li>-->
+<!--                          <li  style="float:right;color:red;list-style:none;padding:15px" >-->
+<!--                                    <a  id="ru" onclick="ru()"  title="Russian" class="">-->
+<!--                                        <label for="">Russian</label>-->
+<!--                                        <img src="{% static 'flags/ru.png' %}" alt="Russian"  value="ru" width="30" height="30">-->
+<!--                                    </a>-->
+<!--                            </li>-->
+
+
+<!--                            <li  style="float:right;color:white;list-style:none;padding:15px"  >-->
+<!--                                      <a id="uz" onclick="uz()"  title="Uzbek" class="">-->
+<!--                                        <label for="">Uzbek</label>-->
+<!--                                        <img src="{% static 'flags/uz.png' %}" alt="Uzbekistan" width="30" value="uz" height="30">-->
+<!--                                    </a>-->
+
+<!--                            </li>-->
+<!--                      </li>-->
+
+
+                        <select name="langs" id="langs" onclick="langs()"  style="border-radius:10px;height: 30px;float:right;background-color: #d9d9d9;opacity: 0.78;margin-top:20px">
+
+                          <option value="1"  >🇺🇿&emsp;Uzbek</option>
+                          <option value="2"  >🇷🇺&emsp;Russian</option>
+
+                        </select>
+
+            </div>
+
+
+
+        </div>
+
+      </div>
+<!--    <li style="float:right;">-->
+<!--                <a  id="ru" onclick="ru()"  title="Russian"  class="" style="color:white;padding:5px">-->
+<!--                    <label for="">Russian</label>-->
+<!--                    <img src="{% static 'flags/ru.png' %}" alt="Russian"  value="ru" width="30" height="30">-->
+<!--                </a>-->
+
+<!--                <a id="uz" onclick="uz()"  title="Uzbek" class="" style="color:white;padding:5px">-->
+<!--                <label for="">Uzbek</label>-->
+<!--                <img src="{% static 'flags/uz.png' %}" alt="Uzbekistan" width="30" value="uz" height="30">-->
+<!--            </a>-->
+<!--        </li>-->
+
+
+    </div>
+
+
+
+
+
+
+
+
+  </header>
+
+
+
+  <!-- header end -->
+
+  <!-- Start Slider Area -->
+  <div id="home" class="slider-area">
+    <div class="bend niceties preview-2">
+      <div id="ensign-nivoslider" class="slides">
+        <img src="{% static 'img/55.JPG' %}" alt="" title="#slider-direction-1" />
+        <img src="{% static 'img/33.JPG' %}" alt="" title="#slider-direction-2" />
+        <img src="{% static 'img/77.jpg' %}" alt="" title="#slider-direction-3" />
+        <img src="{% static 'img/22.JPG' %}" alt="" title="#slider-direction-3" />
+        </div>
+
+      <!-- direction 1 -->
+      <div id="slider-direction-1" class="slider-direction slider-one">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="slider-content">
+                <!-- layer 1 -->
+                <div class="layer-1-1 hidden-xs wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
+                  <h2 class="title1">Географическая информационная система</h2>
+                </div>
+                <!-- layer 2 -->
+                <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+                  <h1 class="title2">Государственного <br>градостроительного кадастра<br> Республики Узбекистан</h1>
+                </div>
+                <!-- layer 3 -->
+                <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                  <a class="ready-btn right-btn page-scroll" href="{% url 'login_form' %}?page=main">Войдите в геопортал</a>
+                  <a class="ready-btn page-scroll" href="{% url 'main_page' %}">Открытые данные</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- direction 2 -->
+      <div id="slider-direction-2" class="slider-direction slider-two">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="slider-content text-center">
+                <!-- layer 1 -->
+                <div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                  <h2 class="title1">Geographic Information System </h2>
+                </div>
+                <!-- layer 2 -->
+                <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+                  <h1 class="title2">State Urban Cadastre of the Republic of Uzbekistan</h1>
+                </div>
+                <!-- layer 3 -->
+                <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                  <a class="ready-btn right-btn page-scroll" href="{% url 'login_form' %}?page=main">Enter to the geoportal</a>
+                  <a class="ready-btn page-scroll" href="{% url 'main_page' %}">Public data</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+       <!-- direction 3 -->
+      <div id="slider-direction-3" class="slider-direction slider-two">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="slider-content">
+                <!-- layer 1 -->
+                <div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                  <h2 class="title1">Geografik axborot tizimi</h2>
+                </div>
+                <!-- layer 2 -->
+                <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+                  <h1 class="title2">O'zbekiston Respublikasi <br>davlat shaharsozlik kadastri</h1>
+                </div>
+                <!-- layer 3 -->
+                <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                  <a class="ready-btn right-btn page-scroll" href="{% url 'login_form' %}?page=main">Geoportalga kirish</a>
+                  <a class="ready-btn page-scroll" href="{% url 'main_page' %}">Ochiq ma'lumotlar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <div id="about" class="about-area area-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="section-headline text-center">
+           <h2 class="wow fadeInUp" id="ogeo">Geoportal haqida</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <!-- single-well start-->
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="well-left">
+            <div class="single-well">
+  <!--             <a data-magnify="gallery" data-caption="DSHK GAT Geoportal" href="/static/img/dshk_main.png">>
+                  <img src="/static/img/dshk_main.png" alt="">
+                </a> -->
+
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+    <li data-target="#myCarousel" data-slide-to="4"></li>
+    <li data-target="#myCarousel" data-slide-to="5"></li>
+    <li data-target="#myCarousel" data-slide-to="6"></li>
+    <li data-target="#myCarousel" data-slide-to="7"></li>
+    <li data-target="#myCarousel" data-slide-to="8"></li>
+    <li data-target="#myCarousel" data-slide-to="9"></li>
+    <li data-target="#myCarousel" data-slide-to="10"></li>
+    <li data-target="#myCarousel" data-slide-to="11"></li>
+    <li data-target="#myCarousel" data-slide-to="12"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <a data-magnify="gallery" href="/static/img/caruselimgs/1.jpg" data-caption="DSHK GAT GEOPORTALI">
+      <img src="/static/img/caruselimgs/1_min.jpg" alt="DSHK GAT GEOPORTALI">
+      </a>
+    </div>
+
+    <div class="item">
+      <a data-magnify="gallery" href="/static/img/caruselimgs/2.jpg" data-caption="DSHK GAT GEOPORTALI">
+      <img src="/static/img/caruselimgs/2_min.jpg" alt="DSHK GAT GEOPORTALI">
+      </a>
+    </div>
+
+     <div class="item">
+      <a data-magnify="gallery" href="/static/img/caruselimgs/4.jpg" data-caption="DSHK GAT GEOPORTALI">
+      <img src="/static/img/caruselimgs/4_min.jpg" alt="DSHK GAT GEOPORTALI">
+      </a>
+    </div>
+     <div class="item">
+      <a data-magnify="gallery" href="/static/img/caruselimgs/5.jpg" data-caption="DSHK GAT GEOPORTALI">
+      <img src="/static/img/caruselimgs/5_min.jpg" alt="DSHK GAT GEOPORTALI">
+      </a>
+    </div>
+     <div class="item">
+      <a data-magnify="gallery" href="/static/img/caruselimgs/6.jpg" data-caption="DSHK GAT GEOPORTALI">
+      <img src="/static/img/caruselimgs/6_min.jpg" alt="DSHK GAT GEOPORTALI">
+      </a>
+    </div>
+     <div class="item">
+      <a data-magnify="gallery" href="/static/img/caruselimgs/7.jpg" data-caption="DSHK GAT GEOPORTALI">
+      <img src="/static/img/caruselimgs/7_min.jpg" alt="DSHK GAT GEOPORTALI">
+      </a>
+    </div>
+     <div class="item">
+      <a data-magnify="gallery" href="/static/img/caruselimgs/8.jpg" data-caption="DSHK GAT GEOPORTALI">
+      <img src="/static/img/caruselimgs/8_min.jpg" alt="DSHK GAT GEOPORTALI">
+      </a>
+    </div>
+     <div class="item">
+      <a data-magnify="gallery" href="/static/img/caruselimgs/9.jpg" data-caption="DSHK GAT GEOPORTALI">
+      <img src="/static/img/caruselimgs/9_min.jpg" alt="DSHK GAT GEOPORTALI">
+      </a>
+    </div>
+     <div class="item">
+      <a data-magnify="gallery" href="/static/img/caruselimgs/10.jpg" data-caption="DSHK GAT GEOPORTALI">
+      <img src="/static/img/caruselimgs/10_min.jpg" alt="DSHK GAT GEOPORTALI">
+      </a>
+    </div>
+     <div class="item">
+      <a data-magnify="gallery" href="/static/img/caruselimgs/11.jpg" data-caption="DSHK GAT GEOPORTALI">
+      <img src="/static/img/caruselimgs/11_min.jpg" alt="DSHK GAT GEOPORTALI">
+      </a>
+    </div>
+     <div class="item">
+      <a data-magnify="gallery" href="/static/img/caruselimgs/12.jpg" data-caption="DSHK GAT GEOPORTALI">
+      <img src="/static/img/caruselimgs/12_min.jpg" alt="DSHK GAT GEOPORTALI">
+      </a>
+    </div>
+     <div class="item">
+      <a data-magnify="gallery" href="/static/img/caruselimgs/13.jpg" data-caption="DSHK GAT GEOPORTALI">
+      <img src="/static/img/caruselimgs/13_min.jpg" alt="DSHK GAT GEOPORTALI">
+      </a>
+    </div>
+     <div class="item">
+      <a data-magnify="gallery" href="/static/img/caruselimgs/14.jpg" data-caption="DSHK GAT GEOPORTALI">
+      <img src="/static/img/caruselimgs/14_min.jpg" alt="DSHK GAT GEOPORTALI">
+      </a>
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+            </div>
+
+ 
+
+
+          </div>
+        </div>
+        <!-- single-well end-->
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="well-middle">
+            <div class="single-well">
+              <a href="#">
+                <h4 class="sec-head" id="geotizim">
+                    DSHK geoaxborot tizimi
+                </h4>
+              </a>
+              <p style="text-align: justify; text-indent: 20px;" id="dshktizim">
+                  Ushbu tizim orqali O'zbeksiton Respublikasi hududida yurutilayotgan davlat shaharsozlik kadasti to'g'risida batafsil ma'lumotlarni olishingiz mumkin. Geoaxborot tizimida ikki xil turdagi(umumiy hamma uchun ochiq bo'lgan va ma'lum bir guruh foydalanuvchilari uchun mo'ljallangan) ma'lumotlar mavjud
+                Tizimdan to'laqonli foydalanish uchun sizni tizim adminstratori tizimning admin foydalanuvchilar ro'yxatiga qo'shishi talab qilinadi. Buning uchun tizim administratoriga murojaat qilishingiz kerak.
+              </p>
+              <p id="sahifagaotish">Tizimning asosiy sahifasiga o'tish</p>
+              <ul>
+                <li>
+                  <i class="fa fa-check"></i>
+                    <a href="/login_form?page=main" id="login1">
+                    Login va parolga ega bo'lgan foydalanuvchilar
+                </a>
+                </li>
+                <li>
+                  <i class="fa fa-check"></i>
+                    <a href="/main" id="register1">
+                    Registratsiya qilinmagan foydalanuvchilar
+                </a>
+                </li>
+               
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- End col-->
+      </div>
+    </div>
+  </div>
+  <!-- End About area -->
+
+
+ <!-- our-skill-area start -->
+  <div class="our-skill-area fix hidden-sm">
+    <div class="test-overly"></div>
+    <div class="skill-bg area-padding-2">
+      <div class="container">
+        <!-- section-heading end -->
+        
+        <div class="row">
+          <div class="skill-text">
+           <div class="col-xs-12 col-sm-12 col-md-12 title_pod"> 
+            <h4 id="shaharhujjat">
+            SHAHARSOZLIK HUJJATLARI
+            </h4>
+           </div>
+
+            <!-- single-skill start -->
+            <div class="col-xs-12 col-sm-4 col-md-4  text-center">
+              <div class="single-skill">
+              <div class="progress-circular">
+                 <span class="count">{{ genplan }}</span>
+                 <h3 class="progress-h4" id="boshreja">
+                     Bosh rejalar
+                 </h3>
+                 </div>
+            </div>
+            </div>            
+         <!-- single-skill end -->
+        <!-- single-skill start -->
+            <div class="col-xs-12 col-sm-4 col-md-4 text-center">
+              <div class="single-skill">
+              <div class="progress-circular">
+                 <span class="count">{{ pdp }}</span>
+                 <h3 class="progress-h4" id="batafsilreja">
+                     Batafsil rejalashtirish loyihalari
+                 </h3>
+            </div>
+            </div>
+            </div>            
+         <!-- single-skill end -->
+         <!-- single-skill start -->
+            <div class="col-xs-12 col-sm-4 col-md-4 text-center">
+              <div class="single-skill">
+              <div class="progress-circular">
+                 <span class="count">{{ apot }}</span>
+                 <h3 class="progress-h4" id="arxitekturaviy">
+                     Arxitekturaviy rejalashtirishni tashkillashtirish loyihalari (ARTL)
+                 </h3>
+                 </div>
+            </div>
+            </div>            
+         <!-- single-skill end -->
+
+           <div class="col-xs-12 col-sm-12 col-md-12 title_pod"> 
+            <h4 id="shaharsozlik">
+                SHAHARSOZLIK REGLAMENTLARI
+            </h4>
+           </div>
+
+         <!-- single-skill start -->
+            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+              <div class="single-skill">
+                 <span class="count">{{ funk_zone_genplan }}</span>
+                 <h3 class="progress-h4" id="boshrejaqilingan">
+                     Bosh rejalar bo'yicha qilingan funksional zonalar
+                 </h3>
+            </div>
+            </div>            
+         <!-- single-skill end -->
+
+         <!-- single-skill start -->
+            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+              <div class="single-skill">
+                 <span class="count">{{ funk_zone_apot }}</span>
+                 <h3 class="progress-h4" id="artl">
+                     ARTL bo'yicha qilingan funksional zonalar
+                 </h3>
+            </div>
+            </div>            
+         <!-- single-skill end -->
+         <!-- single-skill start -->
+            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+              <div class="single-skill">
+                 <span class="count">{{ redline }}</span>
+                 <h3 class="progress-h4" id="qizilchiziq">
+                     Qizil chiziqlar
+                 </h3>
+            </div>
+            </div>            
+         <!-- single-skill end -->
+         <!-- single-skill start -->
+            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+              <div class="single-skill">
+                 <span class="count">{{ geologik_ray }}</span>
+                 <h3 class="progress-h4" id="georayon">
+                     Geologik rayonlashtirish
+</h3>
+            </div>
+            </div>            
+         <!-- single-skill end -->
+
+<div class="col-xs-12 col-sm-12 col-md-12 title_pod"> 
+            <h4 id="loyihalarreestri">
+                LOYIHALAR REESTRI
+            </h4>
+           </div>
+
+         <!-- single-skill start -->
+            <div class="col-xs-12 col-sm-4 col-md-4 text-center">
+              <div class="single-skill">
+                 <span class="count">{{ apz }}</span>
+                 <h3 class="progress-h4" id="arxitektura">
+                     Arxitektura-rejalashtirish topshiriqlari
+                 </h3>
+            </div>
+            </div>            
+         <!-- single-skill end -->
+
+         <!-- single-skill start -->
+            <div class="col-xs-12 col-sm-4 col-md-4 text-center">
+              <div class="single-skill">
+                 <span class="count">{{ psd }}</span>
+                 <h3 class="progress-h4" id="binolar">
+                    Binolar, inshootlar va boshqa obyektlar qurilishining loyiha-smeta hujjatlari
+                 </h3>
+            </div>
+            </div>            
+         <!-- single-skill end -->
+         <!-- single-skill start -->
+            <div class="col-xs-12 col-sm-4 col-md-4 text-center">
+              <div class="single-skill">
+                 <span class="count">{{ psd_ind }}</span>
+                 <h3 class="progress-h4" id="yakkatartibda">
+                     Yakka tartibda uy-joy qurishga (rekonstruktsiya qilishga) loyiha-smeta hujjatlari
+                 </h3>
+            </div>
+            </div>            
+         <!-- single-skill end -->
+
+
+           <div class="col-xs-12 col-sm-12 col-md-12 title_pod"> 
+            <h4 id="shaharsozlikob">
+                SHAHARSOZLIK FAOLIYATI OB'YEKTLAR REESTRI
+            </h4>
+           </div>
+
+         <!-- single-skill start -->
+            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+              <div class="single-skill">
+                 <span class="count">{{ perm_rec }}</span>
+                 <h3 class="progress-h4" id="obyektniqayta">
+                     Obyektni qayta ixtisoslashtirish va rekonstruktsiya qilish
+                 </h3>
+            </div>
+            </div>            
+         <!-- single-skill end -->
+
+         <!-- single-skill start -->
+            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+              <div class="single-skill">
+                 <span class="count">{{ smr }}</span>
+                 <h3 class="progress-h4" id="qurilish">
+                     Qurilish-montaj ishlarini amalga oshirish
+                 </h3>
+            </div>
+            </div>            
+         <!-- single-skill end -->
+         <!-- single-skill start -->
+            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+              <div class="single-skill">
+                 <span class="count">{{ pexpl }}</span>
+                 <h3 class="progress-h4" id="turarjoy">
+                     Turar joy obyekti hisoblangan bino va inshootni foydalanishga qabul qilish
+                 </h3>
+            </div>
+            </div>            
+         <!-- single-skill end -->
+         <!-- single-skill start -->
+            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+              <div class="single-skill">
+                 <span class="count">{{ pexpl_ind }}</span>
+                 <h3 class="progress-h4" id="noturar">
+                     Noturar joy obyekti hisoblangan bino va inshootni foydalanishga qabul qilish
+</h3>
+            </div>
+            </div>            
+         <!-- single-skill end -->
+         
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- our-skill-area end -->
+
+  <!-- Start Service area -->
+  <div id="services" class="services-area area-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="section-headline services-head text-center">
+            <h2 class="wow fadeInUp" id="gisggk">
+                GIS-GGK ichki tizimlari
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="services-contents">
+          <!-- Start Left services -->
+          <div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft">
+            <div class="about-move">
+              <div class="services-details">
+
+                <div class="single-services">
+               
+                <div class="div_pod_name" data-val='1'>
+                  <a class="services-icon">
+											<i class="fa fa-pencil-square-o"></i>
+										</a>
+                  <h4 id="shaharsozlikqoidalari">
+                    Shaharsozlik qoidalari
+                  </h4>
+                  </div>
+                  <p id="shaharsozlikqoidalaris">
+                    Shaharsozlik qoidalari sohasida shaharsozlik faoliyati uchun ruxsatnomalarni avtomatlashtirilgan tarzda tayyorlash va berish
+                     </p>
+                </div>
+              </div>
+              <!-- end about-details -->
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-12 wow fadeInUp">
+            <div class="about-move">
+              <div class="services-details">
+                <div class="single-services">
+                <div class="div_pod_name" data-val='2'>
+                  <a class="services-icon">
+                 	<i class="fa fa-files-o"></i>
+										</a>
+                  <h4 id="shahrsozlikhujjatlari">
+                      Shaharsozlik hujjatlari
+                  </h4>
+                  </div>
+                  <p id="shahrsozlikhujjatlarim">
+                      Shaharsozlik hujjatlari ma'lumotlar bazasini yig'ish, hisobga olish, tahlil qilish va shakllantirish
+                  </p>
+                </div>
+              </div>
+              <!-- end about-details -->
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-12 wow fadeInRight">
+            <!-- end col-md-4 -->
+            <div class=" about-move">
+              <div class="services-details">
+                <div class="single-services">
+                <div class="div_pod_name" data-val='3'>
+                  <a class="services-icon">
+											<i class="fa fa-share-square"></i>
+										</a>
+                  <h4> <span id="monitoring">Shaharsozlik faoliyati</span>  <br> <span id="shaharsozlikm"> monitoringi</span></h4>
+                  </div>
+                  <p id="hududdoimiy">
+                    Hududlarda vujudga kelgan o‘zgarishlarni ro‘yxatga olish va shaharsozlik hujatlariga muvofiqligini tahlil etish.
+                  </p>
+                </div>
+              </div>
+              <!-- end about-details -->
+            </div>
+          </div>
+<hr class="myhr">
+
+          <div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft">
+            <!-- end col-md-4 -->
+            <div class="about-move">
+              <div class="services-details">
+                <div class="single-services">
+                <div class="div_pod_name" data-val='4'>
+                  <a class="services-icon">
+											<i class="fa fa-line-chart"></i>
+										</a>
+                  <h4 id="asosiysubframe">
+                 Asosiy subframe
+                  </h4>
+                  </div>
+                  <p id="shaharsozlikmuammolari">
+                    Shaharsozlik muammolariga echimlarni geoaxborot bilan ta'minlash.
+                  </p>
+                </div>
+              </div>
+              <!-- end about-details -->
+            </div>
+          </div>
+          <!-- End Left services -->
+          <div class="col-md-4 col-sm-4 col-xs-12 wow fadeInUp">
+            <!-- end col-md-4 -->
+            <div class=" about-move">
+              <div class="services-details">
+                <div class="single-services">
+                 <div class="div_pod_name" data-val='5'>
+                  <a class="services-icon">
+											<i class="fa fa-map-marker"></i>
+										</a>
+                  <h4 id="manzilregisteri">
+                      Adres reestrlari
+                  </h4>
+                  </div>
+                  <p id="identifikatsiyalash">
+                    DShK-GAT da ob‘ektlar <joylas></joylas>huvini identifikatsiyalash
+                  </p>
+                </div>
+              </div>
+              <!-- end about-details -->
+            </div>
+          </div>
+          <!-- End Left services -->
+         <div class="col-md-4 col-sm-4 col-xs-12 wow fadeInRight">
+            <!-- end col-md-4 -->
+            <div class=" about-move">
+              <div class="services-details">
+                <div class="single-services">
+                 <div class="div_pod_name" data-val='6'>
+                  <a class="services-icon">
+											<i class="fa fa-file-text-o"></i>
+										</a>
+                  <h4 id="loyiharegisteri">
+                     Loyiha registri
+                  </h4>
+                  </div>
+                  <p id="shaharsozlikamal">
+Shaharsozlik ob'ektlarida amalga oshirilgan tasdiqlangan loyiha hujjatlarini hisobga olish
+                  </p>
+                </div>
+              </div>
+              <!-- end about-details -->
+            </div>
+          </div>
+          <hr class="myhr">
+          <div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft">
+            <!-- end col-md-4 -->
+            <div class=" about-move">
+              <div class="services-details">
+                <div class="single-services">
+                 <div class="div_pod_name" data-val='7'>
+                  <a class="services-icon">
+                      <i class="fa fa-building-o"></i>
+                    </a>
+                  <h4 id="shaharsozlikregistri">
+                      Shaharsozlik ob'ektlari registri
+                  </h4>
+                  </div>
+                  <p id="hisobgaolish">
+                   Shaharsozlik ob'ektlarini hisobga olish
+                  </p>
+                </div>
+              </div>
+              <!-- end about-details -->
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-12 wow fadeInUp">
+            <!-- end col-md-4 -->
+            <div class=" about-move">
+              <div class="services-details">
+                <div class="single-services">
+                 <div class="div_pod_name" data-val='8'>
+                  <a class="services-icon" >
+                      <i class="fa fa-files-o"></i>
+                    </a>
+                  <h4 id="subektlarireestri">
+                        Shaharsozlik sub'ektlari reestri
+                  </h4>
+                  </div>
+                  <p id="shaharsozlikfaoliyati">
+                Shaharsozlik faoliyati sub'ektlarini hisobga olish
+                  </p>
+                </div>
+              </div>
+              <!-- end about-details -->
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-12 wow fadeInRight">
+            <!-- end col-md-4 -->
+            <div class=" about-move">
+              <div class="services-details">
+                <div class="single-services">
+                 <div class="div_pod_name" data-val='9'>
+                  <a class="services-icon">
+                      <i class="fa fa-sort-amount-asc"></i>
+                    </a>
+                  <h4> <span id="normativ">Normativ</span> - <br> <span id="huquqiyasos">huquqiy asos</span> </h4>
+                  </div>
+                  <p id="belgilangantartib">
+                    Belgilangan tartibda tasdiqlangan GIS-GGKni yaratish va yuritishning qonunchilik, me'yoriy-uslubiy bazasi
+                  </p>
+                </div>
+              </div>
+              <!-- end about-details -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Service area -->
+
+  <div class="suscribe-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs=12">
+          <div class="suscribe-text text-center">
+            <h3 id="xushkelibsiz">
+                O'zbeksiton Respublikasi DSHK GAT GEOPORTALIga xush kelibsiz
+            </h3>
+            <a class="sus-btn" href="#" id="boshlash">Boshlash</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start contact Area -->
+  <div id="contact" class="contact-area">
+    <div class="contact-inner area-padding">
+      <div class="contact-overly"></div>
+      <div class="container ">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="section-headline text-center">
+              <h2 id="boglanish">
+              Bog'lanish
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- Start contact icon column -->
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="contact-icon text-center">
+              <div class="single-icon">
+                <i class="fa fa-mobile"></i>
+                <p>
+                  Tel: +(998) 71 273 04 82<br>
+                       +(998) 71 278 41 05<br>
+                       +(998) 71 278 43 01<br>
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Start contact icon column -->
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="contact-icon text-center">
+              <div class="single-icon">
+                <i class="fa fa-envelope-o"></i>
+                <p>
+                  Email: info@uzgashkliti.uz<br>
+                  <span>Web: www.uzgashkliti.uz</span>
+                  <br>
+                  <span>Fax: +(998) 71 273 86 09</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Start contact icon column -->
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="contact-icon text-center">
+              <div class="single-icon">
+                <i class="fa fa-map-marker"></i>
+                <p>
+                  ул. Катартал, 38.<br>
+                  <span>г. Ташкент, Узбекистан</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+
+          <!-- Start Google Map -->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <!-- Start Map -->
+<div class="gmap_canvas"><iframe width="100%" height="380" id="gmap_canvas" src="https://maps.google.com/maps?q=o'zgashk&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowfullscreen></iframe>
+
+
+</div>
+
+            <!-- End Map -->
+          </div>
+          <!-- End Google Map -->
+
+          <!-- Start  contact -->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form contact-form">
+              <div id="sendmessage">
+             Xabaringiz jo'natildi. Rahmat!
+              </div>
+              <div id="errormessage"></div>
+              <form action="" method="post" role="form" class="contactForm">
+                <div class="form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Ismingiz" data-rule="minlen:4" data-msg="Iltimos 4 tadan kam bo'lmagan so'z kiriting" />
+                  <div class="validation"></div>
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email adresingiz" data-rule="email" data-msg="Iltimos email adres kiriting" />
+                  <div class="validation"></div>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Mavzu" data-rule="minlen:8" data-msg="Mavzu uzunligi kamida 8 ta harfdan iborat bo'lishi kerak" />
+                  <div class="validation"></div>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Xabar yozilmagan" placeholder="Xabar"></textarea>
+                  <div class="validation"></div>
+                </div>
+                {% csrf_token %}
+                <div class="text-center"><button type="submit" id="submitted">Xabarni jo'natish</button></div>
+              </form>
+            </div>
+          </div>
+          <!-- End Left contact -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Contact Area -->
+
+
+ 
+
+  <!-- Start Footer bottom Area -->
+    <footer id="contact">
+
+<!-- START WWW.UZ TOP-RATING -->
+<SCRIPT language="javascript" type="text/javascript">
+
+top_js="1.0";top_r="id=44179&r="+escape(document.referrer)+"&pg="+escape(window.location.href);document.cookie="smart_top=1; path=/"; top_r+="&c="+(document.cookie?"Y":"N")
+
+</SCRIPT>
+
+<SCRIPT language="javascript1.1" type="text/javascript">
+
+top_js="1.1";top_r+="&j="+(navigator.javaEnabled()?"Y":"N")
+
+</SCRIPT>
+<SCRIPT language="javascript1.2" type="text/javascript">
+
+top_js="1.2";top_r+="&wh="+screen.width+'x'+screen.height+"&px="+
+(((navigator.appName.substring(0,3)=="Mic"))?screen.colorDepth:screen.pixelDepth)
+
+</SCRIPT>
+<SCRIPT language="javascript1.3" type="text/javascript">
+
+top_js="1.3";
+
+</SCRIPT>
+
+    <div class="footer-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 col-sm-5 col-xs-12 wow fadeInUp">
+            <div class="footer-content">
+              <div class="footer-head">
+                <div class="footer-logo" style="text-align: center;">
+               <img src="{% static 'img/logo.png' %}" width="150px" >
+              
+                </div>
+
+               © 2021. <p id="himoyalangan">
+                    Barcha huquqlar himoyalangan Qurilish, geoinformatika va shahar kadastri bo'yicha muhandislik tadqiqotlari davlat loyihalashtirish ilmiy-tadqiqot instituti
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- end single footer -->
+          <div class="col-md-5 col-sm-5 col-xs-12 wow fadeInUp">
+            <div class="footer-content">
+              <div class="footer-head">
+                <h4>
+                {% trans "Ma`lumot" %}
+                </h4>
+                <div class="footer-contacts">
+                  <p><span>Tелефон:</span> +(998) 71 273-04-82</p>
+                  <p><span>Эл. адрес:</span> info@uzgashkliti.uz</p>
+                  <p><span>Aдрес:</span> Республика Узбекистан, г. Ташкент 100096, ул. Катартал, 38.</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+         <div class="col-md-2 col-sm-2 col-xs-12 wow fadeInUp">
+            <div class="footer-content">
+              <div class="footer-head">
+               <h4>Статистика</h4>
+  <div class="footer-contacts">
+<p><span id="online1">Saytda onlayn </span>:  {{ request.online_now }}</p>
+
+<SCRIPT language="JavaScript" type="text/javascript">
+
+top_rat="&col=0063AF&t=ffffff&p=DD7900";top_r+="&js="+top_js+"";
+
+document.write('<a href="https://www.uz/ru/res/visitor/index?id=44179" target=_top><img src="https://cnt0.www.uz/counter/collect?'+top_r+top_rat+'" width=88 height=31 border=0 alt="Топ рейтинг www.uz"></a>')
+
+</SCRIPT>
+</div>
+
+           </div>
+           </div>
+          </div>
+
+          <!-- end single footer -->
+
+        </div>
+      </div>
+    </div>
+    <div class="footer-area-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="copyright text-center">
+              <p>
+                &copy;<strong id="davlatkadastri">
+                O'zbekiston Respublikasining shaharsozlik davlat kadastri
+              </strong>
+              </p>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'lib/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'lib/knob/jquery.knob.js' %}"></script>
+  <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+  <script src="{% static 'lib/parallax/parallax.js' %}"></script>
+  <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'lib/nivo-slider/js/jquery.nivo.slider.js' %}" type="text/javascript"></script>
+  <script src="{% static 'lib/appear/jquery.appear.js' %}"></script>
+  <script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static 'contactform/contactform.js' %}"></script>
+
+  <script src="{% static 'js/main.js' %}"></script>
+
+  <script src="{% static 'img_viewer/jquery.magnify.js' %}"></script>
+    <link href="{% static 'img_viewer/jquery.magnify.css' %}" rel="stylesheet">
+  <link href="{% static 'img_viewer/jquery.magnify_white.css' %}" rel="stylesheet">
+
+
+
+ 
+  <!-- Modal -->
+ </body>
+<script type="text/javascript">
+
+$(document).on('click','.div_pod_name',function(){
+  window.location.href="subsistem/"+$(this).attr('data-val');
+});
+  
+ $('[data-magnify]').magnify({
+    fixedContent: false,
+
+  });
+
+
+</script>
+
+<script type="text/javascript">
+  
+  $('.count').each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 3000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+        }
+    });
+});
+
+
+</script>
+
+</html>
+
+

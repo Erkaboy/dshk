@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html>
+
+{% load static %}
+<head>
+	<title></title>
+
+
+
+<script type="text/javascript" src="{% static 'dist/jquery.js' %}"></script> 
+
+
+<script type="text/javascript" src="{% static 'dist/leaflet-src.js' %}"></script> 
+<!-- <script type="text/javascript" src="{% static 'dist/leaflet.js' %}"></script>  -->
+
+<link rel="stylesheet" href="{% static 'dist/leaflet.css' %}">
+
+<script type="text/javascript" src="{% static 'dist/leaflet-search.js' %}"></script> 
+<link rel="stylesheet" href="{% static 'dist/leaflet-search.css' %}">
+
+
+<script type="text/javascript" src="{% static 'dist/sidebar.js' %}"></script> 
+<link rel="stylesheet" href="{% static 'dist/sidebar.css' %}">
+
+<!-- <script type="text/javascript" src="{% static 'vil.js' %}"></script> 
+<script type="text/javascript" src="{% static 'vil_ch.js' %}"></script>  -->
+
+<style type="text/css">
+	
+.loader_div{
+  position: absolute;
+  z-index: 2600;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.loader_img{
+  position: absolute;
+  margin: auto;
+    top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#effect_text{
+margin: 20px;
+margin-bottom: 10px;
+margin-top: 90px;
+       }
+
+.tooltip{
+  background-color:transparent;
+  border: 0;
+  font-size: 12px;
+  border-radius: 0; 
+  box-shadow:none;
+  font-weight: 600;
+  color: #000;
+  text-shadow:  2px 0px 1px #fff,
+                0px 2px 1px #fff,
+                -2px 0px 1px #fff,
+                0px -2px 1px #fff;
+
+ }
+ .tooltip_vil{
+  background-color:orange;
+  border: 0;
+  font-size: 14px;
+  border-radius: 5px; 
+  box-shadow:none;
+  font-weight: 1000;
+  color: #fff;
+}
+
+.x{
+position: relative;
+z-index: 1001;
+top: -50px;
+left: 290px;
+height: 25px;
+width: 30px;
+text-align: right;
+border-left: 1px dotted #000;
+   }  
+#img_x{
+  width: 24px;
+  height: 24px;
+  cursor:pointer;
+}
+
+
+#close{
+position: absolute;
+z-index: 1001;
+height: 50px;
+top: 20px;
+left: 370px;
+background: url('{% static 'img/img/close.png' %}');
+width: 20px;
+border: 2px solid rgba(0,0,0,0.2);
+box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.9);
+  opacity: 0.9;
+  cursor: pointer;
+    } 
+#open{
+position: absolute;
+z-index: 1001;
+height: 50px;
+top: 20px;
+left: 10px;
+background: url('{% static 'img/img/open.png' %}');
+width: 20px;
+border: 2px solid rgba(0,0,0,0.2);
+box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.9);
+  opacity: 0.9;
+  cursor: pointer;
+    } 
+ 
+#search_div{
+  margin-top: 10px;
+  margin-left: 20px;
+  width: 300px;
+    padding:20px;
+    position: absolute;
+    z-index: 999;
+  border: 1px solid #000;
+}
+#button {
+  height: 32px;
+  width: 60px;
+  vertical-align: top;
+  margin-top: 0px;
+    
+  }
+#input_search{
+  height: 26px;
+  width: 220px;
+  font-size: 20px;
+
+  }
+
+.s{
+margin-top: 100px;
+padding-left: 250px;
+
+}
+
+      body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+ #prifeks{
+font-size: 16px;
+margin: 5px;
+ }
+
+
+.legend {
+    line-height: 18px;
+    color: #555;
+    width: 210px;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    padding: 10px
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+
+}
+
+.info {
+    padding: 10px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    width: 210px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #000;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.layer_img{
+width: 80px;
+height: 40px;
+opacity: 1;
+transform: 0;
+margin-left: 25px;
+border: 1px solid #C0C0C0;
+
+}
+
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #eee;
+    border: 1px solid #FFE4B5;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #000;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 3px;
+    top: 1px;
+    width: 5px;
+    height: 7px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+#logo_img{
+width: 120px;
+height: 50px;
+cursor: pointer;
+}
+.logo{
+ z-index: 998;
+  bottom: -70px;
+  left: 60px;
+}
+
+#mySidenav {
+
+    position: fixed;
+    height: 100%;
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    height: 100%;
+    width: 0;
+    position: fixed;
+      top: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition: 0.1s;
+    z-index: 1000;
+ 
+}
+#fixxed{
+position: fixed;
+width: 0px;
+height: 90px;
+ transition: 0.1s;
+background: rgba(255,255,255);
+       }
+#mySidenav::-webkit-scrollbar {
+    width: 6px;
+}
+ 
+ #mySidenav::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+ #mySidenav::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+
+table {
+
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 6px;
+}
+
+
+h4{
+  margin: 5px;
+
+}
+
+
+#project_name_div{
+position: absolute;
+z-index: 990;
+top: 0px;
+left: 0px;
+width: 50%;
+text-align: center;
+margin-left: 25%;
+}
+#project_name_text{
+      color: #F5F5F5;
+      text-transform: uppercase;
+      font: 20px Arial, Helvetica, sans-serif;
+      text-shadow: 2px 2px 4px #000000;
+}
+.class_r{
+font-family: arial, sans-serif;
+ font-size: 17px;
+ margin: 4px;
+ padding: 0px;
+}
+.class_t{
+font-family: arial, sans-serif;
+ font-size: 16px;
+
+ margin: 4px;
+ padding: 0px;
+}
+.class_f{
+font-family: arial, sans-serif;
+ font-size: 14px;
+  font-weight: bold;
+ margin: 4px;
+ padding: 0px;
+ margin-bottom: 8px;
+}
+.label_vil{
+  font-size: 12px;
+  font-family: arial;
+  color: #000;
+  font-weight: bold;
+  vertical-align: middle;
+  text-align: center;
+
+}
+
+#compas{
+	position: absolute;
+	z-index: 1200;
+	top: 10px;
+	right: 260px;
+	width: 100px;
+	height: 100px;
+
+}
+
+</style>
+
+</head>
+<body>
+
+<img/img id="compas" src="static/img/img/compas.png">
+
+<div id="mySidenav">
+<div id="fixxed"></div>
+
+ <div id="effect_text">
+
+ 
+
+  </div>  
+ </div>
+
+
+<div id="open"></div>
+<div id="close"></div>
+
+  <div id="toggler">
+  <div id="effect">
+  
+ 
+  </div>
+</div>
+
+      
+<div id="map"></div>
+
+<script type="text/javascript">
+
+function runEffect0() {
+  
+             $(".leaflet-control-search").hide("slide", { direction: "left" }, 100);
+             $(".x").hide("slide", { direction: "left" }, 100);
+
+    };
+
+function runEffect1() {
+       
+             $('.leaflet-control-search').show("slide", { direction: "left" }, 100);
+             $(".x").show("slide", { direction: "left" }, 100);
+
+    };
+
+
+function close_slide(){
+  $('#mySidenav').css({
+  'width':'0px',
+});
+   $('#fixxed').css({
+  'width':'0px',
+});
+$('.leaflet-control-zoom').css({
+                  'left':'10px'
+                    });
+
+$('#open').show();
+$('#close').hide();
+logo.addTo(map);
+
+}
+function open_slide(){
+  $('#mySidenav').css({
+  'width':'365px',
+});
+  $('.leaflet-control-zoom').css({
+                  'left':'360px'
+                    });
+   $('#fixxed').css({
+  'width':'365px',
+});
+$('#close').show();
+$('#open').hide();
+map.removeControl(logo);
+
+}
+
+$('#open').hide();
+$('#close').hide();
+
+$('#close').click(function(){
+runEffect0();
+close_slide();
+});
+
+$('#open').click(function(){
+runEffect1();
+open_slide();
+})
+
+
+var mapOptions = {
+            center: [41.558,63.496062],
+            zoom: 7,
+            attributionControl: false,
+            zoomControl:true
+                             };
+
+var map = new L.map('map', mapOptions);
+
+var openstreetmap = new L.TileLayer('http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/ {y}.png');
+var layer3 = new L.TileLayer('http://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png');
+
+
+googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+     maxZoom: 20,
+     subdomains:['mt0','mt1','mt2','mt3']
+           });
+
+googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+      maxZoom: 20,
+      subdomains:['mt0','mt1','mt2','mt3']
+          });
+googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+      maxZoom: 20,
+      subdomains:['mt0','mt1','mt2','mt3']
+          });
+
+googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
+       maxZoom: 20,
+       subdomains:['mt0','mt1','mt2','mt3']
+});
+
+map.addLayer(openstreetmap);
+
+
+L.control.scale({
+position:'bottomright',
+metric:true,
+imperial:false,
+maxWidth:200,
+updateWhenIdle:true
+
+}).addTo(map);
+
+map.zoomControl.setPosition('bottomleft');
+
+
+
+
+function getColor(d) {
+
+    return d == "Ishlabchiqilgan/MB kiritilgan" ? '#BD0026' :
+           d == "Ishlabchiqilgan/MB kiritilmagan"  ? '#E31A1C' :
+           d == "Amalga oshiriladi"  ? '#FC4E2A' :
+           d == "Ma'lumotlar yo'q"  ?  '#FED976' : 
+           d == "Genplan qilingan hududlar" ?    'green':         
+                                                '#FED976';
+}
+
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'legend'),
+        //grades = [0,500, 2000, 50000, 10000, 20000, 30000, 50000],
+        labels = ["Ishlabchiqilgan/MB kiritilgan","Ishlabchiqilgan/MB kiritilmagan","Amalga oshiriladi","Ma'lumotlar yo'q","Genplan qilingan hududlar"];
+
+    // loop through our density intervals and generate a label with a colored square for each interval
+     for (var i = 0; i < labels.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor(labels[i]) + '"></i>  '+ labels[i] +'<br>';
+    }
+
+
+    return div;
+};
+
+legend.addTo(map);
+
+
+var info = L.control();
+
+info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+// method that we will use to update the control based on feature properties passed
+info.update = function (props) {
+    this._div.innerHTML = '<h4> Hudud haqida qisqa ma\'lumot</h4>' +  (props ?
+        '<b>' + props.respublika + '</b><br />' + props.tuman_shah + '<br>'+ props.fuqarolar_+'<br>'
+        : 'Hududni tanlanlang');
+};
+
+info.addTo(map);
+
+
+function style(feature) {
+    return {
+        fillColor: getColor(feature.properties.izoh),
+        weight: 1,
+        opacity: 1,
+        color: 'white',
+        dashArray: '2',
+        fillOpacity: 0.7
+    };
+}
+
+// var q10= L.Proj.geoJson(apot);
+
+// var labels_qfy = L.layerGroup();
+
+function onEachFeature(feature, layer) {
+
+ var label = L.marker(layer.getBounds().getCenter(), {
+      icon: L.divIcon({
+        className: 'label',
+        html: feature.properties.fuqarolar_,
+        iconSize: [100, 40]
+      })
+    });
+//labels_qfy.addLayer(label); 
+
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+}
+
+//map.addLayer(labels_qfy);
+function gektor(m){
+  var ga=Math.round(m/10000);
+  return ga+" ga";
+}
+
+function highlightFeature(e) {
+  
+    var layer = e.target;
+    layer.setStyle({
+        //fillColor:'#3f0',
+        weight: 2,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0,
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+
+      info.update(layer.feature.properties);
+}
+function resetHighlight(e) {
+    featuresLayer.resetStyle(e.target);
+}
+
+
+function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+    var layer = e.target;
+   layer.bindPopup('<h4>'+layer.feature.properties.fuqarolar_+'</h4>');
+     layer.openPopup();
+
+ $('#effect_text').html(
+  " <p class='class_r'>"+layer.feature.properties.respublika+"</p>"
+  +"<p class='class_t'>"+layer.feature.properties.tuman_shah+"</p>"
+  +"<p  class='class_f'>"+layer.feature.properties.fuqarolar_+"</p>"
+  +"<table>"
+ + "<tr><td>Aholi punktining nomi  </td><td>"+layer.feature.properties.aholi_punk+"</td></tr>"
+ + "<tr><td>Mamuriy hududiy birliklarni belgilash tizimi kodi</td><td>"+layer.feature.properties.mamuriy_hu+"</td></tr>"
+ + "<tr><td>Aholi punktining tipi</td><td>"+layer.feature.properties.aholi_pu_1+"</td></tr>"
+ + "<tr><td>Aholi punktining maqomi  </td><td>"+layer.feature.properties.aholi_pu_2+"</td></tr>"
+ + "<tr><td>Respublika, viloyat  </td><td>"+layer.feature.properties.respublika+"</td></tr>"
+ + "<tr><td>Tuman (shahar) </td><td>"+layer.feature.properties.tuman_shah+"</td></tr>"
+ + "<tr><td>Fuqarolar_ </td><td>"+layer.feature.properties.fuqarolar_+"</td></tr>"
+ + "<tr><td>Loyihalash tashkiloti - shahar (shaharcha) chegarasi loyihasini ishlab chiquvchi </td><td>"+layer.feature.properties.loyihalash+"</td></tr>"
+ + "<tr><td>Shahar (shaharcha) chegarasi loyihasi hujjatlari saqlandigan joy</td><td>"+layer.feature.properties.shahar_che+"</td></tr>"
+ + "<tr><td>Shahar (shaharcha) chegarasi loyihasini tasdiqlangan organ</td><td>"+layer.feature.properties.shahar_c_1+"</td></tr>"
+ + "<tr><td>Shahar (shaharcha) chegarasi_loyihasini tasdiqlash to'g'risidagi hujjatning raqami va sanasi</td><td>"+layer.feature.properties.shahar_c_2+"</td></tr>"
+ + "<tr><td>Aholi punktining loyihaviy maydoni (ga)</td><td>"+layer.feature.properties.aholi_pu_3+"</td></tr>"
+ + "<tr><td>Aholining loyihaviy soni </td><td>"+layer.feature.properties.aholining_field+"</td></tr>"
+  + "<tr><td> KFI markaz</td><td>"+layer.feature.properties.kfi_markaz+"</td></tr>"
+  + "<tr><td>Boysinuvch</td><td>"+layer.feature.properties.boysinuvch+"</td></tr>"
+  + "<tr><td>Ishlab chiqalgan yili </td><td>"+layer.feature.properties.ishlab_chi+"</td></tr>"
+  + "<tr><td>Ishlab_c_1</td><td>"+layer.feature.properties.ishlab_c_1+"</td></tr>"
+  + "<tr><td>Shaharsozl</td><td>"+layer.feature.properties.shaharsozl+"</td></tr>"
+ + "<tr><td>Chegarani_</td><td>"+layer.feature.properties.chegarani_field+"</td></tr>"
+      + "<tr><td>SOATO</td><td>"+layer.feature.properties.soato+"</td></tr>"
+ + "<tr><td>Aholi_soni</td><td>"+layer.feature.properties.aholi_soni+"</td></tr>"
+      + "<tr><td>Izoh</td><td>"+layer.feature.properties.izoh+"</td></tr>"
+ + "<tr><td>Grafik_mal</td><td><a href='"+layer.feature.properties.grafik_mal+"' target='blank'    download>"+layer.feature.properties.grafik_mal+"</a></td></tr>"
+ + "<tr><td>Tshuntiris</td><td><a href='"+layer.feature.properties.tshuntiris+"' target='blank'   download>"+layer.feature.properties.tshuntiris+"</a></td></tr>"
+ + "<tr><td>SHAPE_Area</td><td>"+gektor(layer.feature.properties.shape_area)+"</td></tr>"+
+
+  
+"</table>"
+);
+runEffect1();
+open_slide();
+
+$('.leaflet-control-search').css({
+                  'width':'320px'
+                    });
+$('.leaflet-control-search .search-cancel').css({
+                  'right':'90px'
+                    });
+$('.leaflet-control-search .search-tooltip').css({
+                  'min-width':'320px'
+                    });
+$('.leaflet-control-zoom').css({
+                  'left':'360px'
+                    });
+
+
+$('.search-input').val("");  
+
+
+x.addTo(map);
+
+
+$('#img_x').click(function(){
+$('#close').hide();
+close_slide();
+$('#open').hide();
+$('#effect_text').html("");
+$('.search-input').val("");  
+
+});
+
+}
+
+
+
+
+var logo = L.control({position: 'bottomleft'});
+
+logo.onAdd = function (map) {
+    div = L.DomUtil.create('div', 'logo'); // create a div with a class "info"
+    div.innerHTML = "<a href='http://www.uzgashkliti.uz' target='black'><img id='logo_img' src='{% static 'img/img/logo.png' %}'></a>";     
+   
+    return div;
+};
+
+logo.addTo(map);
+
+var featuresLayer = L.geoJson(null,{
+ 
+ style:style,
+ onEachFeature:onEachFeature,
+
+});
+
+// map.addLayer(featuresLayer);
+
+// $.getJSON("/apot_data", function (data) {
+//     featuresLayer.addData(data);
+//     $('#div_loader').hide();
+
+// });
+
+$.getJSON("http://127.0.0.1:5678/geoserver/uzgashk/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=uzgashk:apot&outputFormat=application%2Fjson", function (data) {
+    featuresLayer.addData(data);
+    $('#div_loader').hide();
+});
+
+
+function style_gp(feature) {
+    return {
+        fillColor: 'green',
+        weight: 1,
+        opacity: 1,
+        color: 'red',
+        dashArray: '2',
+        fillOpacity: 0.7
+    };
+}
+
+
+function onEachFeature_genplan(feature, layer) {
+
+    layer.on({
+        mouseover: highlightFeature_gp,
+        mouseout: resetHighlight_gp,
+        click: zoomToFeature_gp
+    });
+}
+
+function highlightFeature_gp(e) {
+  
+    var layer = e.target;
+    layer.setStyle({
+        //fillColor:'#fff',
+        weight: 3,
+        color: 'red',
+        dashArray: '0.2',
+        fillOpacity: 0.1
+    });
+
+      info.update(layer.feature.properties);
+}
+
+function resetHighlight_gp(e) {
+    genplan_pol.resetStyle(e.target);
+}
+
+var genplan_pol = L.geoJson(null,{
+style:style_gp,
+onEachFeature:onEachFeature_genplan,
+
+});
+
+
+function zoomToFeature_gp(e) {
+    map.fitBounds(e.target.getBounds());
+    var layer = e.target;
+   layer.bindPopup('<h4>'+layer.feature.properties.aholi_punk+'</h4>');
+     layer.openPopup();
+
+ $('#effect_text').html(
+  " <p class='class_r'>"+layer.feature.properties.respublika+"</p>"
+  +"<p class='class_t'>"+layer.feature.properties.tuman_shah+"</p>"
+  +"<p  class='class_f'>"+layer.feature.properties.fuqarolar_+"</p>"
+  +"<table>"
+ + "<tr><td>Aholi_punk </td><td>"+layer.feature.properties.aholi_punk+"</td></tr>"
+ + "<tr><td>Mamuriy_hu </td><td>"+layer.feature.properties.mamuriy_hu+"</td></tr>"
+ + "<tr><td>Aholi_pu_1 </td><td>"+layer.feature.properties.aholi_pu_1+"</td></tr>"
+ + "<tr><td>Aholi_pu_2 </td><td>"+layer.feature.properties.aholi_pu_2+"</td></tr>"
+ + "<tr><td>Respublika </td><td>"+layer.feature.properties.respublika+"</td></tr>"
+ + "<tr><td>Tuman_shah </td><td>"+layer.feature.properties.tuman_shah+"</td></tr>"
+ + "<tr><td>Fuqarolar_ </td><td>"+layer.feature.properties.fuqarolar_+"</td></tr>"
+ + "<tr><td>Loyihalash</td><td>"+layer.feature.properties.loyihalash+"</td></tr>"
+ + "<tr><td>Shahar_che</td><td>"+layer.feature.properties.shahar_che+"</td></tr>"
+ + "<tr><td>Shahar_c_1</td><td>"+layer.feature.properties.shahar_c_1+"</td></tr>"
+ + "<tr><td>Shahar_c_2</td><td>"+layer.feature.properties.shahar_c_2+"</td></tr>"
+ + "<tr><td>Aholi_pu_3</td><td>"+layer.feature.properties.aholi_pu_3+"</td></tr>"
+ + "<tr><td>Aholining_</td><td>"+layer.feature.properties.aholining_field+"</td></tr>"
+  + "<tr><td>Ishlab_chi</td><td>"+layer.feature.properties.ishlab_chi+"</td></tr>"
+ + "<tr><td>Grafik_mal</td><td><a href='"+layer.feature.properties.grafik_mal+"' target='blank'  download>"+layer.feature.properties.grafik_mal+"</a></td></tr>"
+ + "<tr><td>Tshuntiris</td><td><a href='"+layer.feature.properties.tshuntiris+"' target='blank'    download>"+layer.feature.properties.tshuntiris+"</a></td></tr>"+
+
+
+  
+"</table>"
+);
+runEffect1();
+open_slide();
+
+$('.leaflet-control-search').css({
+                  'width':'320px'
+                    });
+$('.leaflet-control-search .search-cancel').css({
+                  'right':'90px'
+                    });
+$('.leaflet-control-search .search-tooltip').css({
+                  'min-width':'320px'
+                    });
+$('.leaflet-control-zoom').css({
+                  'left':'360px'
+                    });
+
+
+$('.search-input').val("");  
+
+x.addTo(map);
+
+
+$('#img_x').click(function(){
+$('#close').hide();
+close_slide();
+$('#open').hide();
+$('#effect_text').html("");
+$('.search-input').val("");  
+
+});
+
+}
+
+
+//map.addLayer(genplan_pol);
+
+$.getJSON("http://127.0.0.1:5678/geoserver/uzgashk/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=uzgashk:genplan_polygon&outputFormat=application%2Fjson", function (data) {
+    genplan_pol.addData(data);
+});
+
+
+var style_point = {
+    radius: 5,
+    fillColor: "orange",
+    color: 'red',
+    weight: 1,
+    opacity: 0.8,
+    fillOpacity: 0.8,
+};
+
+var genplan_point = L.geoJson(null, {
+  onEachFeature:onEachFeature_point,  
+  pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng,style_point);       
+}
+});
+
+// map.addLayer(genplan_point);
+$.getJSON("http://127.0.0.1:5678/geoserver/uzgashk/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=uzgashk:genplan_point&outputFormat=application%2Fjson", function (data) {
+    genplan_point.addData(data);
+    // console.log(data);
+});
+
+var label_point = L.layerGroup();
+
+function onEachFeature_point(feature, layer) {
+// console.log(layer);
+   label= L.marker(layer._latlng, {
+        icon: L.divIcon({
+        className: 'tooltip',
+        html:feature.properties.aholi_punk,
+        iconSize: [-25, 15]
+      })
+    });//.addTo(map);
+
+label_point.addLayer(label);
+
+
+  layer.on('click', function (e) {
+
+
+var text_popup="<b>"+layer.feature.properties.aholi_punk+"</b>"+
+
+ "<table>"+
+  "<tr><td>mamuriy_hu</td><td>"+layer.feature.properties.mamuriy_hu+"</td></tr>"+
+  "<tr><td>aholi_pu_1</td><td>"+layer.feature.properties.aholi_pu_1+"</td></tr>"+
+  "<tr><td>respublika</td><td>"+layer.feature.properties.respublika+"</td></tr>"+
+  "<tr><td>tuman_shah</td><td>"+layer.feature.properties.tuman_shah+"</td></tr>"+
+  
+ "</table>"; 
+
+ L.popup().setContent(text_popup)
+         .setLatLng(e.latlng)
+         .openOn(map) 
+
+   });
+
+
+  // var popupContent=layer.feature.properties.aholi_punk;
+  // layer.bindTooltip(popupContent,{
+  //                     permanent: true,   
+  //                     direction:"right",
+  //                     className :'tooltip',
+  //                     offset: [10,0]  
+  //                  });
+
+}
+
+// function style_vil_cheg(feature) {
+//   return {
+//         fillColor: 'none',
+//         weight: 2,
+//         opacity: 1,
+//         color: 'blue',
+//         dashArray: '2',
+//         fillOpacity: 0
+//   };
+
+// }
+
+
+// var vil_cheg = L.geoJson(vil_ch,{
+//   style:style_vil_cheg,
+//   // onEachFeature:onEachFeature_vil_ch,
+// }).addTo(map);
+
+// function onEachFeature_vil_ch(feature, layer){
+
+//     layer.on({
+//         mouseover: highlightFeature_vil_ch,
+//         mouseout: resetHighlight_vil_ch,
+//     });
+// }
+
+// function resetHighlight_vil_ch(e) {
+//     vil_cheg.resetStyle(e.target);
+// }
+ 
+// function highlightFeature_vil_ch(e) {
+//     var layer = e.target;
+//      layer.setStyle({
+//          //fillColor:'#fff',
+//          weight: 4,
+//         // color: 'red',
+//         // dashArray: '0.1',
+//          //fillOpacity: 0.1
+//    });
+// }
+
+
+// function get_style_vil(d){
+//     return d == "Qoraqalpog'iston Respublikasi" ? '#ffed7b' :
+//            d == "Xorazm viloyati"  ? '#feaa7e' :
+//            d == "Navoiy viloyati"  ? '#b4c57a' :
+//            d == "Buxoro viloyati"  ? '#ffbf6b' :
+//            d == "Samarqand viloyati"  ? '#feaa7e' :
+//            d == "Qashqadaryo viloyati"  ? '#ffed7b' :
+//            d == "Surxondaryo viloyati"  ? '#b4c57a' :
+//            d == "Jizzax viloyati"  ? '#ffed7b' :
+//            d == "Sirdaryo viloyati"  ? '#ffbf6b' :
+//            d == "Toshkent viloyati"  ? '#b4c57a' :
+//            d == "Namangan viloyati"  ? '#ffed7b' : 
+//            d == "Farg'ona viloyati"  ? '#feaa7e' : 
+//            d == "Andijon viloyati"  ? '#b4c57a' : '';                     
+                                                     
+
+// }
+
+function style_vil(feature) {
+  return {
+        fillColor: '#fff',
+        weight: 2,
+        opacity: 1,
+        color: 'red',
+        dashArray: '2',
+        fillOpacity: 0
+  };
+}
+
+var vil = L.geoJson(vil,{
+  style:style_vil,
+  onEachFeature:onEachFeature_vil,
+});//.addTo(map);
+
+function onEachFeature_vil(feature, layer){
+
+    layer.on({
+        mouseover: highlightFeature_vil,
+        mouseout: resetHighlight_vil,
+        click: zoomToFeature_vil,
+    });
+}
+
+function zoomToFeature_vil(e) {
+    //map.fitBounds(e.target.getBounds());
+    // var layer = e.target;
+    // layer.setStyle({
+    //     fillColor:'none',
+       
+    // });
+      }
+
+function highlightFeature_vil(e) {
+  
+    var layer = e.target;
+    layer.setStyle({
+        fillColor:'#ff2',
+        weight: 4,
+        color: 'red',
+        dashArray: '0.1',
+        fillOpacity: 0.3
+    });
+      layer.bindTooltip(layer.feature.properties.RegionNa_1,{
+                      //permanent: true,   
+                      //direction:"top",
+                      className :'tooltip_vil',
+                      offset: [0,0]  
+                   }).openTooltip();;
+   }
+function resetHighlight_vil( e) {
+    vil.resetStyle(e.target);
+}
+ 
+
+
+ var searchControl = new L.Control.Search({
+    layer: featuresLayer,
+    propertyName: 'fuqarolar_',
+    marker: false,
+
+   // initial: false,// izlashda like %x% yoki like x%
+    collapsed: false,
+
+    moveToLocation: function(latlng, title, map) {
+      map.fitBounds( latlng.layer.getBounds() );
+      var zoom = map.getBoundsZoom(latlng.layer.getBounds());
+        map.setView(latlng, zoom); // access the zoom
+    }
+  });
+
+
+
+  searchControl.on('search:locationfound', function(e) {
+
+    //console.log('search:locationfound', );
+
+    //map.removeLayer(this._markerSearch)
+
+    e.layer.setStyle({fillColor: '#3f0', color: '#0f0'});
+      if(e.layer._popup){
+       // $('#e').append("<p>bgfbfg</p>");
+      }
+      e.layer.bindPopup('<h4>'+e.layer.feature.properties.fuqarolar_+'</h4>');
+      e.layer.openPopup();
+      
+ $('#effect_text').html(
+  " <p class='class_r'>"+e.layer.feature.properties.respublika+"</p>"
+  +"<p class='class_t'>"+e.layer.feature.properties.tuman_shah+"</p>"
+  +"<p  class='class_f'>"+e.layer.feature.properties.fuqarolar_+"</p>"
+  +"<table>"
+ + "<tr><td>Aholi punktining nomi   </td><td>"+e.layer.feature.properties.aholi_punk+"</td></tr>"
+ + "<tr><td>Mamuriy hududiy birliklarni belgilash tizimi kodi </td><td>"+e.layer.feature.properties.mamuriy_hu+"</td></tr>"
+ + "<tr><td>Aholi punktining tipi </td><td>"+e.layer.feature.properties.aholi_pu_1+"</td></tr>"
+ + "<tr><td>Aholi punktining maqomi </td><td>"+e.layer.feature.properties.aholi_pu_2+"</td></tr>"
+ + "<tr><td>Respublika, viloyat  </td><td>"+e.layer.feature.properties.respublika+"</td></tr>"
+ + "<tr><td>Tuman (shahar)  </td><td>"+e.layer.feature.properties.tuman_shah+"</td></tr>"
+ + "<tr><td>Fuqarolar_ </td><td>"+e.layer.feature.properties.fuqarolar_+"</td></tr>"
+ + "<tr><td>Loyihalash tashkiloti - shahar (shaharcha) chegarasi loyihasini ishlab chiquvchi </td><td>"+e.layer.feature.properties.loyihalash+"</td></tr>"
+ + "<tr><td>Shahar (shaharcha) chegarasi loyihasi hujjatlari saqlandigan joy</td><td>"+e.layer.feature.properties.shahar_che+"</td></tr>"
+ + "<tr><td>Shahar (shaharcha) chegarasi loyihasini tasdiqlangan organ</td><td>"+e.layer.feature.properties.shahar_c_1+"</td></tr>"
+ + "<tr><td>Shahar (shaharcha) chegarasi_loyihasini tasdiqlash to'g'risidagi hujjatning raqami va sanasi</td><td>"+e.layer.feature.properties.shahar_c_2+"</td></tr>"
+ + "<tr><td>Aholi punktining loyihaviy maydoni (ga)</td><td>"+e.layer.feature.properties.aholi_pu_3+"</td></tr>"
+ + "<tr><td>Aholining loyihaviy soni </td><td>"+e.layer.feature.properties.aholining_field+"</td></tr>"
+  + "<tr><td>  KFI markaz</td><td>"+e.layer.feature.properties.kfi_markaz+"</td></tr>"
+  + "<tr><td>Boysinuvch</td><td>"+e.layer.feature.properties.boysinuvch+"</td></tr>"
+  + "<tr><td>Ishlab chiqalgan yili</td><td>"+e.layer.feature.properties.ishlab_chi+"</td></tr>"
+  + "<tr><td>Ishlab_c_1</td><td>"+e.layer.feature.properties.ishlab_c_1+"</td></tr>"
+  + "<tr><td>Shaharsozl</td><td>"+e.layer.feature.properties.shaharsozl+"</td></tr>"
+ + "<tr><td>Chegarani_</td><td>"+e.layer.feature.properties.chegarani_field+"</td></tr>"
+      + "<tr><td>SOATO</td><td>"+e.layer.feature.properties.soato+"</td></tr>"
+ + "<tr><td>Aholi_soni</td><td>"+e.layer.feature.properties.aholi_soni+"</td></tr>"
+      + "<tr><td>Izoh</td><td>"+e.layer.feature.properties.izoh+"</td></tr>"
+ + "<tr><td>Grafik_mal</td><td><a href='"+e.layer.feature.properties.grafik_mal+"' target='blank'    download>"+e.layer.feature.properties.grafik_mal+"</a></td></tr>"
+ + "<tr><td>Tshuntiris</td><td><a href='"+e.layer.feature.properties.tshuntiris+"' target='blank'   download>"+e.layer.feature.properties.tshuntiris+"</a></td></tr>"
+ + "<tr><td>SHAPE_Area</td><td>"+gektor(e.layer.feature.properties.shape_area)+"</td></tr>"+
+
+  
+"</table>"
+);
+      info.update(e.layer.feature.properties);
+      map.removeControl(logo);
+      open_slide();
+
+$('.leaflet-control-search').css({
+                  'width':'320px'
+                    });
+$('.leaflet-control-search .search-cancel').css({
+                  'right':'90px'
+                    });
+$('.leaflet-control-search .search-tooltip').css({
+                  'min-width':'320px'
+                    });
+
+
+x.addTo(map);
+
+$('#img_x').click(function(){
+$('#close').hide();
+close_slide();
+$('#open').hide();
+$('#effect_text').html("");
+$('.search-input').val("");  
+
+});
+
+$('#close').show();
+       
+
+  }).on('search:collapsed', function(e) {
+
+    featuresLayer.eachLayer(function(layer) { //restore feature color
+      featuresLayer.resetStyle(layer);
+    }); 
+  });
+ 
+
+
+ map.addControl( searchControl );  //inizialize search control
+
+
+
+
+var x= L.control({position:'topleft'});
+
+
+
+x.onAdd = function (map) {
+    div = L.DomUtil.create('div', 'x'); // create a div with a class "info"
+    div.innerHTML = "<img id='img_x' src='{% static 'img/img/x.png' %}'></img/img>";     
+ 
+    return div;
+};
+
+
+
+</script>
+
+
+<script type="text/javascript">
+
+
+map.on('zoomend', function () {
+var currentZoom = map.getZoom();
+// alert(currentZoom);
+
+if(currentZoom<=8){
+	if($('#genplan_point_chekbox').prop('checked')){
+  map.addLayer(label_point);
+}
+
+  }
+  else{
+  	map.addLayer(label_point);
+
+  }
+ //alert("res");
+
+// }
+// else{
+//   if (currentZoom<=7) {
+//   //alert("res va vil");
+
+//   // map.removeLayer(label_point);
+
+// }
+// else{
+//   if(currentZoom<10){
+  
+//    // map.removeLayer(label_point);
+//     //alert("vil chegara va tuman");
+//   }
+//   else{
+  
+
+// if($('#genplan_point_chekbox').prop('checked')){
+//   // map.addLayer(label_point);
+// }
+//   else
+//   {
+//  // map.removeLayer(label_point);
+//   }
+
+    
+//    // alert("vil,tumnan chegara va qfy");
+//   }
+//   }
+});
+
+         
+
+</script>
+
+
+
+  
+<div id="sidebar" data-position="right">
+            <div class="icons">
+                <div class="icon" data-content="beispiel1">
+                    <img src="{% static 'img/img/layer.png' %}">
+                </div>
+                <div class="icon" data-content="beispiel2">
+                    <img src="{% static 'img/img/layer.png' %}">
+                </div>
+            </div>
+            <div class="contents">
+                <div class="content hide" data-content="beispiel1">
+                    <h3>Bazis layer</h3>
+                    
+                            <p>
+    <input type="radio" id="test1" name="radio-group" value="openstreetmap" checked >
+    <label for="test1">OpenStreetMap</label>
+  </p><img class="layer_img" src="{% static 'img/img/opensteetmap.png' %}" >
+  <p>
+    <input type="radio" id="test2" value="googleStreets" name="radio-group">
+    <label for="test2">GoogleStreets</label>
+  </p><img class="layer_img" src="{% static 'img/img/googlestreet.png' %}">
+  <p>
+    <input type="radio" id="test3" value="googleTerrain" name="radio-group"  >
+    <label for="test3">GoogleTerrain</label>
+  </p><img class="layer_img" src="{% static 'img/img/googlterrain.png' %}">
+   <p>
+    <input type="radio" id="test4" value="googleHybrid" name="radio-group">
+    <label for="test4">GoogleHybrid</label>
+  </p><img class="layer_img" src="{% static 'img/img/googlehybrid.png' %}">
+  <p>
+    <input type="radio" id="test5" value="googleSat" name="radio-group">
+    <label for="test5">GoogleSat</label>
+  </p><img class="layer_img" src="{% static 'img/img/googleset.png' %}">
+                            
+                       
+                    
+                </div>
+                <div class="content hide" data-content="beispiel2">
+                    <h3>Asosiy layer</h3>
+                    <p>
+                     <label class="container">APOT Uzbekiston
+                    <input type="checkbox" id="apot_chekbox" checked="checked">
+                    <span class="checkmark"></span>
+                  </label>
+                  <img class="layer_img" src="{% static 'img/img/apot.png' %}">
+                  </p>
+
+                    <p>
+                     <label class="container">Genplan Uzbekiston
+                    <input type="checkbox" id="genplan_chekbox">
+                    <span class="checkmark"></span>
+                  </label>
+                  <img class="layer_img" src="{% static 'img/img/5.png' %}">
+                  </p>
+                  
+                  <p>
+                  <label class="container">Genplan Uzbekiston rejadagi
+                    <input type="checkbox" id="genplan_point_chekbox" >
+                    <span class="checkmark"></span>
+                  </label>
+                  <img class="layer_img" src="{% static 'img/img/6.png' %}">
+                  </p>   
+                                             
+                </div>
+            </div>
+        </div>
+
+<script type="text/javascript">
+
+
+
+// var count=0;
+// function myTimer() {
+//     count++;
+    
+//     if(count%3==0){
+//     alert(count);
+//           }
+// }
+// interval = setInterval(myTimer, 1000);
+
+
+$("#apot_chekbox").change(function(){
+if($(this).prop('checked')){
+map.addLayer(featuresLayer);
+
+if($('#genplan_point_chekbox').prop('checked')){
+
+  var currentZoom = map.getZoom();
+  if (currentZoom>=10) {
+    map.addLayer(label_point);
+  }
+  // map.removeLayer(genplan_point); 
+  map.addLayer(genplan_point);
+}
+
+if($('#genplan_chekbox').prop('checked')){
+  map.removeLayer(genplan_pol); 
+  map.addLayer(genplan_pol);
+
+}
+
+}
+else{
+map.removeLayer(featuresLayer); 
+}
+});
+
+$("#genplan_point_chekbox").change(function(){
+ if($(this).prop('checked')){
+var currentZoom = map.getZoom();
+  if (currentZoom>=10) {
+    map.addLayer(label_point);
+  }
+
+  map.addLayer(genplan_point);
+}
+else{
+map.removeLayer(label_point); 
+map.removeLayer(genplan_point); 
+}
+});
+
+
+$("#genplan_chekbox").change(function(){
+  if($('#genplan_chekbox').prop('checked')){
+    map.removeLayer(genplan_pol); 
+    map.addLayer(genplan_pol);
+
+  }
+  
+  if($(this).prop('checked')){
+    map.addLayer(genplan_pol);
+  }
+  else{
+    map.removeLayer(genplan_pol); 
+  }
+  if($(this).prop('checked')){
+  var currentZoom = map.getZoom();
+    if (currentZoom>=10) {
+      map.addLayer(label_point);
+    }
+
+    map.addLayer(genplan_point);
+  }
+  else{
+  map.removeLayer(label_point); 
+  map.removeLayer(genplan_point); 
+  }
+});
+
+$("input[name='radio-group']" ).change(function() {
+   
+   map.removeLayer(googleStreets);
+   map.removeLayer(googleSat);
+   map.removeLayer(googleHybrid);
+   map.removeLayer(googleTerrain);
+   map.removeLayer(openstreetmap);
+if($(this).val()=='openstreetmap')
+   map.addLayer(openstreetmap);
+if($(this).val()=='googleStreets')
+   map.addLayer(googleStreets);
+if($(this).val()=='googleSat')
+   map.addLayer(googleSat);
+ if($(this).val()=='googleHybrid')
+   map.addLayer(googleHybrid);
+ if($(this).val()=='googleTerrain')
+   map.addLayer(googleTerrain);
+});
+
+$(".search-input").on("keyup",function(){
+  $(".search-input").change();
+})
+
+</script>
+
+<div id="project_name_div">
+  <div><p id="project_name_text">Qishloq Fuqarolar Yig'inlari hududlariga ishlab chiqilgan <br> shaharsozlik hujjatlari bo'yicha ma'lumotlar </p>
+</div> 
+</div>
+
+<div id="div_loader" class="loader_div">
+<img class="loader_img" src="{% static 'img/img/l1.gif' %}">
+</div>
+
+
+
+</body>
+</html>

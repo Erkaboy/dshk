@@ -1,0 +1,480 @@
+ {% extends 'base.html' %}
+
+ {% block style %}
+<style type="text/css">
+.ui-widget-header{
+  background-color: #5fb1ff;
+}
+</style>
+{% endblock style %}
+ 
+ {% block content %}
+ 
+      
+ <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="section-headline services-head text-center">
+            <h3 class="wow fadeInUp">РЕЕСТР ПРОЕКТОВ</h3>
+            <hr>
+          </div>
+</div>
+
+
+<div class="modal-body">
+
+
+              <p class="modal_p wow fadeInRight" >
+                Реестр градостроительных и инвестиционных проектов ведется по административно-территориальным единицам республики и включает сведения о выданных разрешениях на проектные работы, об утвержденных в установленном порядке градостроительных проектах, а также проектах на строительство, реконструкцию и реставрацию зданий и сооружений; сведения об авторе проекта (организации-разработчике), его почтовом (юридическом) адресе, номере лицензии, дате разработки (утверждения) проекта, а также данные о предполагаемом размещении, сроках строительства и основных технических и планировочных характеристиках запроектированного объекта.
+              </p>
+
+<div class="modal-text">  
+              
+<hr>
+<div class="row">
+           <div class="col-md-6 col-sm-6 col-xs-12">
+              <p class="modal_p wow fadeInLeft">
+                Одной из главных характеристик при формировании реестра проектов является полнота информации, которая способствует координации усилий по созданию и формированию базы данных, а значит, более рациональному использованию её пользователем при работе.
+              </p>
+        <hr>
+              <ul class="modal_p_ul wow fadeInLeft">
+              <p>
+                Формирование реестра основывается на следующих принципах:
+              </p>
+                <li>централизация информации о проектах и объектах градостроительной деятельности;</li>
+                <li>унификация, основанная на преемственности учёта проектов и объектов градостроительной деятельности;</li>
+                <li>динамичность, обеспечиваемая своевременным и оперативным внесением изменений в документы технической инвентаризации проектов и объектов градостроительной деятельности;</li>
+                <li>достоверность данных.</li>
+              </ul>
+   <hr>      
+              <p class="modal_p wow fadeInLeft">
+                Объектами реестра являются здания и сооружения, находящиеся на стадии проектирования, юридические и физические лица, участвующие в процессе проектирования.
+              </p>
+              <p class="modal_p wow fadeInLeft">
+                Выходная информация позволит субъектам градостроительной деятельности решить комплекс вопросов, связанных с документооборотом в градостроительной деятельности и ведения мониторинга за принятыми решениями, выполнять учет инженерных и архитектурных характеристик строительных объектов по населенным пунктам.
+              </p>
+            </div>
+           <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="modal-img wow fadeInRight">
+            <a  data-magnify="gallery" data-caption="Градостроительная документация" href="/static/img/img_pods/16.jpg"><img src="/static/img/img_pods/16.jpg" width="90%" class="pod_img"></a>
+          </div>
+            
+            </div>
+</div>
+                  
+</div>
+</div>
+
+
+<hr>
+
+<div class="container">  
+ <h4 class="wow fadeInRight"><b>Loyihalar reestri quyi tizimining tarkibiy elementlarining statistikasi</b></h4> 
+ <hr>
+ <div class="row"">
+
+<div style="margin-top: 20px;" class="col-md-12 col-xs-12 col-sm-12 col-lg-12 align-self-center">
+<table class="table mytable wow fadeInLeft">
+  <thead>
+    <tr id="th_years" >
+      <th scope="col">Xizmatlar</th>
+    </tr>
+  </thead>
+  <tbody> 
+  <tr id="tr_apz"><td>Arxitektura-rejalashtirish topshiriqlari</td></tr>
+
+  <tr id="tr_psd"><td>Binolar, inshootlar va boshqa obyektlar qurilishining loyiha-smeta hujjatlari</td></tr>
+
+  <tr id="tr_psd_ind"><td>Yakka tartibda uy-joy qurishga (rekonstruktsiya qilishga) loyiha-smeta hujjatlari</td></tr>
+</tbody>
+</table>
+
+ 
+</div>
+</div>
+
+ <hr>
+ <div class="row"">
+
+
+<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 align-self-start">
+<canvas  id="canvas_all" height="120px"></canvas>
+</div>
+
+</div>
+
+</div>
+
+
+
+<hr>
+<div class="container">  
+ <h4 class="wow fadeInRight"><b>Yillar va oylar kesimida loyihalar reestri tarkibiy elemetlarini ifodalanishi </b></h4> 
+ <hr>
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Arxitektura-rejalashtirish topshiriqlari</a></li>
+    <li><a href="#tabs-2">Binolar, inshootlar qurilishining l.s.h</a></li>
+    <li><a href="#tabs-3">Yakka tartibda uy-joy qurishga l.s.h</a></li>
+  </ul>
+  <div id="tabs-1">
+      <h4>Arxitektura-rejalashtirish topshiriqlari</h4>
+      <hr>
+<table class="table mytable table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Yillar\Oylar</th>
+      <th scope="col">Yanvar</th>
+      <th scope="col">Fevral</th>
+      <th scope="col">Mart</th>
+      <th scope="col">Aprel</th>
+      <th scope="col">May</th>
+      <th scope="col">Iyul</th>
+      <th scope="col">Iyun</th>
+      <th scope="col">Avgust</th>
+      <th scope="col">Sentabr</th>
+      <th scope="col">Oktabr</th>
+      <th scope="col">Noyabr</th>
+      <th scope="col">Dekabr</th>
+    </tr>
+  </thead>
+  <tbody id='apz_table_tr'> 
+  </tbody>
+  </table>
+
+  <hr>
+
+<canvas  id="canvas_apz"></canvas>
+  </div>
+  <div id="tabs-2">
+  <h4 >Binolar, inshootlar va boshqa obyektlar qurilishining loyiha-smeta hujjatlari</h4>
+<hr>
+<table class="table mytable table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Yillar\Oylar</th>
+      <th scope="col">Yanvar</th>
+      <th scope="col">Fevral</th>
+      <th scope="col">Mart</th>
+      <th scope="col">Aprel</th>
+      <th scope="col">May</th>
+      <th scope="col">Iyul</th>
+      <th scope="col">Iyun</th>
+      <th scope="col">Avgust</th>
+      <th scope="col">Sentabr</th>
+      <th scope="col">Oktabr</th>
+      <th scope="col">Noyabr</th>
+      <th scope="col">Dekabr</th>
+    </tr>
+  </thead>
+  <tbody id='psd_table_tr'> 
+  </tbody>
+  </table>
+
+  <hr>
+
+<canvas  id="canvas_psd"></canvas>
+  </div>
+  <div id="tabs-3">
+<h4 >Yakka tartibda uy-joy qurishga (rekonstruktsiya qilishga) loyiha-smeta hujjatlari reestri</h4>
+<hr>
+<table class="table mytable table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Yillar\Oylar</th>
+      <th scope="col">Yanvar</th>
+      <th scope="col">Fevral</th>
+      <th scope="col">Mart</th>
+      <th scope="col">Aprel</th>
+      <th scope="col">May</th>
+      <th scope="col">Iyul</th>
+      <th scope="col">Iyun</th>
+      <th scope="col">Avgust</th>
+      <th scope="col">Sentabr</th>
+      <th scope="col">Oktabr</th>
+      <th scope="col">Noyabr</th>
+      <th scope="col">Dekabr</th>
+    </tr>
+  </thead>
+  <tbody id='psd_ind_table_tr'> 
+  </tbody>
+  </table>
+
+  <hr>
+
+<canvas  id="canvas_psd_ind"></canvas>
+
+</div>
+</div>
+</div>
+
+
+  
+ {% endblock content %}
+
+
+ {% block script %}
+
+
+<script type="text/javascript">
+  
+  $( "#tabs" ).tabs({
+  });
+
+var year_color={
+  '2018':'#7cbb12',
+  '2019':'#ef511b',
+  '2020':'#f6cc22',
+  '2021':'yellow',
+  '2022':'pink',
+  '2023':'green'
+};
+
+
+var apz={
+      type: 'bar',
+      data: {
+      labels: ['Yanvar', 'Fevral', 'Mart', 'April', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'],
+      datasets: []
+
+    },
+        options: {
+          responsive: true,
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            position: 'bottom',
+            fontSize:16,
+            text: 'Yillar kesimidagi arxitektura-rejalashtirish topshiriqlari'
+          }
+          }
+      };
+
+
+var psd={
+      type: 'bar',
+      data: {
+      labels: ['Yanvar', 'Fevral', 'Mart', 'April', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'],
+      datasets: []
+
+    },
+        options: {
+          responsive: true,
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            position: 'bottom',
+            fontSize:16,
+            text: 'Yillar kesimidagi binolar, inshootlar qurilishining loyiha-smeta hujjatlari'
+          }
+          }
+      };
+
+
+var psd_ind={
+      type: 'bar',
+      data: {
+      labels: ['Yanvar', 'Fevral', 'Mart', 'April', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'],
+      datasets: []
+
+    },
+        options: {
+          responsive: true,
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            position: 'bottom',
+            fontSize:16,
+            text: 'Yillar kesimidagi yakka tartibda uy-joy qurishga loyiha-smeta hujjatlari'
+          }
+          }
+      };
+
+
+var data_all={
+        type: 'bar',
+        data: {
+      labels: [],
+      datasets: []
+    },
+        options: {
+          responsive: true,
+          legend: {
+            position: 'top',
+            display: true,
+          },
+          title: {
+            display: false,
+            text: 'Chart.js Bar Chartsww'
+          }
+        }
+      };
+
+
+
+var data = new FormData();
+data.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
+data.append('service','pod6');
+
+    $.ajax({
+        url: '/chart_data',
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        type: 'post',
+        success: function (result) {
+
+let count_apz=0;
+let apz_chart_data=[];
+for(var service in result.apz ){
+for(var x in result.apz[service]){
+    apz.data.datasets.push({
+        label: x+' yil',
+        backgroundColor: year_color[x],
+        borderColor: year_color[x],
+        borderWidth: 1,
+        data: result.apz[service][x]
+      });
+let text='<tr><td><b>'+x+' yil</b></td>';
+let count=0;
+for(var i in result.apz[service][x]){
+text+='<td>'+result.apz[service][x][i]+'</td>';
+count+=result.apz[service][x][i];
+}
+text+='</tr>';
+$('#th_years').append('<th scope="col">'+x+'</th>');
+data_all.data.labels.push(x);
+
+apz_chart_data.push(count);
+
+$('#tr_apz').append('<td>'+count+'</td>');
+
+$('#apz_table_tr').append(text);
+
+count_apz+=count;
+}
+}
+
+
+data_all.data.datasets.push({
+        label: 'Arxitektura-rejalashtirish topshiriqlari',
+        backgroundColor: 'red',
+        borderColor: 'red',
+        borderWidth: 1,
+        data: apz_chart_data
+      });
+
+
+$('#th_years').append('<th scope="col">Umumiy</th>');
+$('#tr_apz').append('<td><b>'+count_apz+'</b></td>');
+
+
+
+
+let count_psd=0;
+let psd_chart_data=[];
+for(var service in result.psd ){
+for(var x in result.psd[service]){
+    psd.data.datasets.push({
+        label: x+' yil',
+        backgroundColor: year_color[x],
+        borderColor: year_color[x],
+        borderWidth: 1,
+        data: result.psd[service][x]
+      });
+let text='<tr><td><b>'+x+' yil</b></td>';
+let count=0;
+for(var i in result.psd[service][x]){
+text+='<td>'+result.psd[service][x][i]+'</td>';
+count+=result.psd[service][x][i];
+}
+text+='</tr>';
+$('#tr_psd').append('<td>'+count+'</td>');
+psd_chart_data.push(count);
+
+$('#psd_table_tr').append(text);
+
+count_psd+=count;
+}
+}
+$('#tr_psd').append('<td><b>'+count_psd+'</b></td>');
+
+data_all.data.datasets.push({
+        label: 'Binolar, inshootlar va boshqa obyektlar qurilishining loyiha-smeta hujjatlari',
+        backgroundColor: 'blue',
+        borderColor: 'blue',
+        borderWidth: 1,
+        data: psd_chart_data
+      });
+
+
+
+
+
+let count_psd_ind=0;
+let psd_ind_chart_data=[];
+for(var service in result.psd_ind ){
+for(var x in result.psd_ind[service]){
+    psd_ind.data.datasets.push({
+        label: x+' yil',
+        backgroundColor: year_color[x],
+        borderColor: year_color[x],
+        borderWidth: 1,
+        data: result.psd_ind[service][x]
+      });
+let text='<tr><td><b>'+x+' yil</b></td>';
+let count=0;
+for(var i in result.psd_ind[service][x]){
+text+='<td>'+result.psd_ind[service][x][i]+'</td>';
+count+=result.psd_ind[service][x][i];
+}
+text+='</tr>';
+$('#tr_psd_ind').append('<td>'+count+'</td>');
+psd_ind_chart_data.push(count);
+
+$('#psd_ind_table_tr').append(text);
+
+count_psd_ind+=count;
+}
+}
+$('#tr_psd_ind').append('<td><b>'+count_psd_ind+'</b></td>');
+
+
+data_all.data.datasets.push({
+        label: 'Yakka tartibda uy-joy qurishga (rekonstruktsiya qilishga) loyiha-smeta hujjatlari',
+        backgroundColor: 'orange',
+        borderColor: 'orange',
+        borderWidth: 1,
+        data: psd_ind_chart_data
+      });
+
+
+      var ctx_all = document.getElementById('canvas_all').getContext('2d');
+      var chart_all = new Chart(ctx_all, data_all);
+
+
+      var ctx_apz = document.getElementById('canvas_apz').getContext('2d');
+      var chart_apz = new Chart(ctx_apz, apz);
+
+      var ctx_psd = document.getElementById('canvas_psd').getContext('2d');
+      var chart_psd = new Chart(ctx_psd, psd);
+
+      var ctx_psd_ind = document.getElementById('canvas_psd_ind').getContext('2d');
+      var chart_psd_ind = new Chart(ctx_psd_ind, psd_ind);
+
+        },
+        error: function(){
+          console.log('Ajaxda xatolik');
+        }
+      });
+
+</script>
+
+
+
+{% endblock script %}

@@ -1,0 +1,206 @@
+{% extends 'uz/master.html' %}
+
+ {% block content %}
+
+   <div class="container" id="main_body">
+       <hr>
+      <div class="text text-info">
+<!--          <a href="{% url 'workers' lang='uz' %}" > <i class="fa fa-group" aria-hidden="true"></i> Barcha mavjud hodimlar ro'yhati</a>-->
+          <div class="password" style="float:right">
+<!--            <button type="button" c>-->
+<!--              Parolni o'zgartirish-->
+<!--            </button>-->
+              <a href="#" data-toggle="modal"  data-target="#myModal"> <i class="fa fa-check-square-o" aria-hidden="true"></i> Parolni o'zgartirish</a>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="#" data-toggle="modal"  data-target="#myModal"> <i class="fa fa-sign-out"></i> Logout</a>
+
+            <!-- The Modal -->
+            <div class="modal" id="myModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+
+                  <!-- Modal Header -->
+                   <div class="modal-header">
+                              <h4 class="modal-title text-danger" style="text-align:center">Parolni o'zgartirish </h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                   </div>
+
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                       <form action="" method="post">
+                            <div class="form-group">
+                                <label><span class="text text-danger">*</span> Eski parol:</label>
+                                <input type="password" placeholder="Eski parolni kiriting *" class="form-control">
+                            </div>
+
+                           <div class="form-group">
+                                 <label><span class="text text-danger">*</span> Yangi parol:</label>
+                                <input type="password" placeholder="Yangi parolni kiriting *" class="form-control">
+                           </div>
+
+                            <div class="form-group">
+                                <label><span class="text text-danger">*</span> Parolni tasdiqlang:</label>
+                                <input type="password" placeholder="Parolni qayta kiriting *" class="form-control">
+                           </div>
+                           <hr>
+                            <div style="float:right" >
+                                <a href="{% url 'confirm' lang='uz' %}" class="btn btn-success" >Parolni o'zgartirish</a>
+                            </div>
+                           <br><br>
+                       </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+       </div>
+          <br>
+
+
+
+      </div>
+
+       <br>
+           <div class="row">
+               <div class="col-md-12 " >
+                    <div class="row">
+                        <div class="col-md-1">
+
+                        </div>
+
+                        <div class="col-md-10">
+
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <h4 class="text text-center  text-info">Uzbekiston Respublikasi Qurilish vazirligi</h4>
+                                     <div class="form-group" style="width:100%;" id="content">
+<!--                                         <h3 class="text text-center">Tashkilot ma'lumotlari</h3>-->
+                                         <br>
+                                         <table class="table table-hover" style="font-size:17px">
+                                            <tbody>
+                                              <tr>
+                                                <td><label>Tashkilot nomi:</label></td>
+                                                <td><input type="text"  value="Qurilish vazirligi" class="form-control"></td>
+                                              </tr>
+
+                                              <tr>
+                                               <td><label>Adresi:</label></td>
+                                                <td><input type="text" value="Toshkent shahar Chilonzor tumani" class="form-control"></td>
+                                              </tr>
+
+                                              <tr>
+                                               <td><label>STIR raqami:</label></td>
+                                                <td><input type="text"  value="250025258"  class="form-control"></td>
+                                              </tr>
+
+                                                <tr>
+                                               <td><label>Email:</label></td>
+                                                <td><input type="email"  value="admin@gmail.com"  class="form-control"></td>
+                                              </tr>
+
+                                              <tr>
+                                               <td><label>Tel nomer:</label></td>
+                                                <td><input type="text" value="99882558" class="form-control"></td>
+                                              </tr>
+
+                                              <tr>
+                                               <td><label>Tashkilot rahbari:</label></td>
+                                                <td><input type="text" value="Karimov Jamshid Salimovich" class="form-control"></td>
+                                              </tr>
+                                             <tr>
+                                               <td></td>
+                                                <td></td>
+                                              </tr>
+
+                                            </tbody>
+                                         </table>
+                                         <label style="font-size:18px;"><span class="text text-danger">*</span> Ma'lumotlarda xatoliklar bo'lsa o'zgartira olish imkoniga egasiz !</label>
+
+                                  <br><br>
+                                        <div style="float:right;font-weight:bold" >
+                                            <a href="#" class="btn btn-success"> <i class="fa fa-cog" aria-hidden="true"></i> Ma'lumotlarni yangilash</a>
+                                        </div>
+                                    <br>
+                                    </div>
+                         </form>
+                        </div>
+
+                        <div class="col-md-1">
+
+
+                        </div>
+                    </div>
+
+               </div>
+           </div>
+       <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text text-center text-info">Barcha tashkilotlar ro'yhati</h3>
+                  <table class="table table-hover table-stripped" style="text-align:center">
+
+                    <thead >
+                      <tr>
+                        <th style="text-align:center">#</th>
+                        <th style="text-align:center">Tashkilot nomi</th>
+                        <th style="text-align:center">Adres</th>
+                        <th style="text-align:center">STIR raqami</th>
+                        <th style="text-align:center">Email</th>
+                        <th style="text-align:center">Tel nomer</th>
+                        <th style="text-align:center">Tashkilot rahbari</th>
+                        <th style="text-align:center">Ko'rish</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>UZGASHK</td>
+                        <td>Chilonzor tumani Qatortol ko'chasi 25 </td>
+                        <td>55884488</td>
+                        <td>mary@example.com</td>
+                          <td>+9989787588</td>
+                          <td>Karimov Vali</td>
+                        <td><a href="{% url 'show_construction' lang='uz' %}"> <i class="fa fa-eye"></i> Ko'rish</a></td>
+                      </tr>
+
+                       <tr>
+                        <td>1</td>
+                        <td>TATU</td>
+                        <td>Chilonzor tumani Qatortol ko'chasi 25 </td>
+                        <td>55884488</td>
+                        <td>mary@example.com</td>
+                          <td>+9989787588</td>
+                          <td>Karimov Vali</td>
+                        <td><a href="{% url 'show_construction' lang='uz' %}"> <i class="fa fa-eye"></i> Ko'rish</a></td>
+                      </tr>
+
+                      <tr>
+                        <td>1</td>
+                        <td>URDU</td>
+                        <td>Chilonzor tumani Qatortol ko'chasi 25 </td>
+                        <td>55884488</td>
+                        <td>mary@example.com</td>
+                          <td>+9989787588</td>
+                          <td>Karimov Vali</td>
+                        <td><a href="{% url 'show_construction' lang='uz' %}"> <i class="fa fa-eye"></i> Ko'rish</a></td>
+                      </tr>
+                    </tbody>
+
+                  </table>
+                <hr>
+            </div>
+
+
+                                       </div>
+
+
+
+
+
+   </div>
+
+  <hr>
+
+
+ {% endblock content %}
